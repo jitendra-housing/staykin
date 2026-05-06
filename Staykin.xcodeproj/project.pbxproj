@@ -28,6 +28,7 @@
 		C4F5A0825064191619ACCCC9 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD9FDD2714F6285154C8D41 /* OnboardingCoordinator.swift */; };
 		C90B6939AAC7E4BF261717DF /* DSGradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AAD6F18339ED9AA315901F /* DSGradients.swift */; };
 		D4703948E63CDB1FBB027780 /* StaykinTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA798E28589FD8A7854663 /* StaykinTextField.swift */; };
+		D973EDFE050E3F0A24F13F2C /* VibeFormScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78787EF8FA148BC368018340 /* VibeFormScreen.swift */; };
 		E1586E240FF3523C39B3D199 /* StaykinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5064A80BB4EFBA2EC26ADFFA /* StaykinApp.swift */; };
 		E426B941C136866616EC51F4 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D922F2CDF9E10B77F04D290 /* Buttons.swift */; };
 		E8FAD92CCA1C54C6B724BEFE /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A51A80E59D112F04CA6F6 /* FlowLayout.swift */; };
@@ -48,6 +49,7 @@
 		5064A80BB4EFBA2EC26ADFFA /* StaykinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaykinApp.swift; sourceTree = "<group>"; };
 		58865B54C3850E5B2D724552 /* SectionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionLabel.swift; sourceTree = "<group>"; };
 		68689740E2E70A302A20EB66 /* OnboardingRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRoute.swift; sourceTree = "<group>"; };
+		78787EF8FA148BC368018340 /* VibeFormScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibeFormScreen.swift; sourceTree = "<group>"; };
 		7FDA798E28589FD8A7854663 /* StaykinTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaykinTextField.swift; sourceTree = "<group>"; };
 		83C6328BF92F7D89FF23FD4C /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		8BC2D487DC8F9560646741C0 /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				9ABD7934EA461C62DCF7F7F9 /* OTPScreen.swift */,
 				A12D8A2593707E7D7BFF160C /* PhoneScreen.swift */,
 				83C6328BF92F7D89FF23FD4C /* ProfileScreen.swift */,
+				78787EF8FA148BC368018340 /* VibeFormScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				E1586E240FF3523C39B3D199 /* StaykinApp.swift in Sources */,
 				D4703948E63CDB1FBB027780 /* StaykinTextField.swift in Sources */,
 				7D5FEFB4257FAA8EB7AB57D2 /* StepPill.swift in Sources */,
+				D973EDFE050E3F0A24F13F2C /* VibeFormScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

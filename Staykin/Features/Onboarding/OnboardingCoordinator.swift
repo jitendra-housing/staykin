@@ -31,7 +31,7 @@ struct OnboardingCoordinator: View {
         case .flatPrefs:
             FlatPrefsScreen(onContinue: { push(.vibeForm) }, onBack: pop)
         case .vibeForm:
-            PlaceholderScreen(title: "Choose your preferences", route: route, stepLabel: "Step 2 of 2", stepIsAmber: true, showBack: true, onBack: pop, onContinue: { push(.vibeCard) })
+            VibeFormScreen(onContinue: { push(.vibeCard) }, onBack: pop)
         case .vibeCard:
             PlaceholderScreen(title: "Your vibe card is ready! 🪩", route: route, showBack: true, onBack: pop, ctaTitle: "Start searching ✨", onContinue: onFinish)
         }

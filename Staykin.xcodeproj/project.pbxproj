@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01358250A1E5D80C26B12CC0 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6328BF92F7D89FF23FD4C /* ProfileScreen.swift */; };
 		1099725D3B0A9DCBCFC53342 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40BF0CB6FAF75AA2BED1578 /* RangeSlider.swift */; };
 		13B3006EDAD1A3C1258CC866 /* DSColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AED8270034A7DDA5D8BB4A /* DSColors.swift */; };
 		1C811C2347B8536E59AF4318 /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC2D487DC8F9560646741C0 /* OnboardingData.swift */; };
@@ -44,6 +45,7 @@
 		58865B54C3850E5B2D724552 /* SectionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionLabel.swift; sourceTree = "<group>"; };
 		68689740E2E70A302A20EB66 /* OnboardingRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRoute.swift; sourceTree = "<group>"; };
 		7FDA798E28589FD8A7854663 /* StaykinTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaykinTextField.swift; sourceTree = "<group>"; };
+		83C6328BF92F7D89FF23FD4C /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		8BC2D487DC8F9560646741C0 /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
 		9ABD7934EA461C62DCF7F7F9 /* OTPScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPScreen.swift; sourceTree = "<group>"; };
 		A12D8A2593707E7D7BFF160C /* PhoneScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneScreen.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				9ABD7934EA461C62DCF7F7F9 /* OTPScreen.swift */,
 				A12D8A2593707E7D7BFF160C /* PhoneScreen.swift */,
+				83C6328BF92F7D89FF23FD4C /* ProfileScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				1C811C2347B8536E59AF4318 /* OnboardingData.swift in Sources */,
 				81B8E451EA24876BB155CF3F /* OnboardingRoute.swift in Sources */,
 				AA18D2A07B51071C520A7BE2 /* PhoneScreen.swift in Sources */,
+				01358250A1E5D80C26B12CC0 /* ProfileScreen.swift in Sources */,
 				1099725D3B0A9DCBCFC53342 /* RangeSlider.swift in Sources */,
 				1F853D1EB4E01C6EBFAE8CDD /* RootView.swift in Sources */,
 				252D6151EE5F0A2FD7BDCF17 /* SectionLabel.swift in Sources */,

@@ -25,7 +25,7 @@ struct OnboardingCoordinator: View {
         case .otp:
             OTPScreen(onVerify: { push(.profile) }, onBack: pop)
         case .profile:
-            PlaceholderScreen(title: "Let's set up your profile", route: route, showBack: false, onBack: pop, onContinue: { push(.intent) })
+            ProfileScreen(onContinue: { push(.intent) })
         case .intent:
             PlaceholderScreen(title: "What are you here for?", route: route, showBack: true, onBack: pop, onContinue: { push(.flatPrefs) })
         case .flatPrefs:

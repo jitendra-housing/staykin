@@ -14,6 +14,7 @@
 		1F853D1EB4E01C6EBFAE8CDD /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB260E86A73E7FEA4865A7 /* RootView.swift */; };
 		2137AFD30302FA73BBB96876 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E14E36B976EE20DD7DFFCD /* SplashView.swift */; };
 		252D6151EE5F0A2FD7BDCF17 /* SectionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58865B54C3850E5B2D724552 /* SectionLabel.swift */; };
+		50F471997DD954DF1D76109B /* VibeCardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB690364CE90CC31C9CAD8F /* VibeCardScreen.swift */; };
 		591374C8064ECA60C70DBF14 /* FlatPrefsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1770DCC32A30A1CF7E5DA5D /* FlatPrefsScreen.swift */; };
 		61F58A78637C04E68626585C /* SelectablePill.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3977237EA7C3EE79850CFFC /* SelectablePill.swift */; };
 		7D5FEFB4257FAA8EB7AB57D2 /* StepPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DF11B07CE601F0F18A6AF3 /* StepPill.swift */; };
@@ -41,6 +42,7 @@
 		0CADB7EBD2D0E95F499354FA /* Outfit-Variable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Variable.ttf"; sourceTree = "<group>"; };
 		0D922F2CDF9E10B77F04D290 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		0E6FDBB2E3664852D7233588 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1AB690364CE90CC31C9CAD8F /* VibeCardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibeCardScreen.swift; sourceTree = "<group>"; };
 		22E14E36B976EE20DD7DFFCD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		2BD9FDD2714F6285154C8D41 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		2D2C2A65FBDCF4FC78DDF976 /* IntentScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentScreen.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				9ABD7934EA461C62DCF7F7F9 /* OTPScreen.swift */,
 				A12D8A2593707E7D7BFF160C /* PhoneScreen.swift */,
 				83C6328BF92F7D89FF23FD4C /* ProfileScreen.swift */,
+				1AB690364CE90CC31C9CAD8F /* VibeCardScreen.swift */,
 				78787EF8FA148BC368018340 /* VibeFormScreen.swift */,
 			);
 			path = Screens;
@@ -274,6 +277,7 @@
 				E1586E240FF3523C39B3D199 /* StaykinApp.swift in Sources */,
 				D4703948E63CDB1FBB027780 /* StaykinTextField.swift in Sources */,
 				7D5FEFB4257FAA8EB7AB57D2 /* StepPill.swift in Sources */,
+				50F471997DD954DF1D76109B /* VibeCardScreen.swift in Sources */,
 				D973EDFE050E3F0A24F13F2C /* VibeFormScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

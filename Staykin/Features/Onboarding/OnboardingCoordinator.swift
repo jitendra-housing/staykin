@@ -23,7 +23,7 @@ struct OnboardingCoordinator: View {
         case .phone:
             PhoneScreen(onContinue: { push(.otp) })
         case .otp:
-            PlaceholderScreen(title: "Enter the code", route: route, showBack: true, onBack: pop, onContinue: { push(.profile) })
+            OTPScreen(onVerify: { push(.profile) }, onBack: pop)
         case .profile:
             PlaceholderScreen(title: "Let's set up your profile", route: route, showBack: false, onBack: pop, onContinue: { push(.intent) })
         case .intent:

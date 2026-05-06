@@ -29,7 +29,7 @@ struct OnboardingCoordinator: View {
         case .intent:
             IntentScreen(onContinue: { push(.flatPrefs) }, onBack: pop)
         case .flatPrefs:
-            PlaceholderScreen(title: "What are you looking for?", route: route, stepLabel: "Step 1 of 2", showBack: true, onBack: pop, onContinue: { push(.vibeForm) })
+            FlatPrefsScreen(onContinue: { push(.vibeForm) }, onBack: pop)
         case .vibeForm:
             PlaceholderScreen(title: "Choose your preferences", route: route, stepLabel: "Step 2 of 2", stepIsAmber: true, showBack: true, onBack: pop, onContinue: { push(.vibeCard) })
         case .vibeCard:

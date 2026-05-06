@@ -5,9 +5,10 @@ struct RangeSlider: View {
     @Binding var upperValue: Double
     let range: ClosedRange<Double>
     var step: Double = 1
+    var tooltipFormatter: ((Double) -> String)? = nil
 
     private let trackHeight: CGFloat = 4
-    private let thumbSize: CGFloat = 24
+    private let thumbSize: CGFloat = 20
     private let coordinateSpaceName = "RangeSlider"
 
     var body: some View {
@@ -17,21 +18,16 @@ struct RangeSlider: View {
             let upperX = thumbSize / 2 + CGFloat((upperValue - range.lowerBound) / (range.upperBound - range.lowerBound)) * usableWidth
 
             ZStack(alignment: .leading) {
-                // Background track
                 Capsule()
-                    .fill(Color.white.opacity(0.12))
+                    .fill(Color.bgCard)
                     .frame(height: trackHeight)
 
-                // Active track
                 Capsule()
                     .fill(LinearGradient.brand)
-                    .frame(width: upperX - lowerX, height: trackHeight)
+                    .frame(width: max(0, upperX - lowerX), height: trackHeight)
                     .offset(x: lowerX)
 
-                // Lower thumb
                 thumb(value: $lowerValue, x: lowerX, usableWidth: usableWidth, isLower: true)
-
-                // Upper thumb
                 thumb(value: $upperValue, x: upperX, usableWidth: usableWidth, isLower: false)
             }
             .frame(height: thumbSize)
@@ -40,27 +36,49 @@ struct RangeSlider: View {
         .frame(height: thumbSize)
     }
 
-    @ViewBuilder
     private func thumb(value: Binding<Double>, x: CGFloat, usableWidth: CGFloat, isLower: Bool) -> some View {
-        Circle()
-            .fill(Color.white)
-            .frame(width: thumbSize, height: thumbSize)
-            .shadow(color: .primaryPurple.opacity(0.4), radius: 6, x: 0, y: 2)
-            .offset(x: x - thumbSize / 2)
-            .gesture(
-                DragGesture(coordinateSpace: .named(coordinateSpaceName))
-                    .onChanged { drag in
-                        let ratio = (drag.location.x - thumbSize / 2) / usableWidth
-                        let raw = range.lowerBound + Double(ratio.clamped(to: 0...1)) * (range.upperBound - range.lowerBound)
-                        let stepped = (raw / step).rounded() * step
-                        let clamped = stepped.clamped(to: range)
-                        if isLower {
-                            value.wrappedValue = min(clamped, upperValue - step)
-                        } else {
-                            value.wrappedValue = max(clamped, lowerValue + step)
-                        }
+        ZStack {
+            // 4px halo around the thumb
+            Circle()
+                .fill(Color.primaryPurple.opacity(0.10))
+                .frame(width: thumbSize + 8, height: thumbSize + 8)
+            Circle()
+                .fill(Color.primaryPurple)
+                .frame(width: thumbSize, height: thumbSize)
+        }
+        .frame(width: thumbSize, height: thumbSize)
+        .overlay(alignment: .bottom) {
+            if let formatter = tooltipFormatter {
+                Text(formatter(value.wrappedValue))
+                    .font(.caption1)
+                    .foregroundStyle(Color.textPrimary)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(Color.bgCard)
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 6)
+                            .strokeBorder(Color.cardBorder, lineWidth: 1)
+                    )
+                    .fixedSize()
+                    .offset(y: -32)
+            }
+        }
+        .offset(x: x - thumbSize / 2)
+        .gesture(
+            DragGesture(coordinateSpace: .named(coordinateSpaceName))
+                .onChanged { drag in
+                    let ratio = (drag.location.x - thumbSize / 2) / usableWidth
+                    let raw = range.lowerBound + Double(ratio.clamped(to: 0...1)) * (range.upperBound - range.lowerBound)
+                    let stepped = (raw / step).rounded() * step
+                    let clamped = stepped.clamped(to: range)
+                    if isLower {
+                        value.wrappedValue = min(clamped, upperValue - step)
+                    } else {
+                        value.wrappedValue = max(clamped, lowerValue + step)
                     }
-            )
+                }
+        )
     }
 }
 

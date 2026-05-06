@@ -14,7 +14,9 @@
 		1F853D1EB4E01C6EBFAE8CDD /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB260E86A73E7FEA4865A7 /* RootView.swift */; };
 		2137AFD30302FA73BBB96876 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E14E36B976EE20DD7DFFCD /* SplashView.swift */; };
 		252D6151EE5F0A2FD7BDCF17 /* SectionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58865B54C3850E5B2D724552 /* SectionLabel.swift */; };
+		591374C8064ECA60C70DBF14 /* FlatPrefsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1770DCC32A30A1CF7E5DA5D /* FlatPrefsScreen.swift */; };
 		61F58A78637C04E68626585C /* SelectablePill.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3977237EA7C3EE79850CFFC /* SelectablePill.swift */; };
+		7D5FEFB4257FAA8EB7AB57D2 /* StepPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DF11B07CE601F0F18A6AF3 /* StepPill.swift */; };
 		81B8E451EA24876BB155CF3F /* OnboardingRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68689740E2E70A302A20EB66 /* OnboardingRoute.swift */; };
 		8677BE0AB7475C372F7A424C /* DSTypography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310958C443739BF7E8EE3655 /* DSTypography.swift */; };
 		89BE8F4A0288A65B8E6A5E6F /* IntentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C256A97A75B4B6857356811D /* IntentCard.swift */; };
@@ -56,7 +58,9 @@
 		C256A97A75B4B6857356811D /* IntentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentCard.swift; sourceTree = "<group>"; };
 		C3977237EA7C3EE79850CFFC /* SelectablePill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectablePill.swift; sourceTree = "<group>"; };
 		CB3A51A80E59D112F04CA6F6 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		F1770DCC32A30A1CF7E5DA5D /* FlatPrefsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatPrefsScreen.swift; sourceTree = "<group>"; };
 		F27FBEEF2262453EFF581C84 /* DSSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSSpacing.swift; sourceTree = "<group>"; };
+		F2DF11B07CE601F0F18A6AF3 /* StepPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepPill.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -86,6 +90,7 @@
 				58865B54C3850E5B2D724552 /* SectionLabel.swift */,
 				C3977237EA7C3EE79850CFFC /* SelectablePill.swift */,
 				7FDA798E28589FD8A7854663 /* StaykinTextField.swift */,
+				F2DF11B07CE601F0F18A6AF3 /* StepPill.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -101,6 +106,7 @@
 		4F60F3E62FEB91637D034C17 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F1770DCC32A30A1CF7E5DA5D /* FlatPrefsScreen.swift */,
 				2D2C2A65FBDCF4FC78DDF976 /* IntentScreen.swift */,
 				9ABD7934EA461C62DCF7F7F9 /* OTPScreen.swift */,
 				A12D8A2593707E7D7BFF160C /* PhoneScreen.swift */,
@@ -247,6 +253,7 @@
 				C90B6939AAC7E4BF261717DF /* DSGradients.swift in Sources */,
 				F8DAC5ECCE591976ADDDE475 /* DSSpacing.swift in Sources */,
 				8677BE0AB7475C372F7A424C /* DSTypography.swift in Sources */,
+				591374C8064ECA60C70DBF14 /* FlatPrefsScreen.swift in Sources */,
 				E8FAD92CCA1C54C6B724BEFE /* FlowLayout.swift in Sources */,
 				89BE8F4A0288A65B8E6A5E6F /* IntentCard.swift in Sources */,
 				A2FDCBD3365344B5502273AB /* IntentScreen.swift in Sources */,
@@ -263,6 +270,7 @@
 				2137AFD30302FA73BBB96876 /* SplashView.swift in Sources */,
 				E1586E240FF3523C39B3D199 /* StaykinApp.swift in Sources */,
 				D4703948E63CDB1FBB027780 /* StaykinTextField.swift in Sources */,
+				7D5FEFB4257FAA8EB7AB57D2 /* StepPill.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

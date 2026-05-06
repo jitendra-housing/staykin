@@ -1,0 +1,39 @@
+name: Staykin
+
+options:
+  bundleIdPrefix: com.staykin
+  createIntermediateGroups: true
+
+targets:
+  Staykin:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: Staykin
+        excludes:
+          - "Resources/Info.plist"
+    info:
+      path: Staykin/Resources/Info.plist
+      properties:
+        CFBundleDisplayName: Staykin
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UIUserInterfaceStyle: Dark
+        UIApplicationSupportsMultipleScenes: false
+        UIStatusBarStyle: UIStatusBarStyleLightContent
+        UIAppFonts:
+          - Outfit-Variable.ttf
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.staykin.app
+        SWIFT_VERSION: "5.0"
+        DEVELOPMENT_TEAM: ""
+        CODE_SIGN_STYLE: Automatic
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        TARGETED_DEVICE_FAMILY: "1"
+        IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor

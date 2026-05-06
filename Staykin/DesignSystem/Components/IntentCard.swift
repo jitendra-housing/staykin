@@ -32,17 +32,9 @@ struct IntentCard: View {
 
                 Spacer()
 
-                // Selection indicator
-                ZStack {
-                    Circle()
-                        .strokeBorder(isSelected ? Color.primaryViolet : Color.white.opacity(0.2), lineWidth: 1.5)
-                        .frame(width: 20, height: 20)
-                    if isSelected {
-                        Circle()
-                            .fill(LinearGradient.brand)
-                            .frame(width: 12, height: 12)
-                    }
-                }
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(isSelected ? Color.primaryViolet : Color.textSecondary)
             }
             .padding(.trailing, Spacing.md)
             .frame(height: ComponentSize.intentCard)

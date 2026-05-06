@@ -27,7 +27,7 @@ struct OnboardingCoordinator: View {
         case .profile:
             ProfileScreen(onContinue: { push(.intent) })
         case .intent:
-            PlaceholderScreen(title: "What are you here for?", route: route, showBack: true, onBack: pop, onContinue: { push(.flatPrefs) })
+            IntentScreen(onContinue: { push(.flatPrefs) }, onBack: pop)
         case .flatPrefs:
             PlaceholderScreen(title: "What are you looking for?", route: route, stepLabel: "Step 1 of 2", showBack: true, onBack: pop, onContinue: { push(.vibeForm) })
         case .vibeForm:

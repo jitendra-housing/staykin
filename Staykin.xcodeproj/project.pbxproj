@@ -18,6 +18,7 @@
 		81B8E451EA24876BB155CF3F /* OnboardingRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68689740E2E70A302A20EB66 /* OnboardingRoute.swift */; };
 		8677BE0AB7475C372F7A424C /* DSTypography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310958C443739BF7E8EE3655 /* DSTypography.swift */; };
 		89BE8F4A0288A65B8E6A5E6F /* IntentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C256A97A75B4B6857356811D /* IntentCard.swift */; };
+		A2FDCBD3365344B5502273AB /* IntentScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2C2A65FBDCF4FC78DDF976 /* IntentScreen.swift */; };
 		A507125254E1F247F8800F3A /* OTPScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABD7934EA461C62DCF7F7F9 /* OTPScreen.swift */; };
 		AA18D2A07B51071C520A7BE2 /* PhoneScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12D8A2593707E7D7BFF160C /* PhoneScreen.swift */; };
 		AB271E9B0EDC670A0E4AB35D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6FDBB2E3664852D7233588 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		0E6FDBB2E3664852D7233588 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22E14E36B976EE20DD7DFFCD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		2BD9FDD2714F6285154C8D41 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		2D2C2A65FBDCF4FC78DDF976 /* IntentScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentScreen.swift; sourceTree = "<group>"; };
 		310958C443739BF7E8EE3655 /* DSTypography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSTypography.swift; sourceTree = "<group>"; };
 		408E03C5F1AEBAA73B69F765 /* Staykin.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Staykin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5064A80BB4EFBA2EC26ADFFA /* StaykinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaykinApp.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		4F60F3E62FEB91637D034C17 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2D2C2A65FBDCF4FC78DDF976 /* IntentScreen.swift */,
 				9ABD7934EA461C62DCF7F7F9 /* OTPScreen.swift */,
 				A12D8A2593707E7D7BFF160C /* PhoneScreen.swift */,
 				83C6328BF92F7D89FF23FD4C /* ProfileScreen.swift */,
@@ -246,6 +249,7 @@
 				8677BE0AB7475C372F7A424C /* DSTypography.swift in Sources */,
 				E8FAD92CCA1C54C6B724BEFE /* FlowLayout.swift in Sources */,
 				89BE8F4A0288A65B8E6A5E6F /* IntentCard.swift in Sources */,
+				A2FDCBD3365344B5502273AB /* IntentScreen.swift in Sources */,
 				A507125254E1F247F8800F3A /* OTPScreen.swift in Sources */,
 				C4F5A0825064191619ACCCC9 /* OnboardingCoordinator.swift in Sources */,
 				1C811C2347B8536E59AF4318 /* OnboardingData.swift in Sources */,

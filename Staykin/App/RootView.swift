@@ -14,7 +14,10 @@ struct RootView: View {
         case .onboarding:
             OnboardingCoordinator(onFinish: { phase = .home })
         case .home:
-            HomeView()
+            HomeView(onSignOut: {
+                UserStore.clear()
+                phase = .onboarding
+            })
         }
     }
 }

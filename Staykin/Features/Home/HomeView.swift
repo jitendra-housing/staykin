@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    let onSignOut: () -> Void
+
     @State private var selectedTab: HomeTab = .flats
     @State private var flatsPath: [Flat] = []
 
@@ -18,7 +20,7 @@ struct HomeView: View {
                 case .flats:     FlatsTabView(path: $flatsPath)
                 case .flatmates: FlatmatesTabPlaceholder()
                 case .chats:     FlatmatesCoordinator()
-                case .profile:   ProfileTabPlaceholder()
+                case .profile:   ProfileTabView(onSignOut: onSignOut)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

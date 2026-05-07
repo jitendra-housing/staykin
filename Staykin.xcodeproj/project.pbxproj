@@ -87,6 +87,7 @@
 		AA18D2A07B51071C520A7BE2 /* PhoneScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12D8A2593707E7D7BFF160C /* PhoneScreen.swift */; };
 		AB271E9B0EDC670A0E4AB35D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6FDBB2E3664852D7233588 /* Assets.xcassets */; };
 		AD59EF9D96790FBC8CF682F7 /* Outfit-Variable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CADB7EBD2D0E95F499354FA /* Outfit-Variable.ttf */; };
+		A1B2C3D4E5F6789012345611 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6789012345612 /* LaunchScreen.storyboard */; };
 		B07E40682C5EF55DE8F3F043 /* RoomsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61D7ED871FAB4ACA7807CA /* RoomsAPI.swift */; };
 		B17EA03FDF8A2C08F32A2439 /* RequestProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E1C01F7E0BD373ACC28C8 /* RequestProfileScreen.swift */; };
 		B4E2EB51A26662AA9A131C7A /* SuccessScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354C23FB8682AFBD22EB3918 /* SuccessScreen.swift */; };
@@ -133,6 +134,7 @@
 		0D922F2CDF9E10B77F04D290 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		0DF6B6A5E5789A922E34F9F5 /* ChatsTabPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTabPlaceholder.swift; sourceTree = "<group>"; };
 		0E6FDBB2E3664852D7233588 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1B2C3D4E5F6789012345612 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F9023AF13C81ECFB43EEE8D /* AddFlatmateSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFlatmateSheet.swift; sourceTree = "<group>"; };
 		10AF39FFE7C7C65CE7C0B740 /* VibePref.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibePref.swift; sourceTree = "<group>"; };
 		111D4110A8CDB4910F017E48 /* AmberBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmberBanner.swift; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 			children = (
 				0E6FDBB2E3664852D7233588 /* Assets.xcassets */,
 				4692277BB69330F20CD6FE30 /* Fonts */,
+				A1B2C3D4E5F6789012345612 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -611,6 +614,7 @@
 			files = (
 				AB271E9B0EDC670A0E4AB35D /* Assets.xcassets in Resources */,
 				AD59EF9D96790FBC8CF682F7 /* Outfit-Variable.ttf in Resources */,
+				A1B2C3D4E5F6789012345611 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

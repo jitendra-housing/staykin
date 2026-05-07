@@ -1,18 +1,28 @@
 import SwiftUI
 
 struct FlatmatesSwipeView: View {
-    @State private var candidates: [Flatmate] = MockFlats.swipeFeed
+    let candidates: [Flatmate]
+
+    @State private var removedIds: Set<Int> = []
     @State private var lastRequestedName: String? = nil
     @State private var showToast = false
 
     private let visibleStackDepth = 3
+
+    private var visibleCandidates: [Flatmate] {
+        candidates.filter { !removedIds.contains($0.id) }
+    }
+
+    private var visibleSlice: [Flatmate] {
+        Array(visibleCandidates.prefix(visibleStackDepth))
+    }
 
     var body: some View {
         VStack(spacing: 0) {
             header
 
             ZStack {
-                if candidates.isEmpty {
+                if visibleCandidates.isEmpty {
                     emptyState
                 } else {
                     deck
@@ -49,7 +59,7 @@ struct FlatmatesSwipeView: View {
                 .font(.heading1)
                 .foregroundStyle(Color.textPrimary)
             Spacer()
-            Text("\(candidates.count) nearby")
+            Text("\(visibleCandidates.count) nearby")
                 .font(.caption1)
                 .foregroundStyle(Color.textSecondary)
         }
@@ -77,11 +87,7 @@ struct FlatmatesSwipeView: View {
                 .zIndex(Double(visibleStackDepth - offset))
             }
         }
-        .animation(.spring(response: 0.35, dampingFraction: 0.85), value: candidates.map(\.id))
-    }
-
-    private var visibleSlice: [Flatmate] {
-        Array(candidates.prefix(visibleStackDepth))
+        .animation(.spring(response: 0.35, dampingFraction: 0.85), value: visibleCandidates.map(\.id))
     }
 
     // MARK: - Empty state
@@ -103,7 +109,7 @@ struct FlatmatesSwipeView: View {
     // MARK: - Actions
 
     private func handleSwipe(of mate: Flatmate, decision: SwipeableFlatmateCard.SwipeDecision) {
-        candidates.removeAll { $0.id == mate.id }
+        removedIds.insert(mate.id)
         if decision == .requestSent {
             lastRequestedName = mate.name
             showToast = true

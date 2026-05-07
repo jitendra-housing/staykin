@@ -9,15 +9,12 @@ struct FlatmatesCoordinator: View {
                 onOpenProfile:     { flatmateId in path.append(.requestProfile(flatmateId: flatmateId, showActions: true)) },
                 onOpenSentProfile: { flatmateId in path.append(.requestProfile(flatmateId: flatmateId, showActions: false)) },
                 onOpenChat:        { threadId in path.append(.directChat(threadId: threadId)) },
-                onAcceptRequest:   { userId in
-                    // Chat backend isn't integrated yet — open a mock thread so the
-                    // chat screen has populated header + messages. Prefer a mock
-                    // thread matching the accepted user, else fall back to any.
-                    let mockThreadId = MockFlatmates.chatThreads.first(where: { $0.otherFlatmateId == userId })?.id
-                        ?? MockFlatmates.chatThreads.first?.id
-                    if let mockThreadId {
-                        path.append(.directChat(threadId: mockThreadId))
-                    }
+                onAcceptRequest:   { userId, roomId in
+                    // Only navigate once the server has actually created a room
+                    // (i.e. both sides have accepted). Otherwise the row is
+                    // already dismissed in the inbox; we stay put.
+                    guard roomId != nil else { return }
+                    path.append(.directChat(threadId: userId))
                 },
                 onDeclineRequest:  { _ in /* row dismissed in screen; nothing else to do */ }
             )

@@ -4,7 +4,7 @@ struct RequestsInboxScreen: View {
     let onOpenProfile: (Int) -> Void           // userId — received row taps (shows accept/decline)
     let onOpenSentProfile: (Int) -> Void       // userId — sent row taps (no accept/decline)
     let onOpenChat: (Int) -> Void              // threadId — chat row body tap
-    let onAcceptRequest: (Int) -> Void         // fromUserId — fired after a successful POST /requests/{id}/accept
+    let onAcceptRequest: (Int, Int?) -> Void   // (fromUserId, roomId?) — fired after a successful POST /requests/{id}/accept; roomId is non-nil once both sides have accepted
     let onDeclineRequest: (Int) -> Void        // fromUserId — fired after a successful POST /requests/{id}/reject
 
     enum InboxTab: Hashable {
@@ -283,8 +283,16 @@ struct RequestsInboxScreen: View {
             actionedRequestIds.insert(requestId)
         }
         do {
-            _ = try await RequestsAPI.accept(requestId: requestId)
-            if let fromUserId { onAcceptRequest(fromUserId) }
+            let response = try await RequestsAPI.accept(requestId: requestId)
+            if let fromUserId {
+                // Register the accepted user so FlatmateChatScreen can resolve
+                // their name + avatar via MockFlatmates.find(by:).
+                if response.roomId != nil,
+                   let (profile, _) = try? await OnboardingAPI.getProfile(userId: fromUserId) {
+                    MockFlatmates.register([Flatmate(profile: profile)])
+                }
+                onAcceptRequest(fromUserId, response.roomId)
+            }
         } catch {
             withAnimation(.easeInOut(duration: 0.2)) {
                 actionedRequestIds.remove(requestId)

@@ -162,11 +162,22 @@ enum RequestsAPI {
     }
 
     private static func postDecision(requestId: Int, action: String) async throws -> RequestActionResponse {
+        guard let userId = UserDefaults.standard.object(forKey: OnboardingAPI.userIdDefaultsKey) as? Int else {
+            throw NSError(
+                domain: "RequestsAPI",
+                code: -1,
+                userInfo: [NSLocalizedDescriptionKey: "POST /requests/\(requestId)/\(action): missing userId in defaults"]
+            )
+        }
+
         let url = OnboardingAPI.baseURL.appendingPathComponent("requests/\(requestId)/\(action)")
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let body: [String: Any] = ["user_id": userId]
+        request.httpBody = try JSONSerialization.data(withJSONObject: body)
 
         let (data, response) = try await URLSession.shared.data(for: request)
 

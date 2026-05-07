@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct IntentScreen: View {
-    let onContinue: () -> Void
+    let onContinue: (UserIntent) -> Void
     let onBack: () -> Void
 
     @Environment(OnboardingData.self) private var data
@@ -71,7 +71,7 @@ struct IntentScreen: View {
         data.intent = intent
         Task {
             try? await Task.sleep(for: .milliseconds(280))
-            onContinue()
+            onContinue(intent)
         }
     }
 }

@@ -27,13 +27,29 @@ struct OnboardingCoordinator: View {
         case .profile:
             ProfileScreen(onContinue: { push(.intent) })
         case .intent:
-            IntentScreen(onContinue: { push(.flatPrefs) }, onBack: pop)
+            IntentScreen(
+                onContinue: { intent in
+                    switch intent {
+                    case .fillRoomsInMyFlat: push(.postFlatDetails)
+                    case .moveIntoFlat, .teamUpToRent: push(.flatPrefs)
+                    }
+                },
+                onBack: pop
+            )
         case .flatPrefs:
             FlatPrefsScreen(onContinue: { push(.vibeForm) }, onBack: pop)
         case .vibeForm:
             VibeFormScreen(onContinue: { push(.vibeCard) }, onBack: pop)
         case .vibeCard:
             VibeCardScreen(onFinish: onFinish, onBack: pop)
+        case .postFlatDetails:
+            FlatDetailsScreen(onContinue: { push(.postPhotos) }, onBack: pop)
+        case .postPhotos:
+            PhotosScreen(onContinue: { push(.postVibe) }, onBack: pop)
+        case .postVibe:
+            VibeScreen(onPublish: { push(.postSuccess) }, onBack: pop)
+        case .postSuccess:
+            SuccessScreen(onViewListing: onFinish, onBrowseFlatmates: onFinish)
         }
     }
 

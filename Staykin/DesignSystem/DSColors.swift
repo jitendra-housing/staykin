@@ -7,6 +7,7 @@ extension Color {
     // Backgrounds
     static let bgBase    = Color(hex: "0D0D0D")   // App background
     static let bgCard    = Color(hex: "18182A")   // Card surfaces
+    static let bgCard2   = Color(hex: "0D0D16")   // Inset / pressed surfaces
     static let bgSheet   = Color(hex: "141420")   // Bottom sheets, modals
 
     // Brand — narrow purple→soft-violet (low chroma)

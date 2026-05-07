@@ -11,7 +11,12 @@ enum FlatmatesAPI {
             )
         }
 
-        let url = OnboardingAPI.baseURL.appendingPathComponent("flatmates/\(userId)")
+        var components = URLComponents(
+            url: OnboardingAPI.baseURL.appendingPathComponent("flatmates/\(userId)"),
+            resolvingAgainstBaseURL: false
+        )!
+        components.queryItems = [URLQueryItem(name: "viewer_id", value: String(userId))]
+        let url = components.url!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "accept")

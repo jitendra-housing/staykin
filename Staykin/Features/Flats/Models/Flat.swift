@@ -14,6 +14,7 @@ struct Flat: Identifiable, Hashable {
     let photoEmoji: String         // placeholder emoji
     let verified: Bool
     let availableNow: Bool
+    var totalResidents: Int? = 1
 
     var type: FlatType { FlatType.find(by: typeId) ?? .privateRoom }
     var amenities: [Amenity] { amenityIds.compactMap(Amenity.find(by:)) }

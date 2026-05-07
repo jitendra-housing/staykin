@@ -97,16 +97,10 @@ struct FlatDetailView: View {
 
     private var titlePriceRow: some View {
         HStack(alignment: .firstTextBaseline, spacing: 10) {
-            VStack(alignment: .leading, spacing: 2) {
-                Text(detail.locality)
-                    .font(.heading2)
-                    .foregroundStyle(Color.textPrimary)
-                    .lineLimit(1)
-                Text(detail.addressLine)
-                    .font(.caption1)
-                    .foregroundStyle(Color.textSecondary)
-                    .lineLimit(1)
-            }
+            Text(detail.locality)
+                .font(.heading2)
+                .foregroundStyle(Color.textPrimary)
+                .lineLimit(1)
 
             Spacer()
 

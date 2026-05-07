@@ -134,7 +134,7 @@ struct OnboardingCoordinator: View {
     private func fetchOwnListingAsDetail() async -> FlatDetail {
         guard let id = data.listingIds.last else { return MockFlats.detail }
         do {
-            let listing = try await ListingsAPI.getListing(id: id)
+            let listing = try await ListingsAPI.getListing(id: id, viewerId: data.userId)
             return makeDetail(from: listing)
         } catch {
             print("getListing failed: \(error)")

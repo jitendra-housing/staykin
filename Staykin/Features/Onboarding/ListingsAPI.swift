@@ -12,6 +12,8 @@ struct Listing: Codable, Hashable {
     let amenities: [Int]?
     let moveIn: Int
     let photos: [String]?
+    let vibeScore: Int?
+    let totalResidents: Int?
 }
 
 extension Listing {
@@ -21,14 +23,15 @@ extension Listing {
             typeId: FlatType.privateRoom.id,
             locality: Area.find(by: localityId)?.name ?? "—",
             rent: monthlyRent,
-            score: 80,
+            score: vibeScore ?? 80,
             amenityIds: amenities ?? [],
             photoURL: photos?.first,
             photoHue: 280,
             photoHue2: 320,
             photoEmoji: "🏠",
             verified: false,
-            availableNow: moveIn == 1
+            availableNow: moveIn == 1,
+            totalResidents: totalResidents
         )
     }
 
@@ -127,7 +130,10 @@ enum ListingsAPI {
 
     static func listListings(userId: Int) async throws -> [Listing] {
         var components = URLComponents(url: baseURL.appendingPathComponent("listings"), resolvingAgainstBaseURL: false)!
-        components.queryItems = [URLQueryItem(name: "user_id", value: String(userId))]
+        components.queryItems = [
+            URLQueryItem(name: "user_id", value: String(userId)),
+            URLQueryItem(name: "viewer_id", value: String(userId))
+        ]
         let url = components.url!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -145,11 +151,19 @@ enum ListingsAPI {
             )
         }
 
+        print()
         return try decoder.decode([Listing].self, from: responseData)
     }
 
-    static func getListing(id: Int) async throws -> Listing {
-        let url = baseURL.appendingPathComponent("listings/\(id)")
+    static func getListing(id: Int, viewerId: Int? = nil) async throws -> Listing {
+        var components = URLComponents(
+            url: baseURL.appendingPathComponent("listings/\(id)"),
+            resolvingAgainstBaseURL: false
+        )!
+        if let viewerId {
+            components.queryItems = [URLQueryItem(name: "viewer_id", value: String(viewerId))]
+        }
+        let url = components.url!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "accept")

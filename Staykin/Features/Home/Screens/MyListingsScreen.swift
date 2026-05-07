@@ -70,7 +70,7 @@ struct MyListingsScreen: View {
                 LazyVStack(spacing: 0) {
                     ForEach(listings, id: \.id) { listing in
                         NavigationLink(value: listing.toFlatDetail(isOwnListing: true)) {
-                            FlatListRow(flat: listing.toFlat(), hideMatch: true)
+                            FlatListRow(flat: listing.toFlat())
                         }
                         .buttonStyle(.plain)
                     }
@@ -88,11 +88,14 @@ struct MyListingsScreen: View {
         defer { isLoading = false }
         guard !listingIds.isEmpty else { listings = []; return }
 
+        let viewerId = UserStore.saved?.id
+            ?? (UserDefaults.standard.object(forKey: OnboardingAPI.userIdDefaultsKey) as? Int)
+
         var fetched: [Listing] = []
         await withTaskGroup(of: Listing?.self) { group in
             for id in listingIds {
                 group.addTask {
-                    try? await ListingsAPI.getListing(id: id)
+                    try? await ListingsAPI.getListing(id: id, viewerId: viewerId)
                 }
             }
             for await result in group {

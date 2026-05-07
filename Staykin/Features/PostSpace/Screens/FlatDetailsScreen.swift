@@ -11,6 +11,7 @@ struct FlatDetailsScreen: View {
             && data.listingMonthlyRent != nil
             && data.listingBHK != nil
             && data.listingFurnishing != nil
+            && data.listingRoomType != nil
             && data.listingGenderPref != nil
             && data.listingMoveIn != nil
     }
@@ -67,6 +68,20 @@ struct FlatDetailsScreen: View {
                                 isSelected: data.listingFurnishing == f.id,
                                 variant: .pill,
                                 action: { data.listingFurnishing = (data.listingFurnishing == f.id) ? nil : f.id }
+                            )
+                        }
+                        Spacer()
+                    }
+                }
+
+                section(label: "Room Type", topPadding: 14) {
+                    HStack(spacing: Spacing.xs) {
+                        ForEach([RoomType.singleRoom, RoomType.sharing]) { rt in
+                            SelectablePill(
+                                label: rt.label,
+                                isSelected: data.listingRoomType == rt.id,
+                                variant: .pill,
+                                action: { data.listingRoomType = (data.listingRoomType == rt.id) ? nil : rt.id }
                             )
                         }
                         Spacer()

@@ -27,6 +27,7 @@ struct OnboardingSnapshot: Codable {
     var listingMonthlyRent: Int?
     var listingBHK: Int?
     var listingFurnishing: Int?
+    var listingRoomType: Int?
     var listingFlatmatesNeeded: Int
     var listingGenderPref: Int?
     var listingMoveIn: Int?
@@ -61,6 +62,7 @@ extension OnboardingSnapshot {
         self.listingMonthlyRent = data.listingMonthlyRent
         self.listingBHK = data.listingBHK
         self.listingFurnishing = data.listingFurnishing
+        self.listingRoomType = data.listingRoomType
         self.listingFlatmatesNeeded = data.listingFlatmatesNeeded
         self.listingGenderPref = data.listingGenderPref
         self.listingMoveIn = data.listingMoveIn
@@ -93,6 +95,7 @@ extension OnboardingSnapshot {
         data.listingMonthlyRent = listingMonthlyRent
         data.listingBHK = listingBHK
         data.listingFurnishing = listingFurnishing
+        data.listingRoomType = listingRoomType
         data.listingFlatmatesNeeded = listingFlatmatesNeeded
         data.listingGenderPref = listingGenderPref
         data.listingMoveIn = listingMoveIn

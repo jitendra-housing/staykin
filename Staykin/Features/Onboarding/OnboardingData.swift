@@ -60,6 +60,7 @@ final class OnboardingData {
     var listingMonthlyRent: Int? = nil     // monthly_rent
     var listingBHK: Int? = nil             // bhk
     var listingFurnishing: Int? = nil      // furnishing
+    var listingRoomType: Int? = nil        // room_type_pref (1=Single, 2=Sharing)
     var listingFlatmatesNeeded: Int = 1    // flatmates_needed (1..5)
     var listingGenderPref: Int? = nil      // gender_pref
     var listingMoveIn: Int? = nil          // move_in

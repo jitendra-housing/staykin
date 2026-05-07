@@ -18,8 +18,8 @@ struct FlatsFilter: Equatable {
 }
 
 struct FlatsTabView: View {
+    @Binding var path: [Flat]
     @State private var filter = FlatsFilter()
-    @State private var path: [Flat] = []
 
     private var allFlats: [Flat] { MockFlats.list }
     private var visibleFlats: [Flat] { allFlats.filter(filter.matches) }
@@ -33,11 +33,16 @@ struct FlatsTabView: View {
                 list
             }
             .background(Color.bgBase)
-            .navigationDestination(for: Flat.self) { flat in
-                FlatDetailPlaceholder(flat: flat)
+            .navigationDestination(for: Flat.self) { _ in
+                // Phase C ships a single mock detail; later we fetch by flat.id.
+                FlatDetailView(detail: MockFlats.detail, onBack: pop)
             }
         }
         .tint(.primaryPurple)
+    }
+
+    private func pop() {
+        if !path.isEmpty { path.removeLast() }
     }
 
     // MARK: - Header

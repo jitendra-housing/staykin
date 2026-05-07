@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		01358250A1E5D80C26B12CC0 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6328BF92F7D89FF23FD4C /* ProfileScreen.swift */; };
+		0398B4B74A63FD722AFC38EC /* FlatmatesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C07E745C96FA5BA4678158 /* FlatmatesCoordinator.swift */; };
 		071B34DDF7C2C88F961F4309 /* ProgressDots.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF75E602BA059C01F1E3E694 /* ProgressDots.swift */; };
 		0ABD9F487913367AEDF435D9 /* ProfileTabPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CEEAABAB0BB77D0472282A /* ProfileTabPlaceholder.swift */; };
 		0B19E91036AD218ABE80C4EC /* MatchMeterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765F8CE05233B84606ACB38D /* MatchMeterCard.swift */; };
 		0CC4C1C2D69A3F91B860B786 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8E11ABF5824B85ED5F6E73 /* Area.swift */; };
+		0F284B38E41AB47E18518D98 /* FlatmatesSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6140F6D2E8DDB223F1510AD /* FlatmatesSwipeView.swift */; };
 		10813ED59075A810554D8BC3 /* FlatTopNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A35CFDC9F094290319629 /* FlatTopNav.swift */; };
 		1099725D3B0A9DCBCFC53342 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40BF0CB6FAF75AA2BED1578 /* RangeSlider.swift */; };
 		13B3006EDAD1A3C1258CC866 /* DSColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AED8270034A7DDA5D8BB4A /* DSColors.swift */; };
@@ -19,15 +21,21 @@
 		182C230834299FF40ECFB8AE /* EmptySlotRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31050EF48BDA99F6628F1BD /* EmptySlotRow.swift */; };
 		186112D65C05CC2E0C84DD05 /* FlatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03101C86E97F8A6EE44E1A4 /* FlatType.swift */; };
 		18A563B36599903950C87B32 /* Flat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDA05529E250E819E457EE7 /* Flat.swift */; };
+		19C66625153DE853D1C9B593 /* SlotProgressDots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D783CFA8DA097B7F8FAEC55 /* SlotProgressDots.swift */; };
 		1A65DF9C941A591E69C4600A /* ChatsTabPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF6B6A5E5789A922E34F9F5 /* ChatsTabPlaceholder.swift */; };
+		1BEFAEE49B141CA03E99FF5C /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BA7D4FEE6B4DF4B1D880E2 /* UserProfile.swift */; };
 		1C811C2347B8536E59AF4318 /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC2D487DC8F9560646741C0 /* OnboardingData.swift */; };
 		1D0542905211F65D80DBA0AD /* FlatHeroGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9426AC169255E6C00CE60BE /* FlatHeroGallery.swift */; };
 		1F853D1EB4E01C6EBFAE8CDD /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB260E86A73E7FEA4865A7 /* RootView.swift */; };
+		207088C3316762263BDC117D /* FlatmatesRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA8B9A074E44B34B365EA3 /* FlatmatesRoute.swift */; };
+		2123F247CA060CCF4323197D /* FlatmateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094F4482D971935B991053D /* FlatmateRequest.swift */; };
 		2137AFD30302FA73BBB96876 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E14E36B976EE20DD7DFFCD /* SplashView.swift */; };
 		252D6151EE5F0A2FD7BDCF17 /* SectionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58865B54C3850E5B2D724552 /* SectionLabel.swift */; };
 		26EEB54E3CA78EF23793CAAE /* FlatmatesTabPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908C2D3664267B6E3BF43B8D /* FlatmatesTabPlaceholder.swift */; };
+		2A78EC1EAE8729D72C1AF1E2 /* ChatThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6619BA9819F6F6AFBF202236 /* ChatThread.swift */; };
 		2F53EEFB8983C66F73E9F3D5 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C91A63EED705E2549E9EF9 /* ConfettiView.swift */; };
 		2F5D51714BA95E0BF27CD539 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CD220B144156CF25611C37 /* HomeView.swift */; };
+		35DAA8FBFECAF20B359F26D2 /* AmberBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111D4110A8CDB4910F017E48 /* AmberBanner.swift */; };
 		360D6D4F468F409568E16919 /* FlatmateProfileSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA180C959FA7D4E480B142D /* FlatmateProfileSheet.swift */; };
 		3B97C4DC013920B4F9EDE4D6 /* PostStepHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC0432DB786DB07BF790DAA /* PostStepHeader.swift */; };
 		3BE6CB20984E56D20E732991 /* MoveInTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506305162BC4F1F25EB99F19 /* MoveInTimeline.swift */; };
@@ -35,55 +43,44 @@
 		4190899B46510459C2457961 /* BHK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071655D7CA35F0A4095CDC39 /* BHK.swift */; };
 		445C194423A39200A863CB7D /* FlatDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F067C41A0A26820505C39C /* FlatDetailsScreen.swift */; };
 		4909C87E2A980B8219C46DC8 /* FlatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507E2FDC53B235337C4E4356 /* FlatDetailView.swift */; };
+		495B7FD7524D5507268426B4 /* FlatmateChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A7A29F9F1771A537652DE /* FlatmateChatScreen.swift */; };
 		4EA4782564406DDA23615306 /* FlatsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F251A4EF24C60DE65DF7BB4B /* FlatsTabView.swift */; };
 		50F471997DD954DF1D76109B /* VibeCardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB690364CE90CC31C9CAD8F /* VibeCardScreen.swift */; };
+		5375448B4EFB3D8B688A352A /* ChatComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C0BF58B96569B780BA960 /* ChatComposer.swift */; };
 		591374C8064ECA60C70DBF14 /* FlatPrefsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1770DCC32A30A1CF7E5DA5D /* FlatPrefsScreen.swift */; };
+		5C0E4B6F9661FFED079A2382 /* GroupChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E2B73962A68683CCFE633 /* GroupChatScreen.swift */; };
 		5DD37F91271B97568966E9F8 /* FlatmateVibeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA0E6D93EDE032A706B2B9 /* FlatmateVibeCard.swift */; };
 		5EC9F1927EBA94D4F3F518F6 /* OnboardingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB7247C8FF9729F17D8D9C /* OnboardingAPI.swift */; };
 		5F1422B005A39ED80922A5B9 /* TabPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817EF4ADE3D5BB802E6C8D2B /* TabPlaceholder.swift */; };
+		5F8DFB1FF9069D22D176B67F /* SegmentedTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB3B17CF93AC19D57DF10DB /* SegmentedTabBar.swift */; };
 		5F97BA4ED32D1505BBB15962 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF139DC4B71C0905F46E75C8 /* TabBar.swift */; };
 		61F58A78637C04E68626585C /* SelectablePill.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3977237EA7C3EE79850CFFC /* SelectablePill.swift */; };
 		63AAECCF0069CE508E248DC1 /* MockFlats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CCD5F73EAA2AC9285D492C /* MockFlats.swift */; };
 		6734F81862C435EECA6B0527 /* Furnishing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9A4CE1216AF83ACDA58C68 /* Furnishing.swift */; };
+		749A5F7C2DA2333BCEB46261 /* MockFlatmates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC72C1C5812D5EC95D6A7822 /* MockFlatmates.swift */; };
 		76F3EDC46806AAC9D38FD80C /* ApplicationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4B09A9EBB1426D6A787CA9 /* ApplicationMode.swift */; };
 		7766310B49CD2F51DE7B35FF /* PhotoTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FBE28D12663EB6F1E7A24 /* PhotoTile.swift */; };
-		7828ECBB2FAC7F90003BF61D /* MockFlatmates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECB62FAC7F90003BF61D /* MockFlatmates.swift */; };
-		7828ECBC2FAC7F90003BF61D /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECB32FAC7F90003BF61D /* ChatMessage.swift */; };
-		7828ECBD2FAC7F90003BF61D /* FlatmateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECB52FAC7F90003BF61D /* FlatmateRequest.swift */; };
-		7828ECBE2FAC7F90003BF61D /* ChatThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECB42FAC7F90003BF61D /* ChatThread.swift */; };
-		7828ECBF2FAC7F90003BF61D /* FlatmatesRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECB92FAC7F90003BF61D /* FlatmatesRoute.swift */; };
-		7828ECC02FAC7F90003BF61D /* FlatmatesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECB82FAC7F90003BF61D /* FlatmatesCoordinator.swift */; };
-		7828ECC52FAC8AC7003BF61D /* RequestsInboxScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECC32FAC8AC7003BF61D /* RequestsInboxScreen.swift */; };
-		7828ECC82FAC8B12003BF61D /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECC62FAC8B12003BF61D /* Avatar.swift */; };
-		7828ECC92FAC8B12003BF61D /* SegmentedTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECC72FAC8B12003BF61D /* SegmentedTabBar.swift */; };
-		7828ECCB2FAC8CC5003BF61D /* RequestProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECCA2FAC8CC5003BF61D /* RequestProfileScreen.swift */; };
-		7828ECCD2FAC8E87003BF61D /* FlatmateChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECCC2FAC8E87003BF61D /* FlatmateChatScreen.swift */; };
-		7828ECD12FAC8EE1003BF61D /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECCF2FAC8EE1003BF61D /* ChatBubble.swift */; };
-		7828ECD22FAC8EE1003BF61D /* AmberBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECCE2FAC8EE1003BF61D /* AmberBanner.swift */; };
-		7828ECD32FAC8EE1003BF61D /* ChatComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECD02FAC8EE1003BF61D /* ChatComposer.swift */; };
-		7828ECD52FAC950A003BF61D /* GroupChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECD42FAC950A003BF61D /* GroupChatScreen.swift */; };
-		7828ECD72FAC953B003BF61D /* OverlappingAvatars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECD62FAC953B003BF61D /* OverlappingAvatars.swift */; };
-		7828ECD92FAC954F003BF61D /* SlotProgressDots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECD82FAC954F003BF61D /* SlotProgressDots.swift */; };
-		7828ECDB2FAC9563003BF61D /* AddFlatmateSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECDA2FAC9563003BF61D /* AddFlatmateSheet.swift */; };
 		7A874346FB92EF0340A8B274 /* PostSpaceTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B243E8EAC7DF18A5DFEF958 /* PostSpaceTypes.swift */; };
 		7D5FEFB4257FAA8EB7AB57D2 /* StepPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DF11B07CE601F0F18A6AF3 /* StepPill.swift */; };
 		81B8E451EA24876BB155CF3F /* OnboardingRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68689740E2E70A302A20EB66 /* OnboardingRoute.swift */; };
 		85CC208A0959A838D7DF22CB /* PhotoPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA42773008AE9FF21E54E4 /* PhotoPlaceholder.swift */; };
 		8677BE0AB7475C372F7A424C /* DSTypography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310958C443739BF7E8EE3655 /* DSTypography.swift */; };
 		87FF98D17B05702BB0F8F436 /* FlatListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD7D3F3B339B7F166374EB /* FlatListRow.swift */; };
+		894FE03ABB9E0023F7756320 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75B1E1B5B96302AD398585F /* ChatMessage.swift */; };
 		89BE8F4A0288A65B8E6A5E6F /* IntentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C256A97A75B4B6857356811D /* IntentCard.swift */; };
 		98E059FE124680249EE8F115 /* VibePref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AF39FFE7C7C65CE7C0B740 /* VibePref.swift */; };
 		99A650302B3DD19D57593D08 /* Amenity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C318BE66D52429D27464B7A /* Amenity.swift */; };
 		9E9BA4B8F0363ECAF23B3BE1 /* FlatmateListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928EC659892FD8152CDD5D3E /* FlatmateListRow.swift */; };
-		A1B2C3D4E5F6789012345605 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6789012345606 /* UserProfile.swift */; };
-		A1B2C3D4E5F6789012345607 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6789012345608 /* UserStore.swift */; };
 		A1CAE112553B2AF6DE168D4F /* PhotosScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4610B677D35BB59F7D97A9F3 /* PhotosScreen.swift */; };
 		A2FDCBD3365344B5502273AB /* IntentScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2C2A65FBDCF4FC78DDF976 /* IntentScreen.swift */; };
 		A507125254E1F247F8800F3A /* OTPScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABD7934EA461C62DCF7F7F9 /* OTPScreen.swift */; };
+		A5DB6687A1C8A078E6001DE3 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4163EB3575E5A686B444FB /* Avatar.swift */; };
 		AA18D2A07B51071C520A7BE2 /* PhoneScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12D8A2593707E7D7BFF160C /* PhoneScreen.swift */; };
 		AB271E9B0EDC670A0E4AB35D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6FDBB2E3664852D7233588 /* Assets.xcassets */; };
 		AD59EF9D96790FBC8CF682F7 /* Outfit-Variable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CADB7EBD2D0E95F499354FA /* Outfit-Variable.ttf */; };
+		B17EA03FDF8A2C08F32A2439 /* RequestProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E1C01F7E0BD373ACC28C8 /* RequestProfileScreen.swift */; };
 		B4E2EB51A26662AA9A131C7A /* SuccessScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354C23FB8682AFBD22EB3918 /* SuccessScreen.swift */; };
+		B5EFF7F384662F7A252388B7 /* AddFlatmateSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9023AF13C81ECFB43EEE8D /* AddFlatmateSheet.swift */; };
 		B850CD361FA61EF4B0ED9327 /* VibeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9FEF71D451C6839FCD706 /* VibeScreen.swift */; };
 		C1AB8B54D3559F797E89FC74 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F87A752C48BDE904D4C42EE /* BottomSheet.swift */; };
 		C271234637D9D2F7B1DFC5E4 /* Flatmate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B49669A67FC67884D4F677E /* Flatmate.swift */; };
@@ -91,19 +88,24 @@
 		C52412CC72069C6817B0DB36 /* Occupation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED339B274C7B8B497917CEDC /* Occupation.swift */; };
 		C88DC398BA84376A73D61DED /* PostStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4A2E705F24D12E2CA8B5BE /* PostStepper.swift */; };
 		C90B6939AAC7E4BF261717DF /* DSGradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AAD6F18339ED9AA315901F /* DSGradients.swift */; };
+		CB0302D273914BA16913B138 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBFE7866CE7EF8A33E00FE /* UserStore.swift */; };
 		CD6B64DF7F20D326DA973753 /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FC7149558AC0DE2451B5A6 /* RoomType.swift */; };
+		D0A4E3C92DC35BAACC526592 /* OverlappingAvatars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662F21BB1F620CF8A00821F6 /* OverlappingAvatars.swift */; };
 		D4703948E63CDB1FBB027780 /* StaykinTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA798E28589FD8A7854663 /* StaykinTextField.swift */; };
 		D653B3F3EBE4A31AEB59F703 /* StickyBottomCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A0EC7AF0066699A2FB68F6 /* StickyBottomCTA.swift */; };
 		D973EDFE050E3F0A24F13F2C /* VibeFormScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78787EF8FA148BC368018340 /* VibeFormScreen.swift */; };
 		E1586E240FF3523C39B3D199 /* StaykinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5064A80BB4EFBA2EC26ADFFA /* StaykinApp.swift */; };
 		E180112D9159B734724652DE /* SuccessToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CD99813F266CAA886633C9 /* SuccessToast.swift */; };
+		E1D76F9241244C7620FF012F /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C44EBC161BED1B1C39BBAAE /* ChatBubble.swift */; };
 		E426B941C136866616EC51F4 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D922F2CDF9E10B77F04D290 /* Buttons.swift */; };
 		E495954763F6E636E0DA5040 /* TrustStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A47E8DD2724C6DD86C101D2 /* TrustStrip.swift */; };
 		E8FAD92CCA1C54C6B724BEFE /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A51A80E59D112F04CA6F6 /* FlowLayout.swift */; };
 		EB5DDD388D2E39F8DA1CA16E /* VibeTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2149C1E7A477C7E0C251ED1 /* VibeTile.swift */; };
 		F7309A811C6F00724CEEA1EF /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC392A87C9E61F5F245F04BF /* HomeTab.swift */; };
 		F8DAC5ECCE591976ADDDE475 /* DSSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27FBEEF2262453EFF581C84 /* DSSpacing.swift */; };
+		F9E1769AFADA310EE1AA1B63 /* SwipeableFlatmateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CD5EB8EC9422F654D29D6D /* SwipeableFlatmateCard.swift */; };
 		FA76EE8E6744263F0567C8A3 /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71EE70E7057BFF579A783EF /* SortOption.swift */; };
+		FCACDE9D2EA94DE98B2CB92A /* RequestsInboxScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C975D23EB27963C7989BA /* RequestsInboxScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,7 +116,9 @@
 		0D922F2CDF9E10B77F04D290 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		0DF6B6A5E5789A922E34F9F5 /* ChatsTabPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTabPlaceholder.swift; sourceTree = "<group>"; };
 		0E6FDBB2E3664852D7233588 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0F9023AF13C81ECFB43EEE8D /* AddFlatmateSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFlatmateSheet.swift; sourceTree = "<group>"; };
 		10AF39FFE7C7C65CE7C0B740 /* VibePref.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibePref.swift; sourceTree = "<group>"; };
+		111D4110A8CDB4910F017E48 /* AmberBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmberBanner.swift; sourceTree = "<group>"; };
 		12F067C41A0A26820505C39C /* FlatDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatDetailsScreen.swift; sourceTree = "<group>"; };
 		17EA42773008AE9FF21E54E4 /* PhotoPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPlaceholder.swift; sourceTree = "<group>"; };
 		19938E0CB5E50C9C07E7EA6B /* FlatmateAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatmateAvatar.swift; sourceTree = "<group>"; };
@@ -125,15 +129,20 @@
 		2D2C2A65FBDCF4FC78DDF976 /* IntentScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentScreen.swift; sourceTree = "<group>"; };
 		2F87A752C48BDE904D4C42EE /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		310958C443739BF7E8EE3655 /* DSTypography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSTypography.swift; sourceTree = "<group>"; };
+		325A7A29F9F1771A537652DE /* FlatmateChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatmateChatScreen.swift; sourceTree = "<group>"; };
 		354C23FB8682AFBD22EB3918 /* SuccessScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessScreen.swift; sourceTree = "<group>"; };
 		36FC7149558AC0DE2451B5A6 /* RoomType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomType.swift; sourceTree = "<group>"; };
 		3B49669A67FC67884D4F677E /* Flatmate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flatmate.swift; sourceTree = "<group>"; };
 		3C318BE66D52429D27464B7A /* Amenity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amenity.swift; sourceTree = "<group>"; };
+		3D783CFA8DA097B7F8FAEC55 /* SlotProgressDots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotProgressDots.swift; sourceTree = "<group>"; };
 		3F4B09A9EBB1426D6A787CA9 /* ApplicationMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMode.swift; sourceTree = "<group>"; };
 		408E03C5F1AEBAA73B69F765 /* Staykin.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Staykin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		446E1C01F7E0BD373ACC28C8 /* RequestProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProfileScreen.swift; sourceTree = "<group>"; };
 		44DD7D3F3B339B7F166374EB /* FlatListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatListRow.swift; sourceTree = "<group>"; };
 		45CCD5F73EAA2AC9285D492C /* MockFlats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFlats.swift; sourceTree = "<group>"; };
 		4610B677D35BB59F7D97A9F3 /* PhotosScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosScreen.swift; sourceTree = "<group>"; };
+		4ACBFE7866CE7EF8A33E00FE /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
+		4CBA8B9A074E44B34B365EA3 /* FlatmatesRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatmatesRoute.swift; sourceTree = "<group>"; };
 		4CDA05529E250E819E457EE7 /* Flat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flat.swift; sourceTree = "<group>"; };
 		4EA180C959FA7D4E480B142D /* FlatmateProfileSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatmateProfileSheet.swift; sourceTree = "<group>"; };
 		506305162BC4F1F25EB99F19 /* MoveInTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveInTimeline.swift; sourceTree = "<group>"; };
@@ -141,43 +150,33 @@
 		507E2FDC53B235337C4E4356 /* FlatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatDetailView.swift; sourceTree = "<group>"; };
 		518A35CFDC9F094290319629 /* FlatTopNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatTopNav.swift; sourceTree = "<group>"; };
 		58865B54C3850E5B2D724552 /* SectionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionLabel.swift; sourceTree = "<group>"; };
+		5A4163EB3575E5A686B444FB /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		5C0FBE28D12663EB6F1E7A24 /* PhotoTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTile.swift; sourceTree = "<group>"; };
+		5D4E2B73962A68683CCFE633 /* GroupChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatScreen.swift; sourceTree = "<group>"; };
+		6619BA9819F6F6AFBF202236 /* ChatThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatThread.swift; sourceTree = "<group>"; };
+		662F21BB1F620CF8A00821F6 /* OverlappingAvatars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlappingAvatars.swift; sourceTree = "<group>"; };
 		68689740E2E70A302A20EB66 /* OnboardingRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRoute.swift; sourceTree = "<group>"; };
+		6E8C0BF58B96569B780BA960 /* ChatComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatComposer.swift; sourceTree = "<group>"; };
 		6FC0432DB786DB07BF790DAA /* PostStepHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStepHeader.swift; sourceTree = "<group>"; };
+		73BA7D4FEE6B4DF4B1D880E2 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		746C975D23EB27963C7989BA /* RequestsInboxScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsInboxScreen.swift; sourceTree = "<group>"; };
 		765F8CE05233B84606ACB38D /* MatchMeterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMeterCard.swift; sourceTree = "<group>"; };
 		76C91A63EED705E2549E9EF9 /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
-		7828ECB32FAC7F90003BF61D /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
-		7828ECB42FAC7F90003BF61D /* ChatThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatThread.swift; sourceTree = "<group>"; };
-		7828ECB52FAC7F90003BF61D /* FlatmateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatmateRequest.swift; sourceTree = "<group>"; };
-		7828ECB62FAC7F90003BF61D /* MockFlatmates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFlatmates.swift; sourceTree = "<group>"; };
-		7828ECB82FAC7F90003BF61D /* FlatmatesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatmatesCoordinator.swift; sourceTree = "<group>"; };
-		7828ECB92FAC7F90003BF61D /* FlatmatesRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatmatesRoute.swift; sourceTree = "<group>"; };
-		7828ECC32FAC8AC7003BF61D /* RequestsInboxScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsInboxScreen.swift; sourceTree = "<group>"; };
-		7828ECC62FAC8B12003BF61D /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
-		7828ECC72FAC8B12003BF61D /* SegmentedTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedTabBar.swift; sourceTree = "<group>"; };
-		7828ECCA2FAC8CC5003BF61D /* RequestProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProfileScreen.swift; sourceTree = "<group>"; };
-		7828ECCC2FAC8E87003BF61D /* FlatmateChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatmateChatScreen.swift; sourceTree = "<group>"; };
-		7828ECCE2FAC8EE1003BF61D /* AmberBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmberBanner.swift; sourceTree = "<group>"; };
-		7828ECCF2FAC8EE1003BF61D /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
-		7828ECD02FAC8EE1003BF61D /* ChatComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatComposer.swift; sourceTree = "<group>"; };
-		7828ECD42FAC950A003BF61D /* GroupChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatScreen.swift; sourceTree = "<group>"; };
-		7828ECD62FAC953B003BF61D /* OverlappingAvatars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlappingAvatars.swift; sourceTree = "<group>"; };
-		7828ECD82FAC954F003BF61D /* SlotProgressDots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotProgressDots.swift; sourceTree = "<group>"; };
-		7828ECDA2FAC9563003BF61D /* AddFlatmateSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFlatmateSheet.swift; sourceTree = "<group>"; };
 		78787EF8FA148BC368018340 /* VibeFormScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibeFormScreen.swift; sourceTree = "<group>"; };
 		79CB7247C8FF9729F17D8D9C /* OnboardingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAPI.swift; sourceTree = "<group>"; };
 		7A8E11ABF5824B85ED5F6E73 /* Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
 		7FDA798E28589FD8A7854663 /* StaykinTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaykinTextField.swift; sourceTree = "<group>"; };
 		817EF4ADE3D5BB802E6C8D2B /* TabPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPlaceholder.swift; sourceTree = "<group>"; };
 		83C6328BF92F7D89FF23FD4C /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		88CD5EB8EC9422F654D29D6D /* SwipeableFlatmateCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableFlatmateCard.swift; sourceTree = "<group>"; };
 		8BC2D487DC8F9560646741C0 /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
+		8C44EBC161BED1B1C39BBAAE /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
 		908C2D3664267B6E3BF43B8D /* FlatmatesTabPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatmatesTabPlaceholder.swift; sourceTree = "<group>"; };
 		928EC659892FD8152CDD5D3E /* FlatmateListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatmateListRow.swift; sourceTree = "<group>"; };
+		96C07E745C96FA5BA4678158 /* FlatmatesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatmatesCoordinator.swift; sourceTree = "<group>"; };
 		9A47E8DD2724C6DD86C101D2 /* TrustStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustStrip.swift; sourceTree = "<group>"; };
 		9ABD7934EA461C62DCF7F7F9 /* OTPScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPScreen.swift; sourceTree = "<group>"; };
 		A12D8A2593707E7D7BFF160C /* PhoneScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneScreen.swift; sourceTree = "<group>"; };
-		A1B2C3D4E5F6789012345606 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		A1B2C3D4E5F6789012345608 /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		A31050EF48BDA99F6628F1BD /* EmptySlotRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySlotRow.swift; sourceTree = "<group>"; };
 		A7CD99813F266CAA886633C9 /* SuccessToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessToast.swift; sourceTree = "<group>"; };
 		AE4A2E705F24D12E2CA8B5BE /* PostStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStepper.swift; sourceTree = "<group>"; };
@@ -185,14 +184,19 @@
 		B4BB260E86A73E7FEA4865A7 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		B5B9FEF71D451C6839FCD706 /* VibeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibeScreen.swift; sourceTree = "<group>"; };
 		B6CD220B144156CF25611C37 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		B75B1E1B5B96302AD398585F /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		BF139DC4B71C0905F46E75C8 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		BFB3B17CF93AC19D57DF10DB /* SegmentedTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedTabBar.swift; sourceTree = "<group>"; };
 		C03101C86E97F8A6EE44E1A4 /* FlatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatType.swift; sourceTree = "<group>"; };
 		C256A97A75B4B6857356811D /* IntentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentCard.swift; sourceTree = "<group>"; };
 		C3977237EA7C3EE79850CFFC /* SelectablePill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectablePill.swift; sourceTree = "<group>"; };
 		CB3A51A80E59D112F04CA6F6 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		CC72C1C5812D5EC95D6A7822 /* MockFlatmates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFlatmates.swift; sourceTree = "<group>"; };
+		D094F4482D971935B991053D /* FlatmateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatmateRequest.swift; sourceTree = "<group>"; };
 		D9A0EC7AF0066699A2FB68F6 /* StickyBottomCTA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyBottomCTA.swift; sourceTree = "<group>"; };
 		DC392A87C9E61F5F245F04BF /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
 		E2CEEAABAB0BB77D0472282A /* ProfileTabPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabPlaceholder.swift; sourceTree = "<group>"; };
+		E6140F6D2E8DDB223F1510AD /* FlatmatesSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatmatesSwipeView.swift; sourceTree = "<group>"; };
 		E71EE70E7057BFF579A783EF /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
 		E9426AC169255E6C00CE60BE /* FlatHeroGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatHeroGallery.swift; sourceTree = "<group>"; };
 		EB00BD8B65704A6A5D53B384 /* TipBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipBanner.swift; sourceTree = "<group>"; };
@@ -227,7 +231,7 @@
 				506305162BC4F1F25EB99F19 /* MoveInTimeline.swift */,
 				ED339B274C7B8B497917CEDC /* Occupation.swift */,
 				36FC7149558AC0DE2451B5A6 /* RoomType.swift */,
-				A1B2C3D4E5F6789012345606 /* UserProfile.swift */,
+				73BA7D4FEE6B4DF4B1D880E2 /* UserProfile.swift */,
 				10AF39FFE7C7C65CE7C0B740 /* VibePref.swift */,
 			);
 			path = Models;
@@ -252,18 +256,16 @@
 		4416B7EFD39147AEFE9BD24F /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				7828ECD62FAC953B003BF61D /* OverlappingAvatars.swift */,
-				7828ECD82FAC954F003BF61D /* SlotProgressDots.swift */,
-				7828ECCE2FAC8EE1003BF61D /* AmberBanner.swift */,
-				7828ECCF2FAC8EE1003BF61D /* ChatBubble.swift */,
-				7828ECD02FAC8EE1003BF61D /* ChatComposer.swift */,
-				7828ECC62FAC8B12003BF61D /* Avatar.swift */,
-				7828ECC72FAC8B12003BF61D /* SegmentedTabBar.swift */,
+				111D4110A8CDB4910F017E48 /* AmberBanner.swift */,
+				5A4163EB3575E5A686B444FB /* Avatar.swift */,
 				2F87A752C48BDE904D4C42EE /* BottomSheet.swift */,
 				0D922F2CDF9E10B77F04D290 /* Buttons.swift */,
+				8C44EBC161BED1B1C39BBAAE /* ChatBubble.swift */,
+				6E8C0BF58B96569B780BA960 /* ChatComposer.swift */,
 				76C91A63EED705E2549E9EF9 /* ConfettiView.swift */,
 				CB3A51A80E59D112F04CA6F6 /* FlowLayout.swift */,
 				C256A97A75B4B6857356811D /* IntentCard.swift */,
+				662F21BB1F620CF8A00821F6 /* OverlappingAvatars.swift */,
 				17EA42773008AE9FF21E54E4 /* PhotoPlaceholder.swift */,
 				5C0FBE28D12663EB6F1E7A24 /* PhotoTile.swift */,
 				6FC0432DB786DB07BF790DAA /* PostStepHeader.swift */,
@@ -271,7 +273,9 @@
 				FF75E602BA059C01F1E3E694 /* ProgressDots.swift */,
 				B40BF0CB6FAF75AA2BED1578 /* RangeSlider.swift */,
 				58865B54C3850E5B2D724552 /* SectionLabel.swift */,
+				BFB3B17CF93AC19D57DF10DB /* SegmentedTabBar.swift */,
 				C3977237EA7C3EE79850CFFC /* SelectablePill.swift */,
+				3D783CFA8DA097B7F8FAEC55 /* SlotProgressDots.swift */,
 				7FDA798E28589FD8A7854663 /* StaykinTextField.swift */,
 				F2DF11B07CE601F0F18A6AF3 /* StepPill.swift */,
 				D9A0EC7AF0066699A2FB68F6 /* StickyBottomCTA.swift */,
@@ -301,40 +305,6 @@
 				83C6328BF92F7D89FF23FD4C /* ProfileScreen.swift */,
 				1AB690364CE90CC31C9CAD8F /* VibeCardScreen.swift */,
 				78787EF8FA148BC368018340 /* VibeFormScreen.swift */,
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
-		7828ECB72FAC7F90003BF61D /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				7828ECB32FAC7F90003BF61D /* ChatMessage.swift */,
-				7828ECB42FAC7F90003BF61D /* ChatThread.swift */,
-				7828ECB52FAC7F90003BF61D /* FlatmateRequest.swift */,
-				7828ECB62FAC7F90003BF61D /* MockFlatmates.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		7828ECBA2FAC7F90003BF61D /* Flatmates */ = {
-			isa = PBXGroup;
-			children = (
-				7828ECC42FAC8AC7003BF61D /* Screens */,
-				7828ECB72FAC7F90003BF61D /* Models */,
-				7828ECB82FAC7F90003BF61D /* FlatmatesCoordinator.swift */,
-				7828ECB92FAC7F90003BF61D /* FlatmatesRoute.swift */,
-			);
-			path = Flatmates;
-			sourceTree = "<group>";
-		};
-		7828ECC42FAC8AC7003BF61D /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-				7828ECDA2FAC9563003BF61D /* AddFlatmateSheet.swift */,
-				7828ECD42FAC950A003BF61D /* GroupChatScreen.swift */,
-				7828ECCC2FAC8E87003BF61D /* FlatmateChatScreen.swift */,
-				7828ECCA2FAC8CC5003BF61D /* RequestProfileScreen.swift */,
-				7828ECC32FAC8AC7003BF61D /* RequestsInboxScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -372,13 +342,26 @@
 		9A6DDD0B882AEDC718B1F89E /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				7828ECBA2FAC7F90003BF61D /* Flatmates */,
+				C4A5B2D8A85293A75C32BE1C /* Flatmates */,
 				08C0D25B8009879938622734 /* Flats */,
 				824E5D2C2B5F251F11FDEE90 /* Home */,
 				B4CCB76F0A38ADD81743A9CE /* Onboarding */,
 				B720CA192771888D12DDFD7D /* PostSpace */,
 			);
 			path = Features;
+			sourceTree = "<group>";
+		};
+		A1AAEE0F242AF604482F4529 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				0F9023AF13C81ECFB43EEE8D /* AddFlatmateSheet.swift */,
+				325A7A29F9F1771A537652DE /* FlatmateChatScreen.swift */,
+				E6140F6D2E8DDB223F1510AD /* FlatmatesSwipeView.swift */,
+				5D4E2B73962A68683CCFE633 /* GroupChatScreen.swift */,
+				446E1C01F7E0BD373ACC28C8 /* RequestProfileScreen.swift */,
+				746C975D23EB27963C7989BA /* RequestsInboxScreen.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		A3A657D0664293EE69413C2D /* Models */ = {
@@ -413,7 +396,7 @@
 				8BC2D487DC8F9560646741C0 /* OnboardingData.swift */,
 				68689740E2E70A302A20EB66 /* OnboardingRoute.swift */,
 				22E14E36B976EE20DD7DFFCD /* SplashView.swift */,
-				A1B2C3D4E5F6789012345608 /* UserStore.swift */,
+				4ACBFE7866CE7EF8A33E00FE /* UserStore.swift */,
 				0B950BDAC0E6DBD0F813606C /* Models */,
 				4F60F3E62FEB91637D034C17 /* Screens */,
 			);
@@ -449,6 +432,26 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		C10DCFCAF7CFDDD457B42D69 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				88CD5EB8EC9422F654D29D6D /* SwipeableFlatmateCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C4A5B2D8A85293A75C32BE1C /* Flatmates */ = {
+			isa = PBXGroup;
+			children = (
+				96C07E745C96FA5BA4678158 /* FlatmatesCoordinator.swift */,
+				4CBA8B9A074E44B34B365EA3 /* FlatmatesRoute.swift */,
+				C10DCFCAF7CFDDD457B42D69 /* Components */,
+				ED49B521C48A155734A5E4C6 /* Models */,
+				A1AAEE0F242AF604482F4529 /* Screens */,
+			);
+			path = Flatmates;
+			sourceTree = "<group>";
+		};
 		D49E90180BB2AEE927D02215 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,6 +462,17 @@
 				4416B7EFD39147AEFE9BD24F /* Components */,
 			);
 			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		ED49B521C48A155734A5E4C6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B75B1E1B5B96302AD398585F /* ChatMessage.swift */,
+				6619BA9819F6F6AFBF202236 /* ChatThread.swift */,
+				D094F4482D971935B991053D /* FlatmateRequest.swift */,
+				CC72C1C5812D5EC95D6A7822 /* MockFlatmates.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F64E2F0E8EB4143D3B5E2DB7 /* Screens */ = {
@@ -560,17 +574,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5EFF7F384662F7A252388B7 /* AddFlatmateSheet.swift in Sources */,
+				35DAA8FBFECAF20B359F26D2 /* AmberBanner.swift in Sources */,
 				99A650302B3DD19D57593D08 /* Amenity.swift in Sources */,
 				76F3EDC46806AAC9D38FD80C /* ApplicationMode.swift in Sources */,
 				0CC4C1C2D69A3F91B860B786 /* Area.swift in Sources */,
+				A5DB6687A1C8A078E6001DE3 /* Avatar.swift in Sources */,
 				4190899B46510459C2457961 /* BHK.swift in Sources */,
 				C1AB8B54D3559F797E89FC74 /* BottomSheet.swift in Sources */,
 				E426B941C136866616EC51F4 /* Buttons.swift in Sources */,
+				E1D76F9241244C7620FF012F /* ChatBubble.swift in Sources */,
+				5375448B4EFB3D8B688A352A /* ChatComposer.swift in Sources */,
+				894FE03ABB9E0023F7756320 /* ChatMessage.swift in Sources */,
+				2A78EC1EAE8729D72C1AF1E2 /* ChatThread.swift in Sources */,
 				1A65DF9C941A591E69C4600A /* ChatsTabPlaceholder.swift in Sources */,
 				2F53EEFB8983C66F73E9F3D5 /* ConfettiView.swift in Sources */,
 				13B3006EDAD1A3C1258CC866 /* DSColors.swift in Sources */,
 				C90B6939AAC7E4BF261717DF /* DSGradients.swift in Sources */,
-				7828ECCD2FAC8E87003BF61D /* FlatmateChatScreen.swift in Sources */,
 				F8DAC5ECCE591976ADDDE475 /* DSSpacing.swift in Sources */,
 				8677BE0AB7475C372F7A424C /* DSTypography.swift in Sources */,
 				182C230834299FF40ECFB8AE /* EmptySlotRow.swift in Sources */,
@@ -584,37 +604,34 @@
 				186112D65C05CC2E0C84DD05 /* FlatType.swift in Sources */,
 				C271234637D9D2F7B1DFC5E4 /* Flatmate.swift in Sources */,
 				1449B053C147C02C475F22A6 /* FlatmateAvatar.swift in Sources */,
+				495B7FD7524D5507268426B4 /* FlatmateChatScreen.swift in Sources */,
 				9E9BA4B8F0363ECAF23B3BE1 /* FlatmateListRow.swift in Sources */,
 				360D6D4F468F409568E16919 /* FlatmateProfileSheet.swift in Sources */,
+				2123F247CA060CCF4323197D /* FlatmateRequest.swift in Sources */,
 				5DD37F91271B97568966E9F8 /* FlatmateVibeCard.swift in Sources */,
+				0398B4B74A63FD722AFC38EC /* FlatmatesCoordinator.swift in Sources */,
+				207088C3316762263BDC117D /* FlatmatesRoute.swift in Sources */,
+				0F284B38E41AB47E18518D98 /* FlatmatesSwipeView.swift in Sources */,
 				26EEB54E3CA78EF23793CAAE /* FlatmatesTabPlaceholder.swift in Sources */,
 				4EA4782564406DDA23615306 /* FlatsTabView.swift in Sources */,
 				E8FAD92CCA1C54C6B724BEFE /* FlowLayout.swift in Sources */,
-				7828ECD12FAC8EE1003BF61D /* ChatBubble.swift in Sources */,
-				7828ECD22FAC8EE1003BF61D /* AmberBanner.swift in Sources */,
-				7828ECD32FAC8EE1003BF61D /* ChatComposer.swift in Sources */,
 				6734F81862C435EECA6B0527 /* Furnishing.swift in Sources */,
+				5C0E4B6F9661FFED079A2382 /* GroupChatScreen.swift in Sources */,
 				F7309A811C6F00724CEEA1EF /* HomeTab.swift in Sources */,
 				2F5D51714BA95E0BF27CD539 /* HomeView.swift in Sources */,
-				7828ECD52FAC950A003BF61D /* GroupChatScreen.swift in Sources */,
 				89BE8F4A0288A65B8E6A5E6F /* IntentCard.swift in Sources */,
 				A2FDCBD3365344B5502273AB /* IntentScreen.swift in Sources */,
 				0B19E91036AD218ABE80C4EC /* MatchMeterCard.swift in Sources */,
+				749A5F7C2DA2333BCEB46261 /* MockFlatmates.swift in Sources */,
 				63AAECCF0069CE508E248DC1 /* MockFlats.swift in Sources */,
 				3BE6CB20984E56D20E732991 /* MoveInTimeline.swift in Sources */,
 				A507125254E1F247F8800F3A /* OTPScreen.swift in Sources */,
 				C52412CC72069C6817B0DB36 /* Occupation.swift in Sources */,
 				5EC9F1927EBA94D4F3F518F6 /* OnboardingAPI.swift in Sources */,
-				63AAECCF0069CE508E248DC1 /* MockFlats.swift in Sources */,
-				3BE6CB20984E56D20E732991 /* MoveInTimeline.swift in Sources */,
-				7828ECCB2FAC8CC5003BF61D /* RequestProfileScreen.swift in Sources */,
-				A507125254E1F247F8800F3A /* OTPScreen.swift in Sources */,
-				7828ECC52FAC8AC7003BF61D /* RequestsInboxScreen.swift in Sources */,
 				C4F5A0825064191619ACCCC9 /* OnboardingCoordinator.swift in Sources */,
 				1C811C2347B8536E59AF4318 /* OnboardingData.swift in Sources */,
-				A1B2C3D4E5F6789012345605 /* UserProfile.swift in Sources */,
-				A1B2C3D4E5F6789012345607 /* UserStore.swift in Sources */,
 				81B8E451EA24876BB155CF3F /* OnboardingRoute.swift in Sources */,
+				D0A4E3C92DC35BAACC526592 /* OverlappingAvatars.swift in Sources */,
 				AA18D2A07B51071C520A7BE2 /* PhoneScreen.swift in Sources */,
 				85CC208A0959A838D7DF22CB /* PhotoPlaceholder.swift in Sources */,
 				7766310B49CD2F51DE7B35FF /* PhotoTile.swift in Sources */,
@@ -626,13 +643,14 @@
 				0ABD9F487913367AEDF435D9 /* ProfileTabPlaceholder.swift in Sources */,
 				071B34DDF7C2C88F961F4309 /* ProgressDots.swift in Sources */,
 				1099725D3B0A9DCBCFC53342 /* RangeSlider.swift in Sources */,
+				B17EA03FDF8A2C08F32A2439 /* RequestProfileScreen.swift in Sources */,
+				FCACDE9D2EA94DE98B2CB92A /* RequestsInboxScreen.swift in Sources */,
 				CD6B64DF7F20D326DA973753 /* RoomType.swift in Sources */,
 				1F853D1EB4E01C6EBFAE8CDD /* RootView.swift in Sources */,
-				7828ECC82FAC8B12003BF61D /* Avatar.swift in Sources */,
-				7828ECC92FAC8B12003BF61D /* SegmentedTabBar.swift in Sources */,
 				252D6151EE5F0A2FD7BDCF17 /* SectionLabel.swift in Sources */,
+				5F8DFB1FF9069D22D176B67F /* SegmentedTabBar.swift in Sources */,
 				61F58A78637C04E68626585C /* SelectablePill.swift in Sources */,
-				7828ECD92FAC954F003BF61D /* SlotProgressDots.swift in Sources */,
+				19C66625153DE853D1C9B593 /* SlotProgressDots.swift in Sources */,
 				FA76EE8E6744263F0567C8A3 /* SortOption.swift in Sources */,
 				2137AFD30302FA73BBB96876 /* SplashView.swift in Sources */,
 				E1586E240FF3523C39B3D199 /* StaykinApp.swift in Sources */,
@@ -641,20 +659,15 @@
 				D653B3F3EBE4A31AEB59F703 /* StickyBottomCTA.swift in Sources */,
 				B4E2EB51A26662AA9A131C7A /* SuccessScreen.swift in Sources */,
 				E180112D9159B734724652DE /* SuccessToast.swift in Sources */,
+				F9E1769AFADA310EE1AA1B63 /* SwipeableFlatmateCard.swift in Sources */,
 				5F97BA4ED32D1505BBB15962 /* TabBar.swift in Sources */,
 				5F1422B005A39ED80922A5B9 /* TabPlaceholder.swift in Sources */,
 				3F6CB46B812C66EA75E2C440 /* TipBanner.swift in Sources */,
 				E495954763F6E636E0DA5040 /* TrustStrip.swift in Sources */,
-				7828ECDB2FAC9563003BF61D /* AddFlatmateSheet.swift in Sources */,
-				7828ECBB2FAC7F90003BF61D /* MockFlatmates.swift in Sources */,
-				7828ECBC2FAC7F90003BF61D /* ChatMessage.swift in Sources */,
-				7828ECBD2FAC7F90003BF61D /* FlatmateRequest.swift in Sources */,
-				7828ECBE2FAC7F90003BF61D /* ChatThread.swift in Sources */,
-				7828ECBF2FAC7F90003BF61D /* FlatmatesRoute.swift in Sources */,
-				7828ECC02FAC7F90003BF61D /* FlatmatesCoordinator.swift in Sources */,
+				1BEFAEE49B141CA03E99FF5C /* UserProfile.swift in Sources */,
+				CB0302D273914BA16913B138 /* UserStore.swift in Sources */,
 				50F471997DD954DF1D76109B /* VibeCardScreen.swift in Sources */,
 				D973EDFE050E3F0A24F13F2C /* VibeFormScreen.swift in Sources */,
-				7828ECD72FAC953B003BF61D /* OverlappingAvatars.swift in Sources */,
 				98E059FE124680249EE8F115 /* VibePref.swift in Sources */,
 				B850CD361FA61EF4B0ED9327 /* VibeScreen.swift in Sources */,
 				EB5DDD388D2E39F8DA1CA16E /* VibeTile.swift in Sources */,

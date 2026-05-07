@@ -108,4 +108,88 @@ enum MockFlats {
         privateRoom: .init(rentShare: 15_000, availableNow: true),
         about: "Spacious 3BHK in a quiet society with sunlit balconies, modular kitchen and gated parking. Walking distance to metro, cafés and weekend markets. Looking for friendly working professionals or students who keep things tidy and respect quiet hours. Pets are welcome."
     )
+
+    // Swipe deck candidates for the Flatmates tab.
+    static let swipeFeed: [Flatmate] = [
+        .init(
+            id: 201, name: "Priya", age: 24, role: .flatmate,
+            job: "Marketing @ Swiggy",
+            emoji: "🌸", avatarURL: nil, avatarHue: 320, avatarHue2: 280,
+            matchPct: 91,
+            vibePrefIds: [1, 7, 13, 6, 9, 2].compactMap { id in
+                VibePref.find(by: id)?.id
+            },
+            bio: "Plant parent, designer-at-heart, late-night ramen kind of girl.",
+            lookingFor: [
+                .init(label: "Move-in", value: "Within 1 month"),
+                .init(label: "Stay",    value: "11 months+"),
+                .init(label: "Areas",   value: "DLF Phase 1, Cyber City")
+            ]
+        ),
+        .init(
+            id: 202, name: "Aarav", age: 26, role: .flatmate,
+            job: "Product @ Razorpay",
+            emoji: "🦊", avatarURL: nil, avatarHue: 30, avatarHue2: 60,
+            matchPct: 88,
+            vibePrefIds: [8, 20, 2, 6, 9, 3].compactMap { VibePref.find(by: $0)?.id },
+            bio: "Early to rise, slow saturday mornings, won't judge your kombucha phase.",
+            lookingFor: [
+                .init(label: "Move-in", value: "ASAP"),
+                .init(label: "Stay",    value: "Long term"),
+                .init(label: "Areas",   value: "Sector 46, Golf Course Road")
+            ]
+        ),
+        .init(
+            id: 203, name: "Ishaan", age: 28, role: .flatmate,
+            job: "Engineer @ Google",
+            emoji: "🦄", avatarURL: nil, avatarHue: 220, avatarHue2: 260,
+            matchPct: 84,
+            vibePrefIds: [2, 22, 16, 14, 21, 19].compactMap { VibePref.find(by: $0)?.id },
+            bio: "WFH mostly, gym 5x a week, weekend hikes when the smog allows.",
+            lookingFor: [
+                .init(label: "Move-in", value: "1–3 months"),
+                .init(label: "Stay",    value: "1 year+"),
+                .init(label: "Areas",   value: "Cyber City, Sushant Lok 1")
+            ]
+        ),
+        .init(
+            id: 204, name: "Meera", age: 25, role: .flatmate,
+            job: "Designer @ Zomato",
+            emoji: "🪻", avatarURL: nil, avatarHue: 180, avatarHue2: 230,
+            matchPct: 86,
+            vibePrefIds: [13, 1, 11, 5, 17, 18].compactMap { VibePref.find(by: $0)?.id },
+            bio: "Quiet vibes, lots of plants, occasional dinner-party host.",
+            lookingFor: [
+                .init(label: "Move-in", value: "Within 1 month"),
+                .init(label: "Stay",    value: "Long term"),
+                .init(label: "Areas",   value: "DLF Phase 1, Sushant Lok 1")
+            ]
+        ),
+        .init(
+            id: 205, name: "Rohan", age: 27, role: .flatmate,
+            job: "Founder, stealth",
+            emoji: "🦁", avatarURL: nil, avatarHue: 80, avatarHue2: 130,
+            matchPct: 79,
+            vibePrefIds: [2, 14, 15, 12, 22, 23].compactMap { VibePref.find(by: $0)?.id },
+            bio: "Building something quietly. Hosts often, loves a long walk and a strong filter coffee.",
+            lookingFor: [
+                .init(label: "Move-in", value: "ASAP"),
+                .init(label: "Stay",    value: "Open"),
+                .init(label: "Areas",   value: "Cyber City, Golf Course Road")
+            ]
+        ),
+        .init(
+            id: 206, name: "Ananya", age: 23, role: .flatmate,
+            job: "Grad student @ IIT-D",
+            emoji: "🌻", avatarURL: nil, avatarHue: 40, avatarHue2: 350,
+            matchPct: 82,
+            vibePrefIds: [4, 21, 5, 11, 18, 9].compactMap { VibePref.find(by: $0)?.id },
+            bio: "Bookworm by night, runner by morning. Tea > coffee, always.",
+            lookingFor: [
+                .init(label: "Move-in", value: "Next month"),
+                .init(label: "Stay",    value: "Academic year"),
+                .init(label: "Areas",   value: "Sector 46, South City 1")
+            ]
+        )
+    ]
 }

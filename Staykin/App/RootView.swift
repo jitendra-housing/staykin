@@ -1,7 +1,11 @@
 import SwiftUI
 
 struct RootView: View {
-    @State private var phase: AppPhase = .splash
+    @State private var phase: AppPhase
+
+    init() {
+        _phase = State(initialValue: UserStore.saved != nil ? .home : .splash)
+    }
 
     var body: some View {
         switch phase {

@@ -28,8 +28,8 @@ struct OnboardingCoordinator: View {
             ProfileScreen(onContinue: {
                 Task { @MainActor in
                     do {
-                        let userId = try await OnboardingAPI.submitProfile(data)
-                        data.userId = userId
+                        let profile = try await OnboardingAPI.submitProfile(data)
+                        data.userId = profile.id
                     } catch {
                         print("submitProfile failed: \(error)")
                     }

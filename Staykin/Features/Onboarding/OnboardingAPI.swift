@@ -14,24 +14,27 @@ enum OnboardingAPI {
     }()
 
     @discardableResult
-    static func submitProfile(_ data: OnboardingData) async throws -> Int {
+    static func submitProfile(_ data: OnboardingData) async throws -> UserProfile {
         let url = baseURL.appendingPathComponent("profile")
         let responseData = try await sendProfile(method: "POST", url: url, data: data)
 
-        guard
-            let json = try JSONSerialization.jsonObject(with: responseData) as? [String: Any],
-            let userId = (json["id"] as? Int) ?? (json["id"] as? NSNumber)?.intValue
-        else {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let profile: UserProfile
+        do {
+            profile = try decoder.decode(UserProfile.self, from: responseData)
+        } catch {
             let snippet = String(data: responseData, encoding: .utf8) ?? ""
             throw NSError(
                 domain: "OnboardingAPI",
                 code: -1,
-                userInfo: [NSLocalizedDescriptionKey: "POST /profile: missing 'id' in response: \(snippet)"]
+                userInfo: [NSLocalizedDescriptionKey: "POST /profile: cannot decode response: \(snippet)"]
             )
         }
 
-        UserDefaults.standard.set(userId, forKey: userIdDefaultsKey)
-        return userId
+        UserStore.save(rawResponse: responseData)
+        UserDefaults.standard.set(profile.id, forKey: userIdDefaultsKey)
+        return profile
     }
 
     static func patchProfile(_ data: OnboardingData) async throws {

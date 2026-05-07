@@ -4,6 +4,8 @@ struct FlatDetailView: View {
     let detail: FlatDetail
     let onBack: () -> Void
 
+    @State private var selectedFlatmate: Flatmate? = nil
+
     var body: some View {
         ZStack(alignment: .top) {
             ScrollView {
@@ -29,6 +31,11 @@ struct FlatDetailView: View {
         }
         .background(Color.bgBase)
         .navigationBarBackButtonHidden(true)
+        .staykinSheet(item: $selectedFlatmate, detents: [.large]) { flatmate in
+            FlatmateProfileSheet(flatmate: flatmate) {
+                selectedFlatmate = nil
+            }
+        }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             VStack(spacing: 0) {
                 Rectangle().fill(Color.cardBorder).frame(height: 1)
@@ -108,7 +115,7 @@ struct FlatDetailView: View {
             VStack(spacing: 8) {
                 ForEach(detail.flatmates) { mate in
                     FlatmateListRow(flatmate: mate, onTap: {
-                        // Phase D — open flatmate profile sheet
+                        selectedFlatmate = mate
                     })
                 }
 

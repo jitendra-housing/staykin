@@ -28,6 +28,7 @@
 		26EEB54E3CA78EF23793CAAE /* FlatmatesTabPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908C2D3664267B6E3BF43B8D /* FlatmatesTabPlaceholder.swift */; };
 		2F53EEFB8983C66F73E9F3D5 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C91A63EED705E2549E9EF9 /* ConfettiView.swift */; };
 		2F5D51714BA95E0BF27CD539 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CD220B144156CF25611C37 /* HomeView.swift */; };
+		360D6D4F468F409568E16919 /* FlatmateProfileSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA180C959FA7D4E480B142D /* FlatmateProfileSheet.swift */; };
 		3B97C4DC013920B4F9EDE4D6 /* PostStepHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC0432DB786DB07BF790DAA /* PostStepHeader.swift */; };
 		3BE6CB20984E56D20E732991 /* MoveInTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506305162BC4F1F25EB99F19 /* MoveInTimeline.swift */; };
 		3F6CB46B812C66EA75E2C440 /* TipBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB00BD8B65704A6A5D53B384 /* TipBanner.swift */; };
@@ -37,6 +38,7 @@
 		4EA4782564406DDA23615306 /* FlatsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F251A4EF24C60DE65DF7BB4B /* FlatsTabView.swift */; };
 		50F471997DD954DF1D76109B /* VibeCardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB690364CE90CC31C9CAD8F /* VibeCardScreen.swift */; };
 		591374C8064ECA60C70DBF14 /* FlatPrefsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1770DCC32A30A1CF7E5DA5D /* FlatPrefsScreen.swift */; };
+		5DD37F91271B97568966E9F8 /* FlatmateVibeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA0E6D93EDE032A706B2B9 /* FlatmateVibeCard.swift */; };
 		5F1422B005A39ED80922A5B9 /* TabPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817EF4ADE3D5BB802E6C8D2B /* TabPlaceholder.swift */; };
 		5F97BA4ED32D1505BBB15962 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF139DC4B71C0905F46E75C8 /* TabBar.swift */; };
 		61F58A78637C04E68626585C /* SelectablePill.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3977237EA7C3EE79850CFFC /* SelectablePill.swift */; };
@@ -110,6 +112,7 @@
 		45CCD5F73EAA2AC9285D492C /* MockFlats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFlats.swift; sourceTree = "<group>"; };
 		4610B677D35BB59F7D97A9F3 /* PhotosScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosScreen.swift; sourceTree = "<group>"; };
 		4CDA05529E250E819E457EE7 /* Flat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flat.swift; sourceTree = "<group>"; };
+		4EA180C959FA7D4E480B142D /* FlatmateProfileSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatmateProfileSheet.swift; sourceTree = "<group>"; };
 		506305162BC4F1F25EB99F19 /* MoveInTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveInTimeline.swift; sourceTree = "<group>"; };
 		5064A80BB4EFBA2EC26ADFFA /* StaykinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaykinApp.swift; sourceTree = "<group>"; };
 		507E2FDC53B235337C4E4356 /* FlatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatDetailView.swift; sourceTree = "<group>"; };
@@ -154,6 +157,7 @@
 		F251A4EF24C60DE65DF7BB4B /* FlatsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatsTabView.swift; sourceTree = "<group>"; };
 		F27FBEEF2262453EFF581C84 /* DSSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSSpacing.swift; sourceTree = "<group>"; };
 		F2DF11B07CE601F0F18A6AF3 /* StepPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepPill.swift; sourceTree = "<group>"; };
+		FBCA0E6D93EDE032A706B2B9 /* FlatmateVibeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatmateVibeCard.swift; sourceTree = "<group>"; };
 		FF75E602BA059C01F1E3E694 /* ProgressDots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDots.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -304,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				507E2FDC53B235337C4E4356 /* FlatDetailView.swift */,
+				4EA180C959FA7D4E480B142D /* FlatmateProfileSheet.swift */,
 				F251A4EF24C60DE65DF7BB4B /* FlatsTabView.swift */,
 			);
 			path = Screens;
@@ -382,6 +387,7 @@
 				44DD7D3F3B339B7F166374EB /* FlatListRow.swift */,
 				19938E0CB5E50C9C07E7EA6B /* FlatmateAvatar.swift */,
 				928EC659892FD8152CDD5D3E /* FlatmateListRow.swift */,
+				FBCA0E6D93EDE032A706B2B9 /* FlatmateVibeCard.swift */,
 				518A35CFDC9F094290319629 /* FlatTopNav.swift */,
 				765F8CE05233B84606ACB38D /* MatchMeterCard.swift */,
 				9A47E8DD2724C6DD86C101D2 /* TrustStrip.swift */,
@@ -485,6 +491,8 @@
 				C271234637D9D2F7B1DFC5E4 /* Flatmate.swift in Sources */,
 				1449B053C147C02C475F22A6 /* FlatmateAvatar.swift in Sources */,
 				9E9BA4B8F0363ECAF23B3BE1 /* FlatmateListRow.swift in Sources */,
+				360D6D4F468F409568E16919 /* FlatmateProfileSheet.swift in Sources */,
+				5DD37F91271B97568966E9F8 /* FlatmateVibeCard.swift in Sources */,
 				26EEB54E3CA78EF23793CAAE /* FlatmatesTabPlaceholder.swift in Sources */,
 				4EA4782564406DDA23615306 /* FlatsTabView.swift in Sources */,
 				E8FAD92CCA1C54C6B724BEFE /* FlowLayout.swift in Sources */,

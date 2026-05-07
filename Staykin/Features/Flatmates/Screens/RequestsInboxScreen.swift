@@ -25,6 +25,13 @@ struct RequestsInboxScreen: View {
     @State private var roomsLoading: Bool = false
     @State private var roomsError: String?
 
+    // Sent tab API state
+    @State private var sentRequests: [RequestOut] = []
+    @State private var sentLoaded: Bool = false
+    @State private var sentLoading: Bool = false
+    @State private var sentError: String?
+    @State private var flatmateById: [Int: Flatmate] = [:]
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Requests")
@@ -63,6 +70,11 @@ struct RequestsInboxScreen: View {
             async let received: () = loadReceived()
             async let chats: ()    = loadRooms()
             _ = await (received, chats)
+        }
+        .task(id: tab) {
+            if tab == .sent && !sentLoaded {
+                await loadSent()
+            }
         }
     }
 
@@ -235,16 +247,91 @@ struct RequestsInboxScreen: View {
         }
     }
 
-    // MARK: - Sent (mock for now)
+    // MARK: - Sent (API)
 
+    @ViewBuilder
     private var sentList: some View {
-        ForEach(MockFlatmates.sent) { request in
-            SentRequestRow(
-                request: request,
-                onAvatarTap: { onOpenProfile(request.otherFlatmateId) },
-                onRowTap:    { onOpenProfile(request.otherFlatmateId) }
-            )
+        if sentLoading && sentRequests.isEmpty {
+            ProgressView().tint(Color.primaryPurple)
+                .padding(.top, 24)
+        } else if let sentError, sentRequests.isEmpty {
+            sentErrorView(sentError)
+        } else if sentRequests.isEmpty {
+            Text("No requests sent yet")
+                .font(.bodySm)
+                .foregroundStyle(Color.textSecondary)
+                .frame(maxWidth: .infinity)
+                .padding(.top, 24)
+        } else {
+            ForEach(sentRequests) { request in
+                LiveSentRequestRow(
+                    request: request,
+                    flatmate: flatmateById[request.targetUserId ?? -1],
+                    onTap: {
+                        if let userId = request.targetUserId {
+                            onOpenProfile(userId)
+                        }
+                    }
+                )
+            }
         }
+    }
+
+    private func sentErrorView(_ message: String) -> some View {
+        VStack(spacing: 10) {
+            Text("Couldn't load")
+                .font(.bodySm.weight(.semibold))
+                .foregroundStyle(Color.textPrimary)
+            Text(message)
+                .font(.caption1)
+                .foregroundStyle(Color.textSecondary)
+                .multilineTextAlignment(.center)
+                .lineLimit(4)
+            Button {
+                Task { await loadSent() }
+            } label: {
+                Text("Retry")
+                    .font(.caption1.weight(.semibold))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
+                    .background(LinearGradient.brand)
+                    .clipShape(Capsule())
+            }
+            .buttonStyle(.plain)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.top, 24)
+    }
+
+    @MainActor
+    private func loadSent() async {
+        sentLoading = true
+        sentError = nil
+        do {
+            async let requestsTask = RequestsAPI.fetchSent()
+            async let flatmatesTask = FlatmatesAPI.fetchFlatmates()
+
+            let reqs = try await requestsTask
+            let entries = (try? await flatmatesTask) ?? []
+
+            var map: [Int: Flatmate] = [:]
+            for entry in entries {
+                switch entry {
+                case .user(let u):
+                    map[u.id] = Flatmate(profile: u)
+                case .team(_, let members):
+                    for m in members { map[m.id] = Flatmate(profile: m) }
+                }
+            }
+
+            sentRequests = reqs.sorted { $0.createdAt > $1.createdAt }
+            flatmateById = map
+            sentLoaded = true
+        } catch {
+            sentError = error.localizedDescription
+        }
+        sentLoading = false
     }
 }
 
@@ -373,47 +460,72 @@ private struct ReceivedRequestRow: View {
     }
 }
 
-private struct SentRequestRow: View {
-    let request: FlatmateRequest
-    let onAvatarTap: () -> Void
-    let onRowTap: () -> Void
+// Live sent-request row driven by GET /requests/sent.
+private struct LiveSentRequestRow: View {
+    let request: RequestOut
+    let flatmate: Flatmate?
+    let onTap: () -> Void
 
-    var body: some View {
-        if let other = request.otherFlatmate {
-            RowCard {
-                HStack(spacing: 12) {
-                    Button(action: onAvatarTap) {
-                        Avatar(flatmate: other, size: 48)
-                    }
-                    .buttonStyle(.plain)
-
-                    Button(action: onRowTap) {
-                        VStack(alignment: .leading, spacing: 2) {
-                            HStack(spacing: 4) {
-                                Text(other.name)
-                                    .font(.bodySm.weight(.semibold))
-                                    .foregroundStyle(Color.textPrimary)
-                                Text("· \(request.message)")
-                                    .font(.bodySm)
-                                    .foregroundStyle(Color.textSecondary)
-                                    .lineLimit(1)
-                            }
-                            Text("\(request.timeAgo) ago")
-                                .font(.caption1)
-                                .foregroundStyle(Color.textDisabled)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .contentShape(Rectangle())
-                    }
-                    .buttonStyle(.plain)
-
-                    statusPill(for: request.status)
-                }
-            }
+    private var status: RequestStatus {
+        switch request.status {
+        case 2:  return .accepted
+        case 3:  return .declined
+        default: return .pending
         }
     }
 
-    private func statusPill(for status: RequestStatus) -> some View {
+    private var titleText: String {
+        if let name = flatmate?.name { return name }
+        if request.targetKind == 2, let teamId = request.targetTeamId {
+            return "Team #\(teamId)"
+        }
+        if let userId = request.targetUserId { return "User #\(userId)" }
+        return "Request #\(request.id)"
+    }
+
+    private var statusMessage: String {
+        switch status {
+        case .pending:  return "sent · awaiting reply"
+        case .accepted: return "accepted! tap to chat"
+        case .declined: return "declined your request"
+        }
+    }
+
+    var body: some View {
+        Button(action: onTap) {
+            RowCard {
+                HStack(spacing: 12) {
+                    if let flatmate {
+                        Avatar(flatmate: flatmate, size: 48)
+                    } else {
+                        Avatar(size: 48, hue: 0, initial: nil)
+                    }
+
+                    VStack(alignment: .leading, spacing: 2) {
+                        HStack(spacing: 4) {
+                            Text(titleText)
+                                .font(.bodySm.weight(.semibold))
+                                .foregroundStyle(Color.textPrimary)
+                            Text("· \(statusMessage)")
+                                .font(.bodySm)
+                                .foregroundStyle(Color.textSecondary)
+                                .lineLimit(1)
+                        }
+                        Text(timeAgo(request.createdAt))
+                            .font(.caption1)
+                            .foregroundStyle(Color.textDisabled)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                    statusPill
+                }
+                .contentShape(Rectangle())
+            }
+        }
+        .buttonStyle(.plain)
+    }
+
+    private var statusPill: some View {
         let color: Color = {
             switch status {
             case .accepted: Color.success

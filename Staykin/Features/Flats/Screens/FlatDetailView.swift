@@ -63,11 +63,34 @@ struct FlatDetailView: View {
         .safeAreaInset(edge: .bottom, spacing: 0) {
             VStack(spacing: 0) {
                 Rectangle().fill(Color.cardBorder).frame(height: 1)
-                PrimaryButton(title: "Enquire", action: { showEnquirySent = true })
+                PrimaryButton(title: "Enquire", action: enquire)
                     .padding(.horizontal, 18)
                     .padding(.top, 12)
                     .padding(.bottom, 8)
                     .background(Color.bgBase)
+            }
+        }
+    }
+
+    // MARK: - Enquire
+
+    // Listings don't yet expose owner_user_id on FlatDetail directly; until
+    // GET /listings/{id} is wired in, fall back to the first flatmate marked
+    // .poster (or the first flatmate, whichever exists).
+    private var requestTargetUserId: Int? {
+        detail.flatmates.first(where: { $0.role == .poster })?.id
+            ?? detail.flatmates.first?.id
+    }
+
+    private func enquire() {
+        showEnquirySent = true
+
+        guard let targetId = requestTargetUserId else { return }
+        Task {
+            do {
+                try await RequestsAPI.sendRequest(targetKind: .user, targetId: targetId)
+            } catch {
+                print("enquire failed: \(error.localizedDescription)")
             }
         }
     }

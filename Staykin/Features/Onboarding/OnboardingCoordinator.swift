@@ -87,6 +87,11 @@ struct OnboardingCoordinator: View {
             }, onBack: pop)
         case .postVibe:
             VibeScreen(onPublish: {
+                // Mirror listing fields into the user-preference fields so the
+                // PATCH /profile body includes preferred_locality_ids and bhk_prefs
+                // alongside lifestyle_tag_ids.
+                if let locality = data.listingLocalityId { data.areas.insert(locality) }
+                if let bhk = data.listingBHK { data.bhk.insert(bhk) }
                 Task {
                     do { try await OnboardingAPI.patchProfile(data) }
                     catch { print("patchProfile failed: \(error)") }

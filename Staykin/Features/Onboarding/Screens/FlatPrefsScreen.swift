@@ -59,15 +59,21 @@ struct FlatPrefsScreen: View {
                     HStack {
                         SectionLabel(text: "Monthly Budget")
                         Spacer()
-                        Text("\(formatBudget(data.budgetMin)) – \(formatBudget(data.budgetMax)) /mo")
+                        Text("\(formatBudget(data.budgetMin ?? budgetRange.lowerBound)) – \(formatBudget(data.budgetMax ?? budgetRange.upperBound)) /mo")
                             .font(.caption1)
                             .foregroundStyle(Color.accentAmber)
                     }
                     .padding(.bottom, 36)
 
                     RangeSlider(
-                        lowerValue: $data.budgetMin,
-                        upperValue: $data.budgetMax,
+                        lowerValue: Binding(
+                            get: { data.budgetMin ?? budgetRange.lowerBound },
+                            set: { data.budgetMin = $0 }
+                        ),
+                        upperValue: Binding(
+                            get: { data.budgetMax ?? budgetRange.upperBound },
+                            set: { data.budgetMax = $0 }
+                        ),
                         range: budgetRange,
                         step: 1000,
                         tooltipFormatter: formatBudget

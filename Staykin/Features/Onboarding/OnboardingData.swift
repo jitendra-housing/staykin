@@ -45,8 +45,8 @@ final class OnboardingData {
 
     // Flat prefs (Step 1 of 2)
     var areas: Set<Int> = []       // Area.id values
-    var budgetMin: Double = 15_000
-    var budgetMax: Double = 30_000
+    var budgetMin: Double?
+    var budgetMax: Double?
     var bhk: Set<Int> = []          // BHK.id values
     var roomType: Int? = nil        // RoomType.id
     var furnishing: Set<Int> = []   // Furnishing.id values

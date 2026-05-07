@@ -91,7 +91,7 @@ private struct VibeCard: View {
     }
 
     private var budgetText: String {
-        "₹\(Int(data.budgetMin / 1000))–\(Int(data.budgetMax / 1000))K /mo"
+        "₹\(Int((data.budgetMin ?? 0) / 1000))–\(Int((data.budgetMax ?? 0) / 1000))K /mo"
     }
 
     private var typeText: String {

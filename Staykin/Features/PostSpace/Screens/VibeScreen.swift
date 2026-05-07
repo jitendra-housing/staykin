@@ -4,15 +4,15 @@ struct VibeScreen: View {
     let onPublish: () -> Void
     let onBack: () -> Void
 
+    @Environment(OnboardingData.self) private var data
+
     private let columns = [
         GridItem(.flexible(), spacing: 12),
         GridItem(.flexible(), spacing: 12),
         GridItem(.flexible(), spacing: 12)
     ]
 
-    @State private var selected: Set<Int> = []
-
-    private var selectionCount: Int { selected.count }
+    private var selectionCount: Int { data.vibePrefs.count }
     private var canContinue: Bool { selectionCount >= VibePref.minSelections }
 
     var body: some View {
@@ -42,7 +42,7 @@ struct VibeScreen: View {
                         VibeTile(
                             emoji: pref.emoji,
                             label: pref.label,
-                            isSelected: selected.contains(pref.id),
+                            isSelected: data.vibePrefs.contains(pref.id),
                             action: { toggle(pref.id) }
                         )
                     }
@@ -66,10 +66,10 @@ struct VibeScreen: View {
     }
 
     private func toggle(_ id: Int) {
-        if selected.contains(id) {
-            selected.remove(id)
+        if data.vibePrefs.contains(id) {
+            data.vibePrefs.remove(id)
         } else {
-            selected.insert(id)
+            data.vibePrefs.insert(id)
         }
     }
 }

@@ -142,7 +142,7 @@
 		3C318BE66D52429D27464B7A /* Amenity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amenity.swift; sourceTree = "<group>"; };
 		3D783CFA8DA097B7F8FAEC55 /* SlotProgressDots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotProgressDots.swift; sourceTree = "<group>"; };
 		3F4B09A9EBB1426D6A787CA9 /* ApplicationMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMode.swift; sourceTree = "<group>"; };
-		408E03C5F1AEBAA73B69F765 /* Staykin.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Staykin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		408E03C5F1AEBAA73B69F765 /* Staykin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staykin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		446E1C01F7E0BD373ACC28C8 /* RequestProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProfileScreen.swift; sourceTree = "<group>"; };
 		44DD7D3F3B339B7F166374EB /* FlatListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatListRow.swift; sourceTree = "<group>"; };
 		45CCD5F73EAA2AC9285D492C /* MockFlats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFlats.swift; sourceTree = "<group>"; };
@@ -548,7 +548,6 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					7F8A121C93452F304C1A5CF3 = {
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -822,7 +821,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = J9HRA4G7LQ;
 				INFOPLIST_FILE = Staykin/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -845,7 +844,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = J9HRA4G7LQ;
 				INFOPLIST_FILE = Staykin/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -15,8 +15,8 @@ struct OnboardingSnapshot: Codable {
     var intent: UserIntent?
 
     var areas: Set<Int>
-    var budgetMin: Double
-    var budgetMax: Double
+    var budgetMin: Double?
+    var budgetMax: Double?
     var bhk: Set<Int>
     var roomType: Int?
     var furnishing: Set<Int>

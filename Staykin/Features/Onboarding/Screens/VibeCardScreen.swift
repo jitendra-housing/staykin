@@ -87,7 +87,8 @@ private struct VibeCard: View {
     }
 
     private var occupationCity: String {
-        [data.occupation, data.city].filter { !$0.isEmpty }.joined(separator: " · ")
+        let occupationName = data.occupation.flatMap { Occupation.find(by: $0)?.name } ?? ""
+        return [occupationName, data.city].filter { !$0.isEmpty }.joined(separator: " · ")
     }
 
     private var budgetText: String {

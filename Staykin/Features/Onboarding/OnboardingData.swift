@@ -8,14 +8,24 @@ enum UserIntent: String, CaseIterable, Hashable {
 }
 
 enum Gender: String, CaseIterable, Hashable {
-    case female = "Female"
     case male = "Male"
-    case nonBinary = "Non-binary"
-    case preferNotToSay = "Prefer not to say"
+    case female = "Female"
+    case other = "Other"
+
+    var id: Int {
+        switch self {
+        case .male: return 1
+        case .female: return 2
+        case .other: return 3
+        }
+    }
 }
 
 @Observable
 final class OnboardingData {
+    // Server-issued user id (set after POST /profile succeeds)
+    var userId: Int? = nil
+
     // Auth
     var countryCode: String = "+91"
     var phoneNumber: String = ""
@@ -26,7 +36,7 @@ final class OnboardingData {
     var name: String = ""
     var age: Int? = nil
     var gender: Gender? = nil
-    var occupation: String = ""
+    var occupation: Int? = nil       // Occupation.id
     var city: String = "Gurgaon"   // launch city — single value for v1
 
     // Intent

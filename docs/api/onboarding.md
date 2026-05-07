@@ -134,7 +134,7 @@ POST /onboarding/profile
   "name":       "Aanya Sharma",
   "age":        23,
   "gender":     1,
-  "occupation": "Product Designer",
+  "occupation": 1,
   "photo_url":  "https://cdn.staykin.app/u/abc123.jpg"
 }
 ```
@@ -143,8 +143,8 @@ POST /onboarding/profile
 |---|---|---|---|
 | `name` | string | yes | trimmed, non-empty, ≤ 80 chars |
 | `age` | int | yes | 18–99 |
-| `gender` | int | yes | id ∈ {1..4} — see [Gender](#gender) |
-| `occupation` | string | yes | trimmed, non-empty, ≤ 80 chars |
+| `gender` | int | yes | id ∈ {1..3} — see [Gender](#gender) |
+| `occupation` | int | yes | id ∈ {1..33} — see [Occupation](#occupation) |
 | `photo_url` | string (URL) | optional | must be a Staykin CDN URL returned by `/uploads/photo` |
 
 > `city` is **not sent**. v1 is Gurgaon-only and assumed server-side. Add the field once more cities launch.
@@ -276,10 +276,9 @@ The returned URL goes into the `photo_url` field of `/onboarding/profile`.
 
 | id | value | label |
 |---:|---|---|
-| 1 | `FEMALE` | Female |
-| 2 | `MALE` | Male |
-| 3 | `NON_BINARY` | Non-binary |
-| 4 | `PREFER_NOT_TO_SAY` | Prefer not to say |
+| 1 | `MALE` | Male |
+| 2 | `FEMALE` | Female |
+| 3 | `OTHER` | Other |
 
 ### Intent ⚠
 
@@ -288,6 +287,44 @@ The returned URL goes into the `photo_url` field of `/onboarding/profile`.
 | 1 | `MOVE_INTO_FLAT` | Move into a flat | Find an existing flat with rooms available |
 | 2 | `FILL_ROOMS_IN_MY_FLAT` | Fill rooms in my flat | I have a place, find flatmates to fill it |
 | 3 | `TEAM_UP_TO_RENT` | Team up to rent a flat | Find your squad, then hunt together |
+
+### Occupation ⚠
+
+| id | name |
+|---:|---|
+| 1 | Software Engineer |
+| 2 | Product Manager |
+| 3 | Designer |
+| 4 | Data Analyst |
+| 5 | Consultant |
+| 6 | Marketing Professional |
+| 7 | Sales Professional |
+| 8 | HR Professional |
+| 9 | Finance Professional |
+| 10 | Entrepreneur |
+| 11 | Freelancer |
+| 12 | Content Creator |
+| 13 | Photographer |
+| 14 | Video Editor |
+| 15 | Writer |
+| 16 | Doctor |
+| 17 | Lawyer |
+| 18 | Chartered Accountant |
+| 19 | Teacher |
+| 20 | Student |
+| 21 | Research Scholar |
+| 22 | Architect |
+| 23 | Interior Designer |
+| 24 | Chef |
+| 25 | Fitness Trainer |
+| 26 | Event Manager |
+| 27 | Government Employee |
+| 28 | Startup Founder |
+| 29 | Business Owner |
+| 30 | Remote Worker |
+| 31 | Intern |
+| 32 | Self-employed |
+| 33 | Other |
 
 ### Areas (Gurgaon) ✅
 

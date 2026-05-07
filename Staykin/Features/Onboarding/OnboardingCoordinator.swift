@@ -25,7 +25,17 @@ struct OnboardingCoordinator: View {
         case .otp:
             OTPScreen(onVerify: { push(.profile) }, onBack: pop)
         case .profile:
-            ProfileScreen(onContinue: { push(.intent) })
+            ProfileScreen(onContinue: {
+                Task { @MainActor in
+                    do {
+                        let userId = try await OnboardingAPI.submitProfile(data)
+                        data.userId = userId
+                    } catch {
+                        print("submitProfile failed: \(error)")
+                    }
+                }
+                push(.intent)
+            })
         case .intent:
             IntentScreen(
                 onContinue: { intent in

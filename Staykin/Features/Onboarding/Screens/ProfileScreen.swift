@@ -11,7 +11,7 @@ struct ProfileScreen: View {
         !data.name.trimmingCharacters(in: .whitespaces).isEmpty
             && data.age != nil
             && data.gender != nil
-            && !data.occupation.trimmingCharacters(in: .whitespaces).isEmpty
+            && data.occupation != nil
     }
 
     var body: some View {
@@ -88,11 +88,13 @@ struct ProfileScreen: View {
                         .frame(maxWidth: .infinity)
                     }
 
-                    StaykinTextField(
+                    DropdownField(
                         placeholder: "Occupation",
-                        text: $data.occupation,
-                        autocapitalization: .words
-                    )
+                        value: data.occupation.flatMap { Occupation.find(by: $0)?.name },
+                        options: Occupation.all.map { ($0.name, $0.id) }
+                    ) { selectedId in
+                        data.occupation = selectedId
+                    }
                 }
                 .padding(.top, 28)
 

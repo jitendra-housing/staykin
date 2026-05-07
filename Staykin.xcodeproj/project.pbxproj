@@ -47,6 +47,7 @@
 		4EA4782564406DDA23615306 /* FlatsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F251A4EF24C60DE65DF7BB4B /* FlatsTabView.swift */; };
 		50F471997DD954DF1D76109B /* VibeCardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB690364CE90CC31C9CAD8F /* VibeCardScreen.swift */; };
 		5375448B4EFB3D8B688A352A /* ChatComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C0BF58B96569B780BA960 /* ChatComposer.swift */; };
+		57C7440D2FACCA4800FE7BDB /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C7440C2FACCA4800FE7BDB /* UserStore.swift */; };
 		591374C8064ECA60C70DBF14 /* FlatPrefsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1770DCC32A30A1CF7E5DA5D /* FlatPrefsScreen.swift */; };
 		5C0E4B6F9661FFED079A2382 /* GroupChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E2B73962A68683CCFE633 /* GroupChatScreen.swift */; };
 		5DD37F91271B97568966E9F8 /* FlatmateVibeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA0E6D93EDE032A706B2B9 /* FlatmateVibeCard.swift */; };
@@ -60,9 +61,6 @@
 		749A5F7C2DA2333BCEB46261 /* MockFlatmates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC72C1C5812D5EC95D6A7822 /* MockFlatmates.swift */; };
 		76F3EDC46806AAC9D38FD80C /* ApplicationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4B09A9EBB1426D6A787CA9 /* ApplicationMode.swift */; };
 		7766310B49CD2F51DE7B35FF /* PhotoTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FBE28D12663EB6F1E7A24 /* PhotoTile.swift */; };
-		7828ECDE2FAC9D8F003BF61D /* ProfileTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECDD2FAC9D8F003BF61D /* ProfileTabView.swift */; };
-		7828ECE12FACA58D003BF61D /* PostSpaceRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECE02FACA58D003BF61D /* PostSpaceRoute.swift */; };
-		7828ECE22FACA58D003BF61D /* PostSpaceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECDF2FACA58D003BF61D /* PostSpaceCoordinator.swift */; };
 		7828ECE62FACBCCE003BF61D /* FlatmatesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECE52FACBCCE003BF61D /* FlatmatesTabView.swift */; };
 		7828ECE92FACBCF6003BF61D /* FlatmateEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECE72FACBCF6003BF61D /* FlatmateEntry.swift */; };
 		7828ECEA2FACBCF6003BF61D /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828ECE82FACBCF6003BF61D /* Team.swift */; };
@@ -160,6 +158,7 @@
 		5064A80BB4EFBA2EC26ADFFA /* StaykinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaykinApp.swift; sourceTree = "<group>"; };
 		507E2FDC53B235337C4E4356 /* FlatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatDetailView.swift; sourceTree = "<group>"; };
 		518A35CFDC9F094290319629 /* FlatTopNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatTopNav.swift; sourceTree = "<group>"; };
+		57C7440C2FACCA4800FE7BDB /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		58865B54C3850E5B2D724552 /* SectionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionLabel.swift; sourceTree = "<group>"; };
 		5A4163EB3575E5A686B444FB /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		5C0FBE28D12663EB6F1E7A24 /* PhotoTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTile.swift; sourceTree = "<group>"; };
@@ -174,8 +173,6 @@
 		765F8CE05233B84606ACB38D /* MatchMeterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMeterCard.swift; sourceTree = "<group>"; };
 		76C91A63EED705E2549E9EF9 /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		7828ECDD2FAC9D8F003BF61D /* ProfileTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabView.swift; sourceTree = "<group>"; };
-		7828ECDF2FACA58D003BF61D /* PostSpaceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSpaceCoordinator.swift; sourceTree = "<group>"; };
-		7828ECE02FACA58D003BF61D /* PostSpaceRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSpaceRoute.swift; sourceTree = "<group>"; };
 		7828ECE52FACBCCE003BF61D /* FlatmatesTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatmatesTabView.swift; sourceTree = "<group>"; };
 		7828ECE72FACBCF6003BF61D /* FlatmateEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatmateEntry.swift; sourceTree = "<group>"; };
 		7828ECE82FACBCF6003BF61D /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -420,11 +417,8 @@
 				68689740E2E70A302A20EB66 /* OnboardingRoute.swift */,
 				D0C95FF522DCBFFCCC006A64 /* OnboardingSnapshot.swift */,
 				22E14E36B976EE20DD7DFFCD /* SplashView.swift */,
-				A1B2C3D4E5F6789012345608 /* UserStore.swift */,
-				A1B2C3D4E5F678901234560A /* UploadsAPI.swift */,
-				A1B2C3D4E5F678901234560C /* ListingsAPI.swift */,
 				E25BC10C1A4611C58E57C12B /* UploadsAPI.swift */,
-				4ACBFE7866CE7EF8A33E00FE /* UserStore.swift */,
+				57C7440C2FACCA4800FE7BDB /* UserStore.swift */,
 				0B950BDAC0E6DBD0F813606C /* Models */,
 				4F60F3E62FEB91637D034C17 /* Screens */,
 			);
@@ -448,8 +442,6 @@
 				7828ECE52FACBCCE003BF61D /* FlatmatesTabView.swift */,
 				7828ECDD2FAC9D8F003BF61D /* ProfileTabView.swift */,
 				0DF6B6A5E5789A922E34F9F5 /* ChatsTabPlaceholder.swift */,
-				0DF6B6A5E5789A922E34F9F5 /* ChatsTabPlaceholder.swift */,
-				908C2D3664267B6E3BF43B8D /* FlatmatesTabPlaceholder.swift */,
 				9AD19E6E573C88C1B586578B /* ProfileTabView.swift */,
 				817EF4ADE3D5BB802E6C8D2B /* TabPlaceholder.swift */,
 			);
@@ -646,6 +638,7 @@
 				2123F247CA060CCF4323197D /* FlatmateRequest.swift in Sources */,
 				5DD37F91271B97568966E9F8 /* FlatmateVibeCard.swift in Sources */,
 				0398B4B74A63FD722AFC38EC /* FlatmatesCoordinator.swift in Sources */,
+				57C7440D2FACCA4800FE7BDB /* UserStore.swift in Sources */,
 				7828ECE92FACBCF6003BF61D /* FlatmateEntry.swift in Sources */,
 				7828ECEA2FACBCF6003BF61D /* Team.swift in Sources */,
 				7828ECEE2FACC157003BF61D /* Flatmate+UserProfile.swift in Sources */,

@@ -69,7 +69,7 @@ struct PhotosScreen: View {
                     slots.append(slot)
                     let slotId = slot.id
                     do {
-                        let url = try await UploadsAPI.uploadImage(imageData, folder: "flats")
+                        let url = try await UploadsAPI.uploadImage(imageData, folder: "listings")
                         if let idx = slots.firstIndex(where: { $0.id == slotId }) {
                             slots[idx].url = url
                             data.flatPhotoUrls = slots.compactMap(\.url)

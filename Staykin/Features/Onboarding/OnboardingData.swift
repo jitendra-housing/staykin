@@ -55,6 +55,14 @@ final class OnboardingData {
     // Vibe prefs (Step 2 of 2) — VibePref.id values, min 5
     var vibePrefs: Set<Int> = []
 
-    // Post-listing flow — image URLs from /uploads/image, sent in the listing call
-    var flatPhotoUrls: [String] = []
+    // Post-listing flow — fields collected on FlatDetailsScreen + PhotosScreen for POST /listings
+    var listingLocalityId: Int? = nil      // locality_id
+    var listingMonthlyRent: Int? = nil     // monthly_rent
+    var listingBHK: Int? = nil             // bhk
+    var listingFurnishing: Int? = nil      // furnishing
+    var listingFlatmatesNeeded: Int = 1    // flatmates_needed (1..5)
+    var listingGenderPref: Int? = nil      // gender_pref
+    var listingMoveIn: Int? = nil          // move_in
+    var listingAmenities: Set<Int> = []    // amenities
+    var flatPhotoUrls: [String] = []       // photos (URLs from /uploads/image)
 }

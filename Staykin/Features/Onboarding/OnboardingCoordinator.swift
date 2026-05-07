@@ -62,11 +62,23 @@ struct OnboardingCoordinator: View {
         case .vibeCard:
             VibeCardScreen(onFinish: onFinish, onBack: pop)
         case .postFlatDetails:
-            FlatDetailsScreen(onContinue: { push(.postPhotos) }, onBack: pop)
+            FlatDetailsScreen(onContinue: {
+                Task {
+                    do { try await ListingsAPI.createListing(data) }
+                    catch { print("createListing failed: \(error)") }
+                }
+                push(.postPhotos)
+            }, onBack: pop)
         case .postPhotos:
             PhotosScreen(onContinue: { push(.postVibe) }, onBack: pop)
         case .postVibe:
-            VibeScreen(onPublish: { push(.postSuccess) }, onBack: pop)
+            VibeScreen(onPublish: {
+                Task {
+                    do { try await OnboardingAPI.patchProfile(data) }
+                    catch { print("patchProfile failed: \(error)") }
+                }
+                push(.postSuccess)
+            }, onBack: pop)
         case .postSuccess:
             SuccessScreen(onViewListing: onFinish, onBrowseFlatmates: onFinish)
         }

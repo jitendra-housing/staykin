@@ -21,14 +21,14 @@ struct VibeScreen: View {
                 PostStepHeader(
                     stepIndex: 2,
                     totalSteps: 3,
-                    title: "What's the flat's vibe? ✨",
+                    title: "What's your vibe? ✨",
                     subtitle: "Pick at least 5 — helps the right people self-filter",
                     onBack: onBack
                 )
                 .padding(.top, Spacing.sm)
 
                 HStack {
-                    SectionLabel(text: "Pick the flat's vibe")
+                    SectionLabel(text: "Pick your vibe")
                     Spacer()
                     Text("\(selectionCount)/\(VibePref.minSelections) minimum")
                         .font(.caption1.weight(.bold))

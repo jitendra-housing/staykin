@@ -4,25 +4,20 @@ struct FlatDetailsScreen: View {
     let onContinue: () -> Void
     let onBack: () -> Void
 
-    @State private var selectedArea: Int? = nil
-    @State private var rent: Int? = nil
-    @State private var selectedBHK: Int? = nil
-    @State private var selectedFurnishing: Int? = nil
-    @State private var flatmateCount: Int = 1
-    @State private var genderPref: Int? = nil
-    @State private var moveIn: Int? = nil
-    @State private var amenities: Set<Int> = []
+    @Environment(OnboardingData.self) private var data
 
     private var canContinue: Bool {
-        selectedArea != nil
-            && rent != nil
-            && selectedBHK != nil
-            && selectedFurnishing != nil
-            && genderPref != nil
-            && moveIn != nil
+        data.listingLocalityId != nil
+            && data.listingMonthlyRent != nil
+            && data.listingBHK != nil
+            && data.listingFurnishing != nil
+            && data.listingGenderPref != nil
+            && data.listingMoveIn != nil
     }
 
     var body: some View {
+        @Bindable var data = data
+
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
                 PostStepHeader(
@@ -38,9 +33,9 @@ struct FlatDetailsScreen: View {
                         ForEach(Area.allInGurgaon) { area in
                             SelectablePill(
                                 label: area.name,
-                                isSelected: selectedArea == area.id,
+                                isSelected: data.listingLocalityId == area.id,
                                 variant: .tag,
-                                action: { selectedArea = (selectedArea == area.id) ? nil : area.id }
+                                action: { data.listingLocalityId = (data.listingLocalityId == area.id) ? nil : area.id }
                             )
                         }
                     }
@@ -55,9 +50,9 @@ struct FlatDetailsScreen: View {
                         ForEach(BHK.all) { bhk in
                             SelectablePill(
                                 label: bhk.label,
-                                isSelected: selectedBHK == bhk.id,
+                                isSelected: data.listingBHK == bhk.id,
                                 variant: .pill,
-                                action: { selectedBHK = (selectedBHK == bhk.id) ? nil : bhk.id }
+                                action: { data.listingBHK = (data.listingBHK == bhk.id) ? nil : bhk.id }
                             )
                         }
                         Spacer()
@@ -69,9 +64,9 @@ struct FlatDetailsScreen: View {
                         ForEach(Furnishing.all) { f in
                             SelectablePill(
                                 label: f.label,
-                                isSelected: selectedFurnishing == f.id,
+                                isSelected: data.listingFurnishing == f.id,
                                 variant: .pill,
-                                action: { selectedFurnishing = (selectedFurnishing == f.id) ? nil : f.id }
+                                action: { data.listingFurnishing = (data.listingFurnishing == f.id) ? nil : f.id }
                             )
                         }
                         Spacer()
@@ -79,7 +74,7 @@ struct FlatDetailsScreen: View {
                 }
 
                 section(label: "Flatmates needed", topPadding: 14) {
-                    PostStepper(value: $flatmateCount, range: 1...5, unitLabel: "flatmates")
+                    PostStepper(value: $data.listingFlatmatesNeeded, range: 1...5, unitLabel: "flatmates")
                 }
 
                 section(label: "Gender preference", topPadding: 14) {
@@ -87,9 +82,9 @@ struct FlatDetailsScreen: View {
                         ForEach(GenderPref.all) { g in
                             SelectablePill(
                                 label: g.displayLabel,
-                                isSelected: genderPref == g.id,
+                                isSelected: data.listingGenderPref == g.id,
                                 variant: .pill,
-                                action: { genderPref = (genderPref == g.id) ? nil : g.id }
+                                action: { data.listingGenderPref = (data.listingGenderPref == g.id) ? nil : g.id }
                             )
                         }
                         Spacer()
@@ -101,9 +96,9 @@ struct FlatDetailsScreen: View {
                         ForEach(MoveInTimeline.all) { m in
                             SelectablePill(
                                 label: m.displayLabel,
-                                isSelected: moveIn == m.id,
+                                isSelected: data.listingMoveIn == m.id,
                                 variant: .pill,
-                                action: { moveIn = (moveIn == m.id) ? nil : m.id }
+                                action: { data.listingMoveIn = (data.listingMoveIn == m.id) ? nil : m.id }
                             )
                         }
                         Spacer()
@@ -115,9 +110,9 @@ struct FlatDetailsScreen: View {
                         ForEach(Amenity.all) { a in
                             SelectablePill(
                                 label: a.displayLabel,
-                                isSelected: amenities.contains(a.id),
+                                isSelected: data.listingAmenities.contains(a.id),
                                 variant: .pill,
-                                action: { amenities.toggleMembership(of: a.id) }
+                                action: { data.listingAmenities.toggleMembership(of: a.id) }
                             )
                         }
                     }
@@ -167,10 +162,10 @@ struct FlatDetailsScreen: View {
 
     private var rentText: Binding<String> {
         Binding(
-            get: { rent.map(String.init) ?? "" },
+            get: { data.listingMonthlyRent.map(String.init) ?? "" },
             set: { newValue in
                 let digits = newValue.filter(\.isNumber).prefix(7)
-                rent = digits.isEmpty ? nil : Int(digits)
+                data.listingMonthlyRent = digits.isEmpty ? nil : Int(digits)
             }
         )
     }

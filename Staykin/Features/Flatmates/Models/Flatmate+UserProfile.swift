@@ -39,7 +39,7 @@ extension Flatmate {
             avatarURL: profile.photoUrl,
             avatarHue: hue,
             avatarHue2: (hue + 50).truncatingRemainder(dividingBy: 360),
-            matchPct: profile.vibeScore ?? 0,
+            matchPct: profile.vibeScore ?? 0,             // backend wires vibe_score → UserOut; 0 until then
             vibePrefIds: profile.lifestyleTagIds ?? [],
             bio: "",                                      // not returned by /flatmates
             lookingFor: lookingFor

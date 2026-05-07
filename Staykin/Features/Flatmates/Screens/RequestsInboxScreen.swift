@@ -24,6 +24,7 @@ struct RequestsInboxScreen: View {
     @State private var rooms: [Room] = []
     @State private var roomsLoading: Bool = false
     @State private var roomsError: String?
+    @State private var roomOtherUser: [Int: Flatmate] = [:]   // roomId → other participant
 
     // Sent tab API state
     @State private var sentRequests: [RequestOut] = []
@@ -97,7 +98,13 @@ struct RequestsInboxScreen: View {
             ForEach(rooms) { room in
                 RoomRow(
                     room: room,
-                    onRowTap: { onOpenChat(room.id) }
+                    flatmate: roomOtherUser[room.id],
+                    onRowTap: {
+                        // Pass the other-user id (or fall back to room id) so
+                        // FlatmatesCoordinator can resolve the chat header.
+                        let id = roomOtherUser[room.id]?.id ?? room.id
+                        onOpenChat(id)
+                    }
                 )
             }
         }
@@ -135,7 +142,60 @@ struct RequestsInboxScreen: View {
         roomsLoading = true
         roomsError = nil
         do {
-            rooms = try await RoomsAPI.fetchRooms()
+            // Fetch rooms + the data needed to enrich each row with the other
+            // participant's name and avatar.
+            async let roomsTask = RoomsAPI.fetchRooms()
+            async let sentTask = RequestsAPI.fetchSent()
+            async let receivedTask = RequestsAPI.fetchReceived()
+            async let flatmatesTask = FlatmatesAPI.fetchFlatmates()
+
+            let fetchedRooms = try await roomsTask
+            let sent = (try? await sentTask) ?? []
+            let received = (try? await receivedTask) ?? []
+            let flatmateEntries = (try? await flatmatesTask) ?? []
+
+            // 1) Register live flatmates so MockFlatmates.find(by:) resolves
+            //    them downstream (FlatmateChatScreen, ChatThread, etc.).
+            var liveFlatmates: [Flatmate] = []
+            for entry in flatmateEntries {
+                switch entry {
+                case .user(let u):
+                    liveFlatmates.append(Flatmate(profile: u))
+                case .team(_, let members):
+                    for m in members { liveFlatmates.append(Flatmate(profile: m)) }
+                }
+            }
+            MockFlatmates.register(liveFlatmates)
+            let flatmatesById = Dictionary(uniqueKeysWithValues: liveFlatmates.map { ($0.id, $0) })
+
+            // 2) Build requestId → otherUserId by combining sent + received.
+            let me = UserDefaults.standard.object(forKey: OnboardingAPI.userIdDefaultsKey) as? Int
+            var otherByRequestId: [Int: Int] = [:]
+            for r in sent {
+                if let target = r.targetUserId {
+                    otherByRequestId[r.id] = target
+                }
+            }
+            for r in received {
+                // For received, "other" is the sender — unless sender is me, then it's the target.
+                if r.fromUserId != me {
+                    otherByRequestId[r.id] = r.fromUserId
+                } else if let target = r.targetUserId {
+                    otherByRequestId[r.id] = target
+                }
+            }
+
+            // 3) Build roomId → Flatmate.
+            var byRoom: [Int: Flatmate] = [:]
+            for room in fetchedRooms {
+                if let userId = otherByRequestId[room.requestId],
+                   let flatmate = flatmatesById[userId] {
+                    byRoom[room.id] = flatmate
+                }
+            }
+
+            rooms = fetchedRooms
+            roomOtherUser = byRoom
         } catch {
             roomsError = error.localizedDescription
         }
@@ -354,18 +414,22 @@ private struct RowCard<Content: View>: View {
 
 private struct RoomRow: View {
     let room: Room
+    let flatmate: Flatmate?
     let onRowTap: () -> Void
 
-    // The /rooms response carries no participant info, so we render placeholders
-    // until enrichment lands (server-side or per-row profile fetch).
-    private var displayName: String { "Chat #\(room.id)" }
-    private var avatarHue: Double { Double((room.id * 47) % 360) }
+    private var displayName: String {
+        flatmate?.name ?? "Chat #\(room.id)"
+    }
 
     var body: some View {
         Button(action: onRowTap) {
             RowCard {
                 HStack(spacing: 12) {
-                    Avatar(size: 48, hue: avatarHue, initial: nil)
+                    if let flatmate {
+                        Avatar(flatmate: flatmate, size: 48)
+                    } else {
+                        Avatar(size: 48, hue: Double((room.id * 47) % 360), initial: nil)
+                    }
 
                     HStack(spacing: 8) {
                         VStack(alignment: .leading, spacing: 2) {

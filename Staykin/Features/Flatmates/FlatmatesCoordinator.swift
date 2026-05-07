@@ -33,7 +33,12 @@ struct FlatmatesCoordinator: View {
                 ChatsTabPlaceholder()
             }
         case .directChat(let threadId):
-            if let thread = MockFlatmates.chatThread(by: threadId) {
+            // For live rooms RequestsInboxScreen passes the *other user's* id;
+            // we synthesize a ChatThread on top of the registered Flatmate so
+            // the messaging UI keeps working unchanged. For mock rows we still
+            // resolve against MockFlatmates.chatThread.
+            if let thread = liveThread(forUserId: threadId)
+                ?? MockFlatmates.chatThread(by: threadId) {
                 FlatmateChatScreen(
                     thread: thread,
                     onBack:        { path.removeLast() },
@@ -50,6 +55,19 @@ struct FlatmatesCoordinator: View {
                 onOpenProfile: { flatmateId in path.append(.requestProfile(flatmateId: flatmateId)) }
             )
         }
+    }
+
+    // Builds a ChatThread for live data — id == userId so back navigation works,
+    // otherFlatmateId resolves to the registered live flatmate.
+    private func liveThread(forUserId userId: Int) -> ChatThread? {
+        guard MockFlatmates.find(by: userId) != nil else { return nil }
+        return ChatThread(
+            id: userId,
+            otherFlatmateId: userId,
+            lastMessage: "",
+            timeAgo: "",
+            unreadCount: 0
+        )
     }
 
     private func acceptFlatmate(flatmateId: Int) {

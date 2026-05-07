@@ -75,12 +75,9 @@ struct FlatDetailView: View {
 
     // MARK: - Enquire
 
-    // Listings don't yet expose owner_user_id on FlatDetail directly; until
-    // GET /listings/{id} is wired in, fall back to the first flatmate marked
-    // .poster (or the first flatmate, whichever exists).
     private var requestTargetUserId: Int? {
-        detail.flatmates.first(where: { $0.role == .poster })?.id
-            ?? detail.flatmates.first?.id
+        renderedFlatmates.first(where: { $0.role == .poster })?.id
+            ?? renderedFlatmates.first?.id
     }
 
     private func enquire() {

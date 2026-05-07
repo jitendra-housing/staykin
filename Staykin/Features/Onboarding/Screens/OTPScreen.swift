@@ -1,13 +1,14 @@
 import SwiftUI
 
 struct OTPScreen: View {
-    let onVerify: () -> Void
+    let onVerify: () async -> Void
     let onBack: () -> Void
 
     @Environment(OnboardingData.self) private var data
     @FocusState private var otpFocused: Bool
     @State private var resendSeconds: Int = 23
     @State private var showError = false
+    @State private var isVerifying = false
 
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -125,7 +126,8 @@ struct OTPScreen: View {
             PrimaryButton(
                 title: showError ? "Try again" : "Verify ✨",
                 action: handleVerify,
-                isDisabled: data.otpCode.count != 6
+                isDisabled: data.otpCode.count != 6,
+                isLoading: isVerifying
             )
             .padding(.top, Spacing.xl)
 
@@ -145,8 +147,13 @@ struct OTPScreen: View {
         // "000000" triggers the error state for design QA — replace with real auth later.
         if data.otpCode == "000000" {
             withAnimation { showError = true }
-        } else {
-            onVerify()
+            return
+        }
+        guard !isVerifying else { return }
+        isVerifying = true
+        Task { @MainActor in
+            await onVerify()
+            isVerifying = false
         }
     }
 

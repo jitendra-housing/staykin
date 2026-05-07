@@ -17,7 +17,8 @@ targets:
       path: Staykin/Resources/Info.plist
       properties:
         CFBundleDisplayName: Staykin
-        UILaunchScreen: {}
+        UILaunchScreen:
+          UIColorName: BgBase
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
         UIUserInterfaceStyle: Dark

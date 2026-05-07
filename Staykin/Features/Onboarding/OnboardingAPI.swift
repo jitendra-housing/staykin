@@ -37,6 +37,35 @@ enum OnboardingAPI {
         return profile
     }
 
+    /// Looks up an existing profile by phone. Returns the user_id if registered;
+    /// nil if 404 (not found) or if the backend returns the -1 sentinel.
+    static func lookupUserId(byPhone phone: String) async throws -> Int? {
+        let url = baseURL.appendingPathComponent("profile/by-phone/\(phone)")
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "accept")
+
+        let (responseData, response) = try await URLSession.shared.data(for: request)
+
+        if let http = response as? HTTPURLResponse {
+            if http.statusCode == 404 { return nil }
+            if !(200..<300).contains(http.statusCode) {
+                let snippet = String(data: responseData, encoding: .utf8) ?? ""
+                throw NSError(
+                    domain: "OnboardingAPI",
+                    code: http.statusCode,
+                    userInfo: [NSLocalizedDescriptionKey: "GET /profile/by-phone failed (\(http.statusCode)): \(snippet)"]
+                )
+            }
+        }
+
+        struct ByPhoneOut: Decodable { let userId: Int }
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let out = try decoder.decode(ByPhoneOut.self, from: responseData)
+        return out.userId == -1 ? nil : out.userId
+    }
+
     /// Fetches a profile by user id without persisting. Use for arbitrary users (e.g. listing owners).
     /// Pass `viewerId` to have the backend compute `vibe_score` against that viewer.
     static func getProfile(userId: Int, viewerId: Int? = nil) async throws -> (UserProfile, Data) {

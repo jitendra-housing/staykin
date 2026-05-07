@@ -39,7 +39,25 @@ struct OnboardingCoordinator: View {
         case .phone:
             PhoneScreen(onContinue: { push(.otp) })
         case .otp:
-            OTPScreen(onVerify: { push(.profile) }, onBack: pop)
+            OTPScreen(
+                onVerify: {
+                    do {
+                        if let userId = try await OnboardingAPI.lookupUserId(byPhone: data.phoneNumber) {
+                            // Existing user — fetch full profile, persist, jump to home.
+                            _ = try await OnboardingAPI.fetchProfile(userId: userId)
+                            data.userId = userId
+                            handleFinish(.flatsList)
+                        } else {
+                            // No profile yet — continue onboarding.
+                            push(.profile)
+                        }
+                    } catch {
+                        print("by-phone lookup failed: \(error)")
+                        push(.profile)
+                    }
+                },
+                onBack: pop
+            )
         case .profile:
             ProfileScreen(onContinue: {
                 Task { @MainActor in

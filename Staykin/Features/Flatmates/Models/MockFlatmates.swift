@@ -99,8 +99,16 @@ enum MockFlatmates {
         )
     ]
 
+    // Runtime cache populated from live API fetches (e.g. /flatmates/{user_id}).
+    // Falls back to the static mocks if a live entry isn't registered.
+    private static var runtime: [Int: Flatmate] = [:]
+
     static func find(by id: Int) -> Flatmate? {
-        all.first { $0.id == id }
+        all.first { $0.id == id } ?? runtime[id]
+    }
+
+    static func register(_ flatmates: [Flatmate]) {
+        for f in flatmates { runtime[f.id] = f }
     }
 
     // MARK: - Requests

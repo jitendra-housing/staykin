@@ -1,8 +1,9 @@
 import Foundation
 
 // Adapter from server-shaped UserProfile → the richer Flatmate display model
-// used by SwipeableFlatmateCard / FlatmatesSwipeView. Fields the API doesn't
-// return (matchPct, bio) get neutral placeholders.
+// used by SwipeableFlatmateCard / FlatmatesSwipeView and the chat header.
+// matchPct comes from UserProfile.matchScore (a `match_score` field on the
+// server-side UserOut once backend ships it). Falls back to 0 until then.
 extension Flatmate {
     init(profile: UserProfile) {
         let hue = Double((profile.id * 47) % 360)
@@ -38,7 +39,7 @@ extension Flatmate {
             avatarURL: profile.photoUrl,
             avatarHue: hue,
             avatarHue2: (hue + 50).truncatingRemainder(dividingBy: 360),
-            matchPct: 0,                                  // backend doesn't compute match yet
+            matchPct: profile.matchScore ?? 0,            // backend wires match_score → UserOut; 0 until then
             vibePrefIds: profile.lifestyleTagIds ?? [],
             bio: "",                                      // not returned by /flatmates
             lookingFor: lookingFor

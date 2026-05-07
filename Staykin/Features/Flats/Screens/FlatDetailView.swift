@@ -5,6 +5,7 @@ struct FlatDetailView: View {
     let onBack: () -> Void
 
     @State private var selectedFlatmate: Flatmate? = nil
+    @State private var showEnquirySent = false
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -31,15 +32,38 @@ struct FlatDetailView: View {
         }
         .background(Color.bgBase)
         .navigationBarBackButtonHidden(true)
-        .staykinSheet(item: $selectedFlatmate, detents: [.large]) { flatmate in
+        .staykinSheet(item: $selectedFlatmate, detents: [.height(490)]) { flatmate in
             FlatmateProfileSheet(flatmate: flatmate) {
                 selectedFlatmate = nil
+            }
+        }
+        .overlay(alignment: .bottom) {
+            if showEnquirySent {
+                SuccessToast(
+                    title: "Enquiry request sent",
+                    subtitle: "Check status in",
+                    actionLabel: "Sent Requests →",
+                    onAction: {
+                        // Phase later — navigate to Sent Requests
+                    }
+                )
+                .padding(.horizontal, 16)
+                .padding(.bottom, 96)   // sit above the sticky Enquire CTA
+                .transition(.move(edge: .bottom).combined(with: .opacity))
+            }
+        }
+        .animation(.easeOut(duration: 0.25), value: showEnquirySent)
+        .task(id: showEnquirySent) {
+            guard showEnquirySent else { return }
+            try? await Task.sleep(for: .seconds(3))
+            if !Task.isCancelled {
+                showEnquirySent = false
             }
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             VStack(spacing: 0) {
                 Rectangle().fill(Color.cardBorder).frame(height: 1)
-                PrimaryButton(title: "Enquire", action: {})
+                PrimaryButton(title: "Enquire", action: { showEnquirySent = true })
                     .padding(.horizontal, 18)
                     .padding(.top, 12)
                     .padding(.bottom, 8)

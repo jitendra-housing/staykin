@@ -95,6 +95,8 @@ struct ProfileScreen: View {
                     ) { selectedId in
                         data.occupation = selectedId
                     }
+
+                    CityField(city: data.city)
                 }
                 .padding(.top, 28)
 
@@ -152,6 +154,40 @@ private struct AgeField: View {
                     )
             )
             .animation(.easeInOut(duration: 0.15), value: focused)
+    }
+}
+
+// MARK: - Read-only city field (v1 is Gurgaon only)
+
+private struct CityField: View {
+    let city: String
+
+    var body: some View {
+        HStack(spacing: 8) {
+            Image(systemName: "mappin.and.ellipse")
+                .font(.system(size: 13, weight: .semibold))
+                .foregroundStyle(Color.textSecondary)
+            Text(city)
+                .font(.bodyLg)
+                .foregroundStyle(Color.textPrimary)
+            Spacer()
+            Text("Launch city")
+                .font(.caption1)
+                .foregroundStyle(Color.textSecondary)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 3)
+                .background(Color.primaryPurple.opacity(0.10))
+                .clipShape(Capsule())
+                .overlay(Capsule().strokeBorder(Color.primaryPurple.opacity(0.25), lineWidth: 1))
+        }
+        .padding(.horizontal, Spacing.md)
+        .frame(height: ComponentSize.inputHeight)
+        .background(Color.bgCard)
+        .clipShape(RoundedRectangle(cornerRadius: Radius.md))
+        .overlay(
+            RoundedRectangle(cornerRadius: Radius.md)
+                .strokeBorder(Color.cardBorder, lineWidth: 1)
+        )
     }
 }
 

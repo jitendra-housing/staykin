@@ -7,7 +7,7 @@ struct HomeView: View {
         VStack(spacing: 0) {
             ZStack {
                 switch selectedTab {
-                case .flats:     FlatsTabPlaceholder()
+                case .flats:     FlatsTabView()
                 case .flatmates: FlatmatesTabPlaceholder()
                 case .chats:     ChatsTabPlaceholder()
                 case .profile:   ProfileTabPlaceholder()

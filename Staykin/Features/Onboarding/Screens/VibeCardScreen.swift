@@ -34,7 +34,7 @@ struct VibeCardScreen: View {
 
             ScrollView {
                 VStack(spacing: 0) {
-                    VibeCard(profile: VibeCardProfile(onboarding: data))
+                    VibeCard(data: data)
                         .padding(.top, 20)
 
                     HStack(spacing: 6) {

@@ -16,7 +16,7 @@ struct RequestProfileScreen: View {
 
             ScrollView {
                 VStack(spacing: 0) {
-                    VibeCard(profile: VibeCardProfile(flatmate: flatmate, badgeText: flatmate.role.badgeText))
+                    FlatmateVibeCard(flatmate: flatmate)
                         .padding(.top, 8)
 
                     aboutSection

@@ -32,7 +32,7 @@ struct FlatDetailView: View {
         }
         .background(Color.bgBase)
         .navigationBarBackButtonHidden(true)
-        .staykinSheet(item: $selectedFlatmate, detents: [.height(600)]) { flatmate in
+        .staykinSheet(item: $selectedFlatmate, detents: [.height(490)]) { flatmate in
             FlatmateProfileSheet(flatmate: flatmate) {
                 selectedFlatmate = nil
             }

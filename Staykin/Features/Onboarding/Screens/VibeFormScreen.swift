@@ -6,47 +6,14 @@ struct VibeFormScreen: View {
 
     @Environment(OnboardingData.self) private var data
 
-    private struct Pref {
-        let emoji: String
-        let label: String
-    }
-
-    private let prefs: [Pref] = [
-        .init(emoji: "🦉", label: "Night Owl"),
-        .init(emoji: "🌅", label: "Early Bird"),
-        .init(emoji: "📚", label: "Book Worm"),
-        .init(emoji: "🏋️", label: "Fitness Freak"),
-        .init(emoji: "⚽", label: "Sporty"),
-        .init(emoji: "✈️", label: "Wanderer"),
-        .init(emoji: "🥳", label: "Party Lover"),
-        .init(emoji: "🐶", label: "Pet Lover"),
-        .init(emoji: "🥬", label: "Vegetarian"),
-        .init(emoji: "🍗", label: "Non-Veg"),
-        .init(emoji: "🥚", label: "Eggetarian"),
-        .init(emoji: "🌱", label: "Vegan"),
-        .init(emoji: "🍷", label: "Drinks Socially"),
-        .init(emoji: "🚫", label: "Non Alcoholic"),
-        .init(emoji: "🚬", label: "Smoker"),
-        .init(emoji: "🚭", label: "Non Smoker"),
-        .init(emoji: "🎸", label: "Music Lover"),
-        .init(emoji: "🎮", label: "Gamer"),
-        .init(emoji: "🍳", label: "Loves Cooking"),
-        .init(emoji: "🎬", label: "Movie Buff"),
-        .init(emoji: "🧘", label: "Yoga & Wellness"),
-        .init(emoji: "💼", label: "WFH"),
-        .init(emoji: "🧹", label: "Clean Freak"),
-        .init(emoji: "😌", label: "Chill Vibes")
-    ]
-
     private let columns = [
         GridItem(.flexible(), spacing: 12),
         GridItem(.flexible(), spacing: 12),
         GridItem(.flexible(), spacing: 12)
     ]
 
-    private let minSelections = 5
     private var selectionCount: Int { data.vibePrefs.count }
-    private var canContinue: Bool { selectionCount >= minSelections }
+    private var canContinue: Bool { selectionCount >= VibePref.minSelections }
 
     var body: some View {
         ScrollView {
@@ -67,7 +34,7 @@ struct VibeFormScreen: View {
                 HStack {
                     SectionLabel(text: "Pick your vibe")
                     Spacer()
-                    Text("\(selectionCount)/\(minSelections) minimum")
+                    Text("\(selectionCount)/\(VibePref.minSelections) minimum")
                         .font(.caption1.weight(.bold))
                         .foregroundStyle(canContinue ? Color.success : Color.accentAmber)
                 }
@@ -75,12 +42,12 @@ struct VibeFormScreen: View {
                 .padding(.bottom, 14)
 
                 LazyVGrid(columns: columns, spacing: 18) {
-                    ForEach(prefs, id: \.label) { pref in
+                    ForEach(VibePref.all) { pref in
                         VibePrefCell(
                             emoji: pref.emoji,
                             label: pref.label,
-                            isSelected: data.vibePrefs.contains(pref.label),
-                            action: { toggle(pref.label) }
+                            isSelected: data.vibePrefs.contains(pref.id),
+                            action: { toggle(pref.id) }
                         )
                     }
                 }
@@ -101,7 +68,7 @@ struct VibeFormScreen: View {
                 .frame(height: 24)
 
                 PrimaryButton(
-                    title: canContinue ? "Add Preferences →" : "Pick \(minSelections - selectionCount) more",
+                    title: canContinue ? "Add Preferences →" : "Pick \(VibePref.minSelections - selectionCount) more",
                     action: onContinue,
                     isDisabled: !canContinue
                 )
@@ -112,11 +79,11 @@ struct VibeFormScreen: View {
         }
     }
 
-    private func toggle(_ label: String) {
-        if data.vibePrefs.contains(label) {
-            data.vibePrefs.remove(label)
+    private func toggle(_ id: Int) {
+        if data.vibePrefs.contains(id) {
+            data.vibePrefs.remove(id)
         } else {
-            data.vibePrefs.insert(label)
+            data.vibePrefs.insert(id)
         }
     }
 }

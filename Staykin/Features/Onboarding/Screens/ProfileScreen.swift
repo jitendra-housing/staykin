@@ -7,17 +7,11 @@ struct ProfileScreen: View {
     @Environment(OnboardingData.self) private var data
     @State private var photoItem: PhotosPickerItem?
 
-    private let cities = [
-        "Bengaluru", "Mumbai", "Delhi", "Hyderabad", "Pune",
-        "Chennai", "Gurgaon", "Noida", "Kolkata", "Ahmedabad"
-    ]
-
     private var canContinue: Bool {
         !data.name.trimmingCharacters(in: .whitespaces).isEmpty
             && data.age != nil
             && data.gender != nil
             && !data.occupation.trimmingCharacters(in: .whitespaces).isEmpty
-            && !data.city.isEmpty
     }
 
     var body: some View {
@@ -99,14 +93,6 @@ struct ProfileScreen: View {
                         text: $data.occupation,
                         autocapitalization: .words
                     )
-
-                    DropdownField(
-                        placeholder: "City",
-                        value: data.city.isEmpty ? nil : data.city,
-                        options: cities.map { ($0, $0) }
-                    ) { selected in
-                        data.city = selected
-                    }
                 }
                 .padding(.top, 28)
 

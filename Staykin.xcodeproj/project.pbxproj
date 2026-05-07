@@ -8,19 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		01358250A1E5D80C26B12CC0 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6328BF92F7D89FF23FD4C /* ProfileScreen.swift */; };
+		0CC4C1C2D69A3F91B860B786 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8E11ABF5824B85ED5F6E73 /* Area.swift */; };
 		1099725D3B0A9DCBCFC53342 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40BF0CB6FAF75AA2BED1578 /* RangeSlider.swift */; };
 		13B3006EDAD1A3C1258CC866 /* DSColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AED8270034A7DDA5D8BB4A /* DSColors.swift */; };
 		1C811C2347B8536E59AF4318 /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC2D487DC8F9560646741C0 /* OnboardingData.swift */; };
 		1F853D1EB4E01C6EBFAE8CDD /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB260E86A73E7FEA4865A7 /* RootView.swift */; };
 		2137AFD30302FA73BBB96876 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E14E36B976EE20DD7DFFCD /* SplashView.swift */; };
 		252D6151EE5F0A2FD7BDCF17 /* SectionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58865B54C3850E5B2D724552 /* SectionLabel.swift */; };
+		3BE6CB20984E56D20E732991 /* MoveInTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506305162BC4F1F25EB99F19 /* MoveInTimeline.swift */; };
+		4190899B46510459C2457961 /* BHK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071655D7CA35F0A4095CDC39 /* BHK.swift */; };
 		50F471997DD954DF1D76109B /* VibeCardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB690364CE90CC31C9CAD8F /* VibeCardScreen.swift */; };
 		591374C8064ECA60C70DBF14 /* FlatPrefsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1770DCC32A30A1CF7E5DA5D /* FlatPrefsScreen.swift */; };
 		61F58A78637C04E68626585C /* SelectablePill.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3977237EA7C3EE79850CFFC /* SelectablePill.swift */; };
+		6734F81862C435EECA6B0527 /* Furnishing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9A4CE1216AF83ACDA58C68 /* Furnishing.swift */; };
 		7D5FEFB4257FAA8EB7AB57D2 /* StepPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DF11B07CE601F0F18A6AF3 /* StepPill.swift */; };
 		81B8E451EA24876BB155CF3F /* OnboardingRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68689740E2E70A302A20EB66 /* OnboardingRoute.swift */; };
 		8677BE0AB7475C372F7A424C /* DSTypography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310958C443739BF7E8EE3655 /* DSTypography.swift */; };
 		89BE8F4A0288A65B8E6A5E6F /* IntentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C256A97A75B4B6857356811D /* IntentCard.swift */; };
+		98E059FE124680249EE8F115 /* VibePref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AF39FFE7C7C65CE7C0B740 /* VibePref.swift */; };
 		A2FDCBD3365344B5502273AB /* IntentScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2C2A65FBDCF4FC78DDF976 /* IntentScreen.swift */; };
 		A507125254E1F247F8800F3A /* OTPScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABD7934EA461C62DCF7F7F9 /* OTPScreen.swift */; };
 		AA18D2A07B51071C520A7BE2 /* PhoneScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12D8A2593707E7D7BFF160C /* PhoneScreen.swift */; };
@@ -28,6 +33,7 @@
 		AD59EF9D96790FBC8CF682F7 /* Outfit-Variable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CADB7EBD2D0E95F499354FA /* Outfit-Variable.ttf */; };
 		C4F5A0825064191619ACCCC9 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD9FDD2714F6285154C8D41 /* OnboardingCoordinator.swift */; };
 		C90B6939AAC7E4BF261717DF /* DSGradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AAD6F18339ED9AA315901F /* DSGradients.swift */; };
+		CD6B64DF7F20D326DA973753 /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FC7149558AC0DE2451B5A6 /* RoomType.swift */; };
 		D4703948E63CDB1FBB027780 /* StaykinTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA798E28589FD8A7854663 /* StaykinTextField.swift */; };
 		D973EDFE050E3F0A24F13F2C /* VibeFormScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78787EF8FA148BC368018340 /* VibeFormScreen.swift */; };
 		E1586E240FF3523C39B3D199 /* StaykinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5064A80BB4EFBA2EC26ADFFA /* StaykinApp.swift */; };
@@ -39,19 +45,24 @@
 /* Begin PBXFileReference section */
 		06AAD6F18339ED9AA315901F /* DSGradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSGradients.swift; sourceTree = "<group>"; };
 		06AED8270034A7DDA5D8BB4A /* DSColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSColors.swift; sourceTree = "<group>"; };
+		071655D7CA35F0A4095CDC39 /* BHK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BHK.swift; sourceTree = "<group>"; };
 		0CADB7EBD2D0E95F499354FA /* Outfit-Variable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Variable.ttf"; sourceTree = "<group>"; };
 		0D922F2CDF9E10B77F04D290 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		0E6FDBB2E3664852D7233588 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		10AF39FFE7C7C65CE7C0B740 /* VibePref.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibePref.swift; sourceTree = "<group>"; };
 		1AB690364CE90CC31C9CAD8F /* VibeCardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibeCardScreen.swift; sourceTree = "<group>"; };
 		22E14E36B976EE20DD7DFFCD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		2BD9FDD2714F6285154C8D41 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		2D2C2A65FBDCF4FC78DDF976 /* IntentScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentScreen.swift; sourceTree = "<group>"; };
 		310958C443739BF7E8EE3655 /* DSTypography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSTypography.swift; sourceTree = "<group>"; };
+		36FC7149558AC0DE2451B5A6 /* RoomType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomType.swift; sourceTree = "<group>"; };
 		408E03C5F1AEBAA73B69F765 /* Staykin.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Staykin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		506305162BC4F1F25EB99F19 /* MoveInTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveInTimeline.swift; sourceTree = "<group>"; };
 		5064A80BB4EFBA2EC26ADFFA /* StaykinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaykinApp.swift; sourceTree = "<group>"; };
 		58865B54C3850E5B2D724552 /* SectionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionLabel.swift; sourceTree = "<group>"; };
 		68689740E2E70A302A20EB66 /* OnboardingRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRoute.swift; sourceTree = "<group>"; };
 		78787EF8FA148BC368018340 /* VibeFormScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibeFormScreen.swift; sourceTree = "<group>"; };
+		7A8E11ABF5824B85ED5F6E73 /* Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
 		7FDA798E28589FD8A7854663 /* StaykinTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaykinTextField.swift; sourceTree = "<group>"; };
 		83C6328BF92F7D89FF23FD4C /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		8BC2D487DC8F9560646741C0 /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
@@ -62,12 +73,26 @@
 		C256A97A75B4B6857356811D /* IntentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentCard.swift; sourceTree = "<group>"; };
 		C3977237EA7C3EE79850CFFC /* SelectablePill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectablePill.swift; sourceTree = "<group>"; };
 		CB3A51A80E59D112F04CA6F6 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		EF9A4CE1216AF83ACDA58C68 /* Furnishing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Furnishing.swift; sourceTree = "<group>"; };
 		F1770DCC32A30A1CF7E5DA5D /* FlatPrefsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatPrefsScreen.swift; sourceTree = "<group>"; };
 		F27FBEEF2262453EFF581C84 /* DSSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSSpacing.swift; sourceTree = "<group>"; };
 		F2DF11B07CE601F0F18A6AF3 /* StepPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepPill.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		0B950BDAC0E6DBD0F813606C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7A8E11ABF5824B85ED5F6E73 /* Area.swift */,
+				071655D7CA35F0A4095CDC39 /* BHK.swift */,
+				EF9A4CE1216AF83ACDA58C68 /* Furnishing.swift */,
+				506305162BC4F1F25EB99F19 /* MoveInTimeline.swift */,
+				36FC7149558AC0DE2451B5A6 /* RoomType.swift */,
+				10AF39FFE7C7C65CE7C0B740 /* VibePref.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		308FB95F03CF25B34089FC5E /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +181,7 @@
 				8BC2D487DC8F9560646741C0 /* OnboardingData.swift */,
 				68689740E2E70A302A20EB66 /* OnboardingRoute.swift */,
 				22E14E36B976EE20DD7DFFCD /* SplashView.swift */,
+				0B950BDAC0E6DBD0F813606C /* Models */,
 				4F60F3E62FEB91637D034C17 /* Screens */,
 			);
 			path = Onboarding;
@@ -254,6 +280,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CC4C1C2D69A3F91B860B786 /* Area.swift in Sources */,
+				4190899B46510459C2457961 /* BHK.swift in Sources */,
 				E426B941C136866616EC51F4 /* Buttons.swift in Sources */,
 				13B3006EDAD1A3C1258CC866 /* DSColors.swift in Sources */,
 				C90B6939AAC7E4BF261717DF /* DSGradients.swift in Sources */,
@@ -261,8 +289,10 @@
 				8677BE0AB7475C372F7A424C /* DSTypography.swift in Sources */,
 				591374C8064ECA60C70DBF14 /* FlatPrefsScreen.swift in Sources */,
 				E8FAD92CCA1C54C6B724BEFE /* FlowLayout.swift in Sources */,
+				6734F81862C435EECA6B0527 /* Furnishing.swift in Sources */,
 				89BE8F4A0288A65B8E6A5E6F /* IntentCard.swift in Sources */,
 				A2FDCBD3365344B5502273AB /* IntentScreen.swift in Sources */,
+				3BE6CB20984E56D20E732991 /* MoveInTimeline.swift in Sources */,
 				A507125254E1F247F8800F3A /* OTPScreen.swift in Sources */,
 				C4F5A0825064191619ACCCC9 /* OnboardingCoordinator.swift in Sources */,
 				1C811C2347B8536E59AF4318 /* OnboardingData.swift in Sources */,
@@ -270,6 +300,7 @@
 				AA18D2A07B51071C520A7BE2 /* PhoneScreen.swift in Sources */,
 				01358250A1E5D80C26B12CC0 /* ProfileScreen.swift in Sources */,
 				1099725D3B0A9DCBCFC53342 /* RangeSlider.swift in Sources */,
+				CD6B64DF7F20D326DA973753 /* RoomType.swift in Sources */,
 				1F853D1EB4E01C6EBFAE8CDD /* RootView.swift in Sources */,
 				252D6151EE5F0A2FD7BDCF17 /* SectionLabel.swift in Sources */,
 				61F58A78637C04E68626585C /* SelectablePill.swift in Sources */,
@@ -279,6 +310,7 @@
 				7D5FEFB4257FAA8EB7AB57D2 /* StepPill.swift in Sources */,
 				50F471997DD954DF1D76109B /* VibeCardScreen.swift in Sources */,
 				D973EDFE050E3F0A24F13F2C /* VibeFormScreen.swift in Sources */,
+				98E059FE124680249EE8F115 /* VibePref.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

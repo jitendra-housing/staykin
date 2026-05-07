@@ -6,10 +6,6 @@ struct FlatPrefsScreen: View {
 
     @Environment(OnboardingData.self) private var data
 
-    private let areas = [
-        "Koramangala", "Indiranagar", "HSR Layout", "Whitefield",
-        "BTM", "Jayanagar", "JP Nagar", "Marathahalli"
-    ]
     private let budgetRange: ClosedRange<Double> = 5_000...50_000
 
     private var canContinue: Bool {
@@ -36,12 +32,12 @@ struct FlatPrefsScreen: View {
                 // Area
                 section(label: "Area", topPadding: 24) {
                     FlowLayout(spacing: Spacing.xs) {
-                        ForEach(areas, id: \.self) { area in
+                        ForEach(Area.allInGurgaon) { area in
                             SelectablePill(
-                                label: area,
-                                isSelected: data.areas.contains(area),
+                                label: area.name,
+                                isSelected: data.areas.contains(area.id),
                                 variant: .tag,
-                                action: { toggleArea(area) }
+                                action: { toggleArea(area.id) }
                             )
                         }
                     }
@@ -80,12 +76,12 @@ struct FlatPrefsScreen: View {
                 // BHK (multi)
                 section(label: "BHK", topPadding: 24) {
                     HStack(spacing: Spacing.xs) {
-                        ForEach(BHK.allCases, id: \.self) { bhk in
+                        ForEach(BHK.all) { bhk in
                             SelectablePill(
-                                label: bhk.rawValue,
-                                isSelected: data.bhk.contains(bhk),
+                                label: bhk.label,
+                                isSelected: data.bhk.contains(bhk.id),
                                 variant: .pill,
-                                action: { toggle(bhk, in: \.bhk) }
+                                action: { toggle(bhk.id, in: \.bhk) }
                             )
                         }
                         Spacer()
@@ -95,12 +91,12 @@ struct FlatPrefsScreen: View {
                 // Room Type (single)
                 section(label: "Room Type", topPadding: 24) {
                     HStack(spacing: Spacing.xs) {
-                        ForEach(RoomType.allCases, id: \.self) { rt in
+                        ForEach(RoomType.all) { rt in
                             SelectablePill(
-                                label: rt.rawValue,
-                                isSelected: data.roomType == rt,
+                                label: rt.displayLabel,
+                                isSelected: data.roomType == rt.id,
                                 variant: .pill,
-                                action: { data.roomType = (data.roomType == rt) ? nil : rt }
+                                action: { data.roomType = (data.roomType == rt.id) ? nil : rt.id }
                             )
                         }
                         Spacer()
@@ -110,12 +106,12 @@ struct FlatPrefsScreen: View {
                 // Furnishing (multi)
                 section(label: "Furnishing", topPadding: 24) {
                     HStack(spacing: Spacing.xs) {
-                        ForEach(Furnishing.allCases, id: \.self) { f in
+                        ForEach(Furnishing.all) { f in
                             SelectablePill(
-                                label: f.rawValue,
-                                isSelected: data.furnishing.contains(f),
+                                label: f.label,
+                                isSelected: data.furnishing.contains(f.id),
                                 variant: .pill,
-                                action: { toggle(f, in: \.furnishing) }
+                                action: { toggle(f.id, in: \.furnishing) }
                             )
                         }
                         Spacer()
@@ -125,12 +121,12 @@ struct FlatPrefsScreen: View {
                 // Move-in (single)
                 section(label: "Move-in", topPadding: 24) {
                     HStack(spacing: Spacing.xs) {
-                        ForEach(MoveInTimeline.allCases, id: \.self) { m in
+                        ForEach(MoveInTimeline.all) { m in
                             SelectablePill(
-                                label: m.rawValue,
-                                isSelected: data.moveIn == m,
+                                label: m.displayLabel,
+                                isSelected: data.moveIn == m.id,
                                 variant: .pill,
-                                action: { data.moveIn = (data.moveIn == m) ? nil : m }
+                                action: { data.moveIn = (data.moveIn == m.id) ? nil : m.id }
                             )
                         }
                         Spacer()
@@ -173,11 +169,11 @@ struct FlatPrefsScreen: View {
         .padding(.top, topPadding)
     }
 
-    private func toggleArea(_ area: String) {
-        if data.areas.contains(area) {
-            data.areas.remove(area)
+    private func toggleArea(_ id: Int) {
+        if data.areas.contains(id) {
+            data.areas.remove(id)
         } else {
-            data.areas.insert(area)
+            data.areas.insert(id)
         }
     }
 

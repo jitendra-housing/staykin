@@ -72,22 +72,11 @@ private struct VibeCard: View {
     private static let cardWidth: CGFloat = 320
     private static let cardHeight: CGFloat = 480
 
-    static let labelToEmoji: [String: String] = [
-        "Night Owl": "🦉", "Early Bird": "🌅", "Book Worm": "📚",
-        "Fitness Freak": "🏋️", "Sporty": "⚽", "Wanderer": "✈️",
-        "Party Lover": "🥳", "Pet Lover": "🐶", "Vegetarian": "🥬",
-        "Non-Veg": "🍗", "Eggetarian": "🥚", "Vegan": "🌱",
-        "Drinks Socially": "🍷", "Non Alcoholic": "🚫", "Smoker": "🚬",
-        "Non Smoker": "🚭", "Music Lover": "🎸", "Gamer": "🎮",
-        "Loves Cooking": "🍳", "Movie Buff": "🎬", "Yoga & Wellness": "🧘",
-        "WFH": "💼", "Clean Freak": "🧹", "Chill Vibes": "😌"
-    ]
-
     private var vibeChips: [String] {
-        data.vibePrefs.sorted().map { label in
-            let emoji = Self.labelToEmoji[label] ?? "✨"
-            return "\(emoji) \(label)"
-        }
+        data.vibePrefs
+            .sorted()
+            .compactMap(VibePref.find(by:))
+            .map { "\($0.emoji) \($0.label)" }
     }
 
     private var nameAndAge: String {
@@ -106,11 +95,16 @@ private struct VibeCard: View {
     }
 
     private var typeText: String {
-        BHK.allCases.filter { data.bhk.contains($0) }.map(\.rawValue).joined(separator: " · ")
+        BHK.all.filter { data.bhk.contains($0.id) }.map(\.label).joined(separator: " · ")
     }
 
     private var areasText: String {
-        Array(data.areas).sorted().prefix(3).joined(separator: ", ")
+        data.areas
+            .sorted()
+            .compactMap(Area.find(by:))
+            .prefix(3)
+            .map(\.name)
+            .joined(separator: ", ")
     }
 
     var body: some View {

@@ -19,4 +19,6 @@ struct UserProfile: Codable, Equatable {
     let moveInDate: String?
     let genderPref: Int?
     let listingIds: [Int]?
+    let teamMemberIds: [Int]?
+    let vibeScore: Int?
 }

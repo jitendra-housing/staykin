@@ -2,6 +2,7 @@ import SwiftUI
 
 struct FlatListRow: View {
     let flat: Flat
+    var hideMatch: Bool = false
 
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
@@ -53,12 +54,14 @@ struct FlatListRow: View {
                     .truncationMode(.tail)
                     .padding(.top, 4)
 
-                Spacer(minLength: 4)
+                if !hideMatch {
+                    Spacer(minLength: 4)
 
-                // Match %
-                Text("⚡ \(flat.score)% match")
-                    .font(.system(size: 10, weight: .heavy))
-                    .foregroundStyle(Color.accentAmber)
+                    // Match %
+                    Text("⚡ \(flat.score)% match")
+                        .font(.system(size: 10, weight: .heavy))
+                        .foregroundStyle(Color.accentAmber)
+                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }

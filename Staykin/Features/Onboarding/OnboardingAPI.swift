@@ -38,8 +38,16 @@ enum OnboardingAPI {
     }
 
     /// Fetches a profile by user id without persisting. Use for arbitrary users (e.g. listing owners).
-    static func getProfile(userId: Int) async throws -> (UserProfile, Data) {
-        let url = baseURL.appendingPathComponent("profile/\(userId)")
+    /// Pass `viewerId` to have the backend compute `vibe_score` against that viewer.
+    static func getProfile(userId: Int, viewerId: Int? = nil) async throws -> (UserProfile, Data) {
+        var components = URLComponents(
+            url: baseURL.appendingPathComponent("profile/\(userId)"),
+            resolvingAgainstBaseURL: false
+        )!
+        if let viewerId {
+            components.queryItems = [URLQueryItem(name: "viewer_id", value: String(viewerId))]
+        }
+        let url = components.url!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "accept")

@@ -68,6 +68,7 @@
 		7766310B49CD2F51DE7B35FF /* PhotoTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FBE28D12663EB6F1E7A24 /* PhotoTile.swift */; };
 		7A874346FB92EF0340A8B274 /* PostSpaceTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B243E8EAC7DF18A5DFEF958 /* PostSpaceTypes.swift */; };
 		7BB5DABCE6EBF60FEC0814B5 /* ProfileTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD19E6E573C88C1B586578B /* ProfileTabView.swift */; };
+		A1B2C3D4E5F678901234560F /* MyListingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6789012345610 /* MyListingsScreen.swift */; };
 		7D5FEFB4257FAA8EB7AB57D2 /* StepPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DF11B07CE601F0F18A6AF3 /* StepPill.swift */; };
 		81B8E451EA24876BB155CF3F /* OnboardingRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68689740E2E70A302A20EB66 /* OnboardingRoute.swift */; };
 		85CC208A0959A838D7DF22CB /* PhotoPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA42773008AE9FF21E54E4 /* PhotoPlaceholder.swift */; };
@@ -199,6 +200,7 @@
 		9A47E8DD2724C6DD86C101D2 /* TrustStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustStrip.swift; sourceTree = "<group>"; };
 		9ABD7934EA461C62DCF7F7F9 /* OTPScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPScreen.swift; sourceTree = "<group>"; };
 		9AD19E6E573C88C1B586578B /* ProfileTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabView.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6789012345610 /* MyListingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListingsScreen.swift; sourceTree = "<group>"; };
 		A12D8A2593707E7D7BFF160C /* PhoneScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneScreen.swift; sourceTree = "<group>"; };
 		A31050EF48BDA99F6628F1BD /* EmptySlotRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySlotRow.swift; sourceTree = "<group>"; };
 		A7A56998AB1D4DED18871553 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				0DF6B6A5E5789A922E34F9F5 /* ChatsTabPlaceholder.swift */,
 				DC6C1F273398D20A732B13E3 /* FlatmatesTabView.swift */,
 				9AD19E6E573C88C1B586578B /* ProfileTabView.swift */,
+				A1B2C3D4E5F6789012345610 /* MyListingsScreen.swift */,
 				817EF4ADE3D5BB802E6C8D2B /* TabPlaceholder.swift */,
 			);
 			path = Screens;
@@ -693,6 +696,7 @@
 				C88DC398BA84376A73D61DED /* PostStepper.swift in Sources */,
 				01358250A1E5D80C26B12CC0 /* ProfileScreen.swift in Sources */,
 				7BB5DABCE6EBF60FEC0814B5 /* ProfileTabView.swift in Sources */,
+				A1B2C3D4E5F678901234560F /* MyListingsScreen.swift in Sources */,
 				071B34DDF7C2C88F961F4309 /* ProgressDots.swift in Sources */,
 				1099725D3B0A9DCBCFC53342 /* RangeSlider.swift in Sources */,
 				1DB7C44E6968895AEF56471A /* ReceivedRequest.swift in Sources */,

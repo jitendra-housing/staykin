@@ -60,13 +60,15 @@ struct FlatDetailView: View {
             }
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
-            VStack(spacing: 0) {
-                Rectangle().fill(Color.cardBorder).frame(height: 1)
-                PrimaryButton(title: "Enquire", action: enquire)
-                    .padding(.horizontal, 18)
-                    .padding(.top, 12)
-                    .padding(.bottom, 8)
-                    .background(Color.bgBase)
+            if !detail.isOwnListing {
+                VStack(spacing: 0) {
+                    Rectangle().fill(Color.cardBorder).frame(height: 1)
+                    PrimaryButton(title: "Enquire", action: enquire)
+                        .padding(.horizontal, 18)
+                        .padding(.top, 12)
+                        .padding(.bottom, 8)
+                        .background(Color.bgBase)
+                }
             }
         }
     }
@@ -157,9 +159,12 @@ struct FlatDetailView: View {
 
             VStack(spacing: 8) {
                 ForEach(renderedFlatmates) { mate in
-                    FlatmateListRow(flatmate: mate, hideMatch: detail.isOwnListing, onTap: {
-                        selectedFlatmate = mate
-                    })
+                    FlatmateListRow(
+                        flatmate: mate,
+                        hideMatch: detail.isOwnListing,
+                        disabled: detail.isOwnListing,
+                        onTap: { selectedFlatmate = mate }
+                    )
                 }
 
                 if let priv = detail.privateRoom, detail.slots.open > 0 {
@@ -172,13 +177,14 @@ struct FlatDetailView: View {
     // MARK: - Owner fetch
 
     private func loadOwnerIfNeeded() async {
-        guard !detail.isOwnListing,
-              detail.flatmates.isEmpty,
+        guard detail.flatmates.isEmpty,
               fetchedOwner == nil,
               let ownerId = detail.ownerUserId
         else { return }
+        let viewerId = UserStore.saved?.id
+            ?? (UserDefaults.standard.object(forKey: OnboardingAPI.userIdDefaultsKey) as? Int)
         do {
-            let (profile, _) = try await OnboardingAPI.getProfile(userId: ownerId)
+            let (profile, _) = try await OnboardingAPI.getProfile(userId: ownerId, viewerId: viewerId)
             fetchedOwner = makeFlatmate(from: profile)
         } catch {
             print("getProfile(ownerUserId: \(ownerId)) failed: \(error)")
@@ -199,7 +205,7 @@ struct FlatDetailView: View {
             avatarURL: profile.photoUrl,
             avatarHue: 280,
             avatarHue2: 320,
-            matchPct: 0,
+            matchPct: profile.vibeScore ?? 0,
             vibePrefIds: profile.lifestyleTagIds ?? [],
             bio: "",
             lookingFor: []

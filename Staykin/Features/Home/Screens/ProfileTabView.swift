@@ -1,21 +1,48 @@
 import SwiftUI
 
+enum ProfileRoute: Hashable {
+    case myListings
+}
+
 struct ProfileTabView: View {
     let onSignOut: () -> Void
 
     @State private var notificationsEnabled: Bool = true
     @State private var showSignOutConfirm: Bool = false
     @State private var loadedProfile: UserProfile? = UserStore.saved
+    @State private var path = NavigationPath()
 
     private var profile: UserProfile? { loadedProfile }
 
+    private var hasSquad: Bool { !(profile?.teamMemberIds?.isEmpty ?? true) }
+
     // TODO: replace mocks with real squad endpoint when available.
     private var squadMembers: [Flatmate] {
-        [1, 2].compactMap(MockFlatmates.find(by:))
+        guard hasSquad else { return [] }
+        return [1, 2].compactMap(MockFlatmates.find(by:))
     }
     private var hasListing: Bool { !(profile?.listingIds?.isEmpty ?? true) }
 
     var body: some View {
+        NavigationStack(path: $path) {
+            content
+                .navigationDestination(for: ProfileRoute.self) { route in
+                    switch route {
+                    case .myListings:
+                        MyListingsScreen(
+                            listingIds: profile?.listingIds ?? [],
+                            onBack: { pop() }
+                        )
+                    }
+                }
+                .navigationDestination(for: FlatDetail.self) { detail in
+                    FlatDetailView(detail: detail, onBack: { pop() })
+                }
+        }
+        .tint(.primaryPurple)
+    }
+
+    private var content: some View {
         ScrollView {
             VStack(spacing: 16) {
                 headerCard
@@ -37,13 +64,18 @@ struct ProfileTabView: View {
         } message: {
             Text("You'll go through onboarding again next time you open the app.")
         }
-        .task { await loadProfileIfNeeded() }
+        .task { await refreshProfile() }
     }
 
-    private func loadProfileIfNeeded() async {
-        guard UserStore.saved == nil else { return }
-        let storedId = UserDefaults.standard.object(forKey: OnboardingAPI.userIdDefaultsKey) as? Int
-        guard let userId = storedId else { return }
+    private func pop() {
+        guard !path.isEmpty else { return }
+        path.removeLast()
+    }
+
+    private func refreshProfile() async {
+        let myId = UserStore.saved?.id
+            ?? (UserDefaults.standard.object(forKey: OnboardingAPI.userIdDefaultsKey) as? Int)
+        guard let userId = myId else { return }
         do {
             loadedProfile = try await OnboardingAPI.fetchProfile(userId: userId)
         } catch {
@@ -90,7 +122,9 @@ struct ProfileTabView: View {
 
     @ViewBuilder
     private var avatar: some View {
-        if let urlString = profile?.photoUrl, let url = URL(string: urlString) {
+        if let urlString = profile?.photoUrl,
+           !urlString.isEmpty,
+           let url = URL(string: urlString) {
             AsyncImage(url: url) { imagePhase in
                 if let image = imagePhase.image {
                     image.resizable().scaledToFill()
@@ -224,13 +258,37 @@ struct ProfileTabView: View {
 
     // MARK: - Listing
 
+    @ViewBuilder
     private var listingCard: some View {
+        if hasListing {
+            Button { path.append(ProfileRoute.myListings) } label: {
+                listingCardContent
+            }
+            .buttonStyle(.plain)
+        } else {
+            listingCardContent
+        }
+    }
+
+    private var listingCardContent: some View {
         VStack(alignment: .leading, spacing: 12) {
-            sectionHeader("🏠", "My listing")
+            HStack {
+                sectionHeader("🏠", "My listing\(listingCount > 1 ? "s" : "")")
+                Spacer()
+                if hasListing {
+                    HStack(spacing: 4) {
+                        Text("\(listingCount)")
+                            .font(.caption1.weight(.bold))
+                            .foregroundStyle(Color.textSecondary)
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 12, weight: .semibold))
+                            .foregroundStyle(Color.textSecondary)
+                    }
+                }
+            }
 
             if hasListing {
-                // TODO: render real listing card when backend is wired.
-                Text("Active · 47 views this week")
+                Text("Active · \(listingCount) live")
                     .font(.caption1.weight(.semibold))
                     .foregroundStyle(Color.success)
             } else {
@@ -255,6 +313,8 @@ struct ProfileTabView: View {
                 .strokeBorder(Color.cardBorder, lineWidth: 1)
         )
     }
+
+    private var listingCount: Int { profile?.listingIds?.count ?? 0 }
 
     // MARK: - Settings
 

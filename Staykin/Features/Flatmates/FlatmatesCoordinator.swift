@@ -22,16 +22,12 @@ struct FlatmatesCoordinator: View {
     private func screen(for route: FlatmatesRoute) -> some View {
         switch route {
         case .requestProfile(let flatmateId):
-            if let flatmate = MockFlatmates.find(by: flatmateId) {
-                RequestProfileScreen(
-                    flatmate: flatmate,
-                    onAccept:  { acceptFlatmate(flatmateId: flatmateId) },
-                    onDecline: { path.removeLast() },
-                    onBack:    { path.removeLast() }
-                )
-            } else {
-                ChatsTabPlaceholder()
-            }
+            RequestProfileLoader(
+                flatmateId: flatmateId,
+                onAccept:  { acceptFlatmate(flatmateId: flatmateId) },
+                onDecline: { path.removeLast() },
+                onBack:    { path.removeLast() }
+            )
         case .directChat(let threadId):
             // For live rooms RequestsInboxScreen passes the *other user's* id;
             // we synthesize a ChatThread on top of the registered Flatmate so
@@ -76,6 +72,70 @@ struct FlatmatesCoordinator: View {
             path = [.directChat(threadId: thread.id)]
         } else {
             path.removeLast()
+        }
+    }
+}
+
+// Fetches a profile by id and renders RequestProfileScreen once loaded.
+// Shows a spinner while in-flight and a back-only error state on failure.
+private struct RequestProfileLoader: View {
+    let flatmateId: Int
+    let onAccept: () -> Void
+    let onDecline: () -> Void
+    let onBack: () -> Void
+
+    @State private var flatmate: Flatmate?
+    @State private var failed = false
+
+    var body: some View {
+        Group {
+            if let flatmate {
+                RequestProfileScreen(
+                    flatmate: flatmate,
+                    onAccept: onAccept,
+                    onDecline: onDecline,
+                    onBack: onBack
+                )
+            } else if failed {
+                errorState
+            } else {
+                loadingState
+            }
+        }
+        .task { await load() }
+    }
+
+    private var loadingState: some View {
+        ZStack {
+            Color.bgBase.ignoresSafeArea()
+            ProgressView().tint(Color.primaryPurple)
+        }
+        .navigationBarBackButtonHidden(true)
+    }
+
+    private var errorState: some View {
+        ZStack {
+            Color.bgBase.ignoresSafeArea()
+            VStack(spacing: 12) {
+                Text("Couldn't load profile")
+                    .font(.bodyLg.weight(.semibold))
+                    .foregroundStyle(Color.textPrimary)
+                Button("Back", action: onBack)
+                    .foregroundStyle(Color.primaryPurple)
+            }
+        }
+        .navigationBarBackButtonHidden(true)
+    }
+
+    private func load() async {
+        let viewerId = UserStore.saved?.id
+            ?? (UserDefaults.standard.object(forKey: OnboardingAPI.userIdDefaultsKey) as? Int)
+        do {
+            let (profile, _) = try await OnboardingAPI.getProfile(userId: flatmateId, viewerId: viewerId)
+            flatmate = Flatmate(profile: profile)
+        } catch {
+            print("getProfile(\(flatmateId)) failed: \(error)")
+            failed = true
         }
     }
 }

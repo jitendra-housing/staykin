@@ -4,8 +4,8 @@ struct RequestsInboxScreen: View {
     let onOpenProfile: (Int) -> Void           // userId — received row taps (shows accept/decline)
     let onOpenSentProfile: (Int) -> Void       // userId — sent row taps (no accept/decline)
     let onOpenChat: (Int) -> Void              // threadId — chat row body tap
-    let onAcceptRequest: (Int) -> Void         // requestId — received ✓
-    let onDeclineRequest: (Int) -> Void        // requestId — received ✕
+    let onAcceptRequest: (Int) -> Void         // fromUserId — fired after a successful POST /requests/{id}/accept
+    let onDeclineRequest: (Int) -> Void        // fromUserId — fired after a successful POST /requests/{id}/reject
 
     enum InboxTab: Hashable {
         case chat
@@ -278,12 +278,13 @@ struct RequestsInboxScreen: View {
 
     @MainActor
     private func acceptRequest(_ requestId: Int) async {
+        let fromUserId = receivedRequests.first(where: { $0.id == requestId })?.fromUserId
         withAnimation(.easeInOut(duration: 0.2)) {
             actionedRequestIds.insert(requestId)
         }
         do {
             _ = try await RequestsAPI.accept(requestId: requestId)
-            onAcceptRequest(requestId)
+            if let fromUserId { onAcceptRequest(fromUserId) }
         } catch {
             withAnimation(.easeInOut(duration: 0.2)) {
                 actionedRequestIds.remove(requestId)
@@ -294,12 +295,13 @@ struct RequestsInboxScreen: View {
 
     @MainActor
     private func rejectRequest(_ requestId: Int) async {
+        let fromUserId = receivedRequests.first(where: { $0.id == requestId })?.fromUserId
         withAnimation(.easeInOut(duration: 0.2)) {
             actionedRequestIds.insert(requestId)
         }
         do {
             _ = try await RequestsAPI.reject(requestId: requestId)
-            onDeclineRequest(requestId)
+            if let fromUserId { onDeclineRequest(fromUserId) }
         } catch {
             withAnimation(.easeInOut(duration: 0.2)) {
                 actionedRequestIds.remove(requestId)

@@ -9,8 +9,17 @@ struct FlatmatesCoordinator: View {
                 onOpenProfile:     { flatmateId in path.append(.requestProfile(flatmateId: flatmateId, showActions: true)) },
                 onOpenSentProfile: { flatmateId in path.append(.requestProfile(flatmateId: flatmateId, showActions: false)) },
                 onOpenChat:        { threadId in path.append(.directChat(threadId: threadId)) },
-                onAcceptRequest:   { _ in /* TODO wire to API */ },
-                onDeclineRequest:  { _ in /* TODO wire to API */ }
+                onAcceptRequest:   { userId in
+                    // Chat backend isn't integrated yet — open a mock thread so the
+                    // chat screen has populated header + messages. Prefer a mock
+                    // thread matching the accepted user, else fall back to any.
+                    let mockThreadId = MockFlatmates.chatThreads.first(where: { $0.otherFlatmateId == userId })?.id
+                        ?? MockFlatmates.chatThreads.first?.id
+                    if let mockThreadId {
+                        path.append(.directChat(threadId: mockThreadId))
+                    }
+                },
+                onDeclineRequest:  { _ in /* row dismissed in screen; nothing else to do */ }
             )
             .navigationDestination(for: FlatmatesRoute.self) { route in
                 screen(for: route)

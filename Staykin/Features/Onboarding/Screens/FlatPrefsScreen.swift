@@ -21,8 +21,19 @@ struct FlatPrefsScreen: View {
 
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
+                Button(action: onBack) {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundStyle(Color.textPrimary)
+                        .frame(width: 40, height: 40)
+                        .background(Color.bgCard)
+                        .clipShape(Circle())
+                        .overlay(Circle().strokeBorder(Color.cardBorder, lineWidth: 1))
+                }
+                .padding(.top, Spacing.sm)
+
                 StepPill(text: "Step 1 of 2")
-                    .padding(.top, Spacing.xs)
+                    .padding(.top, Spacing.md)
 
                 Text("What are you looking for?")
                     .font(.heading1)

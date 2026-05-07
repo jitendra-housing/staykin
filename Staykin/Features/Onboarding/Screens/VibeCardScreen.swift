@@ -8,7 +8,6 @@ struct VibeCardScreen: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            // Header
             HStack(spacing: 12) {
                 Button(action: onBack) {
                     Image(systemName: "chevron.left")
@@ -35,7 +34,7 @@ struct VibeCardScreen: View {
 
             ScrollView {
                 VStack(spacing: 0) {
-                    VibeCard(data: data)
+                    VibeCard(profile: VibeCardProfile(onboarding: data))
                         .padding(.top, 20)
 
                     HStack(spacing: 6) {

@@ -10,9 +10,14 @@ struct RootView: View {
     var body: some View {
         switch phase {
         case .splash:
-            SplashView(onFinish: { phase = .onboarding })
+            SplashView(onFinish: {
+                phase = hasCompletedOnboarding ? .home : .onboarding
+            })
         case .onboarding:
-            OnboardingCoordinator(onFinish: { phase = .home })
+            OnboardingCoordinator(onFinish: {
+                hasCompletedOnboarding = true
+                phase = .home
+            })
         case .home:
             HomeView()
         }

@@ -22,4 +22,3 @@ extension GenderPref {
         all.first { $0.id == id }
     }
 }
-

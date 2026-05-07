@@ -4,22 +4,20 @@ struct FlatDetailsScreen: View {
     let onContinue: () -> Void
     let onBack: () -> Void
 
-    private let rentRange: ClosedRange<Double> = 5_000...60_000
-
-    @State private var selectedAreas: Set<Int> = []
-    @State private var rentMin: Double = 15_000
-    @State private var rentMax: Double = 30_000
-    @State private var selectedBHK: Set<Int> = []
-    @State private var selectedFurnishing: Set<Int> = []
+    @State private var selectedArea: Int? = nil
+    @State private var rent: Int? = nil
+    @State private var selectedBHK: Int? = nil
+    @State private var selectedFurnishing: Int? = nil
     @State private var flatmateCount: Int = 1
     @State private var genderPref: Int? = nil
     @State private var moveIn: Int? = nil
     @State private var amenities: Set<Int> = []
 
     private var canContinue: Bool {
-        !selectedAreas.isEmpty
-            && !selectedBHK.isEmpty
-            && !selectedFurnishing.isEmpty
+        selectedArea != nil
+            && rent != nil
+            && selectedBHK != nil
+            && selectedFurnishing != nil
             && genderPref != nil
             && moveIn != nil
     }
@@ -40,51 +38,26 @@ struct FlatDetailsScreen: View {
                         ForEach(Area.allInGurgaon) { area in
                             SelectablePill(
                                 label: area.name,
-                                isSelected: selectedAreas.contains(area.id),
+                                isSelected: selectedArea == area.id,
                                 variant: .tag,
-                                action: { selectedAreas.toggleMembership(of: area.id) }
+                                action: { selectedArea = (selectedArea == area.id) ? nil : area.id }
                             )
                         }
                     }
                 }
 
-                VStack(alignment: .leading, spacing: 0) {
-                    HStack {
-                        SectionLabel(text: "Monthly Rent")
-                        Spacer()
-                        Text("\(formatRent(rentMin)) – \(formatRent(rentMax)) /mo")
-                            .font(.caption1)
-                            .foregroundStyle(Color.accentAmber)
-                    }
-                    .padding(.bottom, 36)
-
-                    RangeSlider(
-                        lowerValue: $rentMin,
-                        upperValue: $rentMax,
-                        range: rentRange,
-                        step: 1000,
-                        tooltipFormatter: formatRent
-                    )
-
-                    HStack {
-                        Text("₹5K")
-                        Spacer()
-                        Text("₹60K+")
-                    }
-                    .font(.system(size: 11))
-                    .foregroundStyle(Color.textDisabled)
-                    .padding(.top, Spacing.xs)
+                section(label: "Monthly Rent", topPadding: 14) {
+                    rentField
                 }
-                .padding(.top, 14)
 
                 section(label: "BHK", topPadding: 14) {
                     HStack(spacing: Spacing.xs) {
                         ForEach(BHK.all) { bhk in
                             SelectablePill(
                                 label: bhk.label,
-                                isSelected: selectedBHK.contains(bhk.id),
+                                isSelected: selectedBHK == bhk.id,
                                 variant: .pill,
-                                action: { selectedBHK.toggleMembership(of: bhk.id) }
+                                action: { selectedBHK = (selectedBHK == bhk.id) ? nil : bhk.id }
                             )
                         }
                         Spacer()
@@ -96,9 +69,9 @@ struct FlatDetailsScreen: View {
                         ForEach(Furnishing.all) { f in
                             SelectablePill(
                                 label: f.label,
-                                isSelected: selectedFurnishing.contains(f.id),
+                                isSelected: selectedFurnishing == f.id,
                                 variant: .pill,
-                                action: { selectedFurnishing.toggleMembership(of: f.id) }
+                                action: { selectedFurnishing = (selectedFurnishing == f.id) ? nil : f.id }
                             )
                         }
                         Spacer()
@@ -161,6 +134,49 @@ struct FlatDetailsScreen: View {
         }
     }
 
+    // MARK: - Rent input
+
+    private var rentField: some View {
+        HStack(spacing: 8) {
+            Text("₹")
+                .font(.bodyLg.weight(.semibold))
+                .foregroundStyle(Color.textSecondary)
+
+            TextField(
+                "",
+                text: rentText,
+                prompt: Text("e.g. 25000").foregroundStyle(Color.textDisabled)
+            )
+            .font(.bodyLg)
+            .foregroundStyle(Color.textPrimary)
+            .keyboardType(.numberPad)
+
+            Text("/ mo")
+                .font(.bodySm)
+                .foregroundStyle(Color.textSecondary)
+        }
+        .padding(.horizontal, Spacing.md)
+        .frame(height: ComponentSize.inputHeight)
+        .background(Color.bgCard)
+        .clipShape(RoundedRectangle(cornerRadius: Radius.md))
+        .overlay(
+            RoundedRectangle(cornerRadius: Radius.md)
+                .strokeBorder(Color.cardBorder, lineWidth: 1)
+        )
+    }
+
+    private var rentText: Binding<String> {
+        Binding(
+            get: { rent.map(String.init) ?? "" },
+            set: { newValue in
+                let digits = newValue.filter(\.isNumber).prefix(7)
+                rent = digits.isEmpty ? nil : Int(digits)
+            }
+        )
+    }
+
+    // MARK: - Helpers
+
     @ViewBuilder
     private func section<Content: View>(
         label: String,
@@ -173,8 +189,6 @@ struct FlatDetailsScreen: View {
         }
         .padding(.top, topPadding)
     }
-
-    private func formatRent(_ v: Double) -> String { "₹\(Int(v / 1000))K" }
 }
 
 fileprivate extension Set {

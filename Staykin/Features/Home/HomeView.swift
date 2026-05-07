@@ -17,7 +17,7 @@ struct HomeView: View {
                 switch selectedTab {
                 case .flats:     FlatsTabView(path: $flatsPath)
                 case .flatmates: FlatmatesTabPlaceholder()
-                case .chats:     ChatsTabPlaceholder()
+                case .chats:     FlatmatesCoordinator()
                 case .profile:   ProfileTabPlaceholder()
                 }
             }

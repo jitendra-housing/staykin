@@ -39,6 +39,7 @@
 		50F471997DD954DF1D76109B /* VibeCardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB690364CE90CC31C9CAD8F /* VibeCardScreen.swift */; };
 		591374C8064ECA60C70DBF14 /* FlatPrefsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1770DCC32A30A1CF7E5DA5D /* FlatPrefsScreen.swift */; };
 		5DD37F91271B97568966E9F8 /* FlatmateVibeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA0E6D93EDE032A706B2B9 /* FlatmateVibeCard.swift */; };
+		5EC9F1927EBA94D4F3F518F6 /* OnboardingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB7247C8FF9729F17D8D9C /* OnboardingAPI.swift */; };
 		5F1422B005A39ED80922A5B9 /* TabPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817EF4ADE3D5BB802E6C8D2B /* TabPlaceholder.swift */; };
 		5F97BA4ED32D1505BBB15962 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF139DC4B71C0905F46E75C8 /* TabBar.swift */; };
 		61F58A78637C04E68626585C /* SelectablePill.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3977237EA7C3EE79850CFFC /* SelectablePill.swift */; };
@@ -56,8 +57,6 @@
 		98E059FE124680249EE8F115 /* VibePref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AF39FFE7C7C65CE7C0B740 /* VibePref.swift */; };
 		99A650302B3DD19D57593D08 /* Amenity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C318BE66D52429D27464B7A /* Amenity.swift */; };
 		9E9BA4B8F0363ECAF23B3BE1 /* FlatmateListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928EC659892FD8152CDD5D3E /* FlatmateListRow.swift */; };
-		A1B2C3D4E5F6789012345601 /* OnboardingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6789012345602 /* OnboardingAPI.swift */; };
-		A1B2C3D4E5F6789012345603 /* Occupation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6789012345604 /* Occupation.swift */; };
 		A1CAE112553B2AF6DE168D4F /* PhotosScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4610B677D35BB59F7D97A9F3 /* PhotosScreen.swift */; };
 		A2FDCBD3365344B5502273AB /* IntentScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2C2A65FBDCF4FC78DDF976 /* IntentScreen.swift */; };
 		A507125254E1F247F8800F3A /* OTPScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABD7934EA461C62DCF7F7F9 /* OTPScreen.swift */; };
@@ -69,6 +68,7 @@
 		C1AB8B54D3559F797E89FC74 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F87A752C48BDE904D4C42EE /* BottomSheet.swift */; };
 		C271234637D9D2F7B1DFC5E4 /* Flatmate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B49669A67FC67884D4F677E /* Flatmate.swift */; };
 		C4F5A0825064191619ACCCC9 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD9FDD2714F6285154C8D41 /* OnboardingCoordinator.swift */; };
+		C52412CC72069C6817B0DB36 /* Occupation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED339B274C7B8B497917CEDC /* Occupation.swift */; };
 		C88DC398BA84376A73D61DED /* PostStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4A2E705F24D12E2CA8B5BE /* PostStepper.swift */; };
 		C90B6939AAC7E4BF261717DF /* DSGradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AAD6F18339ED9AA315901F /* DSGradients.swift */; };
 		CD6B64DF7F20D326DA973753 /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FC7149558AC0DE2451B5A6 /* RoomType.swift */; };
@@ -110,7 +110,7 @@
 		3B49669A67FC67884D4F677E /* Flatmate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flatmate.swift; sourceTree = "<group>"; };
 		3C318BE66D52429D27464B7A /* Amenity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amenity.swift; sourceTree = "<group>"; };
 		3F4B09A9EBB1426D6A787CA9 /* ApplicationMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMode.swift; sourceTree = "<group>"; };
-		408E03C5F1AEBAA73B69F765 /* Staykin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staykin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		408E03C5F1AEBAA73B69F765 /* Staykin.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Staykin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44DD7D3F3B339B7F166374EB /* FlatListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatListRow.swift; sourceTree = "<group>"; };
 		45CCD5F73EAA2AC9285D492C /* MockFlats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFlats.swift; sourceTree = "<group>"; };
 		4610B677D35BB59F7D97A9F3 /* PhotosScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosScreen.swift; sourceTree = "<group>"; };
@@ -127,6 +127,7 @@
 		765F8CE05233B84606ACB38D /* MatchMeterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMeterCard.swift; sourceTree = "<group>"; };
 		76C91A63EED705E2549E9EF9 /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		78787EF8FA148BC368018340 /* VibeFormScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibeFormScreen.swift; sourceTree = "<group>"; };
+		79CB7247C8FF9729F17D8D9C /* OnboardingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAPI.swift; sourceTree = "<group>"; };
 		7A8E11ABF5824B85ED5F6E73 /* Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
 		7FDA798E28589FD8A7854663 /* StaykinTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaykinTextField.swift; sourceTree = "<group>"; };
 		817EF4ADE3D5BB802E6C8D2B /* TabPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPlaceholder.swift; sourceTree = "<group>"; };
@@ -137,8 +138,6 @@
 		9A47E8DD2724C6DD86C101D2 /* TrustStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustStrip.swift; sourceTree = "<group>"; };
 		9ABD7934EA461C62DCF7F7F9 /* OTPScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPScreen.swift; sourceTree = "<group>"; };
 		A12D8A2593707E7D7BFF160C /* PhoneScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneScreen.swift; sourceTree = "<group>"; };
-		A1B2C3D4E5F6789012345602 /* OnboardingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAPI.swift; sourceTree = "<group>"; };
-		A1B2C3D4E5F6789012345604 /* Occupation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Occupation.swift; sourceTree = "<group>"; };
 		A31050EF48BDA99F6628F1BD /* EmptySlotRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySlotRow.swift; sourceTree = "<group>"; };
 		A7CD99813F266CAA886633C9 /* SuccessToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessToast.swift; sourceTree = "<group>"; };
 		AE4A2E705F24D12E2CA8B5BE /* PostStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStepper.swift; sourceTree = "<group>"; };
@@ -157,6 +156,7 @@
 		E71EE70E7057BFF579A783EF /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
 		E9426AC169255E6C00CE60BE /* FlatHeroGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatHeroGallery.swift; sourceTree = "<group>"; };
 		EB00BD8B65704A6A5D53B384 /* TipBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipBanner.swift; sourceTree = "<group>"; };
+		ED339B274C7B8B497917CEDC /* Occupation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Occupation.swift; sourceTree = "<group>"; };
 		EF9A4CE1216AF83ACDA58C68 /* Furnishing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Furnishing.swift; sourceTree = "<group>"; };
 		F1770DCC32A30A1CF7E5DA5D /* FlatPrefsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatPrefsScreen.swift; sourceTree = "<group>"; };
 		F2149C1E7A477C7E0C251ED1 /* VibeTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibeTile.swift; sourceTree = "<group>"; };
@@ -185,7 +185,7 @@
 				071655D7CA35F0A4095CDC39 /* BHK.swift */,
 				EF9A4CE1216AF83ACDA58C68 /* Furnishing.swift */,
 				506305162BC4F1F25EB99F19 /* MoveInTimeline.swift */,
-				A1B2C3D4E5F6789012345604 /* Occupation.swift */,
+				ED339B274C7B8B497917CEDC /* Occupation.swift */,
 				36FC7149558AC0DE2451B5A6 /* RoomType.swift */,
 				10AF39FFE7C7C65CE7C0B740 /* VibePref.swift */,
 			);
@@ -325,7 +325,7 @@
 		B4CCB76F0A38ADD81743A9CE /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				A1B2C3D4E5F6789012345602 /* OnboardingAPI.swift */,
+				79CB7247C8FF9729F17D8D9C /* OnboardingAPI.swift */,
 				2BD9FDD2714F6285154C8D41 /* OnboardingCoordinator.swift */,
 				8BC2D487DC8F9560646741C0 /* OnboardingData.swift */,
 				68689740E2E70A302A20EB66 /* OnboardingRoute.swift */,
@@ -435,6 +435,7 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					7F8A121C93452F304C1A5CF3 = {
+						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -512,9 +513,9 @@
 				0B19E91036AD218ABE80C4EC /* MatchMeterCard.swift in Sources */,
 				63AAECCF0069CE508E248DC1 /* MockFlats.swift in Sources */,
 				3BE6CB20984E56D20E732991 /* MoveInTimeline.swift in Sources */,
-				A1B2C3D4E5F6789012345603 /* Occupation.swift in Sources */,
 				A507125254E1F247F8800F3A /* OTPScreen.swift in Sources */,
-				A1B2C3D4E5F6789012345601 /* OnboardingAPI.swift in Sources */,
+				C52412CC72069C6817B0DB36 /* Occupation.swift in Sources */,
+				5EC9F1927EBA94D4F3F518F6 /* OnboardingAPI.swift in Sources */,
 				C4F5A0825064191619ACCCC9 /* OnboardingCoordinator.swift in Sources */,
 				1C811C2347B8536E59AF4318 /* OnboardingData.swift in Sources */,
 				81B8E451EA24876BB155CF3F /* OnboardingRoute.swift in Sources */,
@@ -681,7 +682,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J9HRA4G7LQ;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Staykin/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -704,7 +705,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J9HRA4G7LQ;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Staykin/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (

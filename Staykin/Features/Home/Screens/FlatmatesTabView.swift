@@ -5,13 +5,16 @@ struct FlatmatesTabView: View {
     @State private var isLoading: Bool = false
     @State private var errorMessage: String?
 
-    // Flatten API entries → list of swipe candidates.
-    // Team entries contribute their members; user entries contribute themselves.
-    private var candidates: [Flatmate] {
-        entries.flatMap { entry -> [Flatmate] in
+    // Map API entries → swipe candidates, preserving team identity so the
+    // POST /requests call can target the right kind (team vs single user).
+    private var candidates: [SwipeCandidate] {
+        entries.compactMap { entry -> SwipeCandidate? in
             switch entry {
-            case .team(_, let members): return members.map { Flatmate(profile: $0) }
-            case .user(let user):       return [Flatmate(profile: user)]
+            case .team(let team, let members):
+                guard !members.isEmpty else { return nil }
+                return .team(team, members: members)
+            case .user(let user):
+                return .user(user)
             }
         }
     }

@@ -1,19 +1,19 @@
 import SwiftUI
 
 struct FlatmatesSwipeView: View {
-    let candidates: [Flatmate]
+    let candidates: [SwipeCandidate]
 
-    @State private var removedIds: Set<Int> = []
+    @State private var removedIds: Set<String> = []
     @State private var lastRequestedName: String? = nil
     @State private var showToast = false
 
     private let visibleStackDepth = 3
 
-    private var visibleCandidates: [Flatmate] {
+    private var visibleCandidates: [SwipeCandidate] {
         candidates.filter { !removedIds.contains($0.id) }
     }
 
-    private var visibleSlice: [Flatmate] {
+    private var visibleSlice: [SwipeCandidate] {
         Array(visibleCandidates.prefix(visibleStackDepth))
     }
 
@@ -72,13 +72,13 @@ struct FlatmatesSwipeView: View {
 
     private var deck: some View {
         ZStack {
-            ForEach(Array(visibleSlice.enumerated()).reversed(), id: \.element.id) { offset, mate in
+            ForEach(Array(visibleSlice.enumerated()).reversed(), id: \.element.id) { offset, candidate in
                 let isTop = offset == 0
                 SwipeableFlatmateCard(
-                    flatmate: mate,
+                    flatmate: candidate.displayFlatmate,
                     isInteractive: isTop,
                     onSwiped: { decision in
-                        handleSwipe(of: mate, decision: decision)
+                        handleSwipe(of: candidate, decision: decision)
                     }
                 )
                 .scaleEffect(1 - CGFloat(offset) * 0.04)
@@ -108,11 +108,21 @@ struct FlatmatesSwipeView: View {
 
     // MARK: - Actions
 
-    private func handleSwipe(of mate: Flatmate, decision: SwipeableFlatmateCard.SwipeDecision) {
-        removedIds.insert(mate.id)
-        if decision == .requestSent {
-            lastRequestedName = mate.name
-            showToast = true
+    private func handleSwipe(of candidate: SwipeCandidate, decision: SwipeableFlatmateCard.SwipeDecision) {
+        removedIds.insert(candidate.id)
+        guard decision == .requestSent else { return }
+
+        // Optimistic UI — toast immediately, network is fire-and-forget.
+        lastRequestedName = candidate.displayName
+        showToast = true
+
+        let target = candidate.requestTarget
+        Task {
+            do {
+                try await RequestsAPI.sendRequest(targetKind: target.kind, targetId: target.id)
+            } catch {
+                print("sendRequest failed: \(error.localizedDescription)")
+            }
         }
     }
 }

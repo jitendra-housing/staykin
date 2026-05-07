@@ -21,9 +21,17 @@ struct FlatsTabView: View {
     @Binding var path: [FlatDetail]
     @State private var filter = FlatsFilter()
     @State private var showPostSpace = false
+    @State private var listings: [Listing] = []
 
-    private var allFlats: [Flat] { MockFlats.list }
-    private var visibleFlats: [Flat] { allFlats.filter(filter.matches) }
+    private var visibleListings: [Listing] {
+        listings.filter { filter.matches($0.toFlat()) }
+    }
+    private var visibleCount: Int { visibleListings.count }
+
+    private var currentUserId: Int? {
+        UserStore.saved?.id
+            ?? (UserDefaults.standard.object(forKey: OnboardingAPI.userIdDefaultsKey) as? Int)
+    }
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -41,6 +49,16 @@ struct FlatsTabView: View {
         .tint(.primaryPurple)
         .fullScreenCover(isPresented: $showPostSpace) {
             PostSpaceCoordinator(onDismiss: { showPostSpace = false })
+        }
+        .task { await loadListings() }
+    }
+
+    private func loadListings() async {
+        guard let userId = currentUserId else { return }
+        do {
+            listings = try await ListingsAPI.listListings(userId: userId)
+        } catch {
+            print("listListings failed: \(error)")
         }
     }
 
@@ -134,7 +152,7 @@ struct FlatsTabView: View {
     private var resultBar: some View {
         HStack {
             HStack(spacing: 4) {
-                Text("\(visibleFlats.count) flats")
+                Text("\(visibleCount) flats")
                     .font(.caption1.weight(.bold))
                     .foregroundStyle(Color.textPrimary)
                 Text("in your vibe")
@@ -156,10 +174,10 @@ struct FlatsTabView: View {
     private var list: some View {
         ScrollView {
             LazyVStack(spacing: 0) {
-                ForEach(visibleFlats) { flat in
-                    // Phase C ships a single mock detail; later we fetch by flat.id.
-                    NavigationLink(value: MockFlats.detail) {
-                        FlatListRow(flat: flat)
+                ForEach(visibleListings, id: \.id) { listing in
+                    let isOwn = listing.ownerUserId == currentUserId
+                    NavigationLink(value: listing.toFlatDetail(isOwnListing: isOwn)) {
+                        FlatListRow(flat: listing.toFlat())
                     }
                     .buttonStyle(.plain)
                 }

@@ -14,6 +14,59 @@ struct Listing: Codable, Hashable {
     let photos: [String]?
 }
 
+extension Listing {
+    func toFlat() -> Flat {
+        Flat(
+            id: id,
+            typeId: FlatType.privateRoom.id,
+            locality: Area.find(by: localityId)?.name ?? "—",
+            rent: monthlyRent,
+            score: 80,
+            amenityIds: amenities ?? [],
+            photoURL: photos?.first,
+            photoHue: 280,
+            photoHue2: 320,
+            photoEmoji: "🏠",
+            verified: false,
+            availableNow: moveIn == 1
+        )
+    }
+
+    func toFlatDetail(isOwnListing: Bool = false) -> FlatDetail {
+        let flatPhotos: [FlatPhoto] = (photos ?? []).enumerated().map { idx, url in
+            FlatPhoto(
+                id: idx,
+                url: url,
+                placeholderHue: 280,
+                placeholderHue2: 320,
+                placeholderEmoji: "🏠"
+            )
+        }
+        let total = flatmatesNeeded + 1
+        return FlatDetail(
+            id: id,
+            typeId: FlatType.privateRoom.id,
+            locality: Area.find(by: localityId)?.name ?? "—",
+            addressLine: "",
+            rent: monthlyRent,
+            bhkId: bhk,
+            furnishingId: furnishing,
+            areaSqft: 0,
+            verified: false,
+            availableNow: moveIn == 1,
+            score: 80,
+            photos: flatPhotos,
+            amenityIds: amenities ?? [],
+            flatmates: [],
+            combinedMatch: CombinedMatch(score: 0, summary: "", participants: []),
+            slots: FlatSlots(total: total, filled: 1),
+            privateRoom: nil,
+            about: "",
+            isOwnListing: isOwnListing
+        )
+    }
+}
+
 enum ListingsAPI {
     static var baseURL: URL { OnboardingAPI.baseURL }
 
@@ -68,6 +121,29 @@ enum ListingsAPI {
         }
 
         return try decoder.decode(Listing.self, from: responseData).id
+    }
+
+    static func listListings(userId: Int) async throws -> [Listing] {
+        var components = URLComponents(url: baseURL.appendingPathComponent("listings"), resolvingAgainstBaseURL: false)!
+        components.queryItems = [URLQueryItem(name: "user_id", value: String(userId))]
+        let url = components.url!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "accept")
+
+        let (responseData, response) = try await URLSession.shared.data(for: request)
+
+        if let http = response as? HTTPURLResponse,
+            !(200..<300).contains(http.statusCode) {
+            let snippet = String(data: responseData, encoding: .utf8) ?? ""
+            throw NSError(
+                domain: "ListingsAPI",
+                code: http.statusCode,
+                userInfo: [NSLocalizedDescriptionKey: "GET /listings failed (\(http.statusCode)): \(snippet)"]
+            )
+        }
+
+        return try decoder.decode([Listing].self, from: responseData)
     }
 
     static func getListing(id: Int) async throws -> Listing {

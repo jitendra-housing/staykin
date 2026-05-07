@@ -68,6 +68,7 @@ struct FlatDetail: Identifiable, Hashable {
     let slots: FlatSlots
     let privateRoom: PrivateRoomInfo?
     let about: String
+    var isOwnListing: Bool = false
 
     var type: FlatType { FlatType.find(by: typeId) ?? .privateRoom }
     var bhk: BHK { BHK.find(by: bhkId) ?? .twoBHK }

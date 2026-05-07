@@ -37,6 +37,44 @@ enum OnboardingAPI {
         return profile
     }
 
+    @discardableResult
+    static func fetchProfile(userId: Int) async throws -> UserProfile {
+        let url = baseURL.appendingPathComponent("profile/\(userId)")
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "accept")
+
+        let (responseData, response) = try await URLSession.shared.data(for: request)
+
+        if let http = response as? HTTPURLResponse,
+            !(200..<300).contains(http.statusCode) {
+            let snippet = String(data: responseData, encoding: .utf8) ?? ""
+            throw NSError(
+                domain: "OnboardingAPI",
+                code: http.statusCode,
+                userInfo: [NSLocalizedDescriptionKey: "GET /profile/\(userId) failed (\(http.statusCode)): \(snippet)"]
+            )
+        }
+
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let profile: UserProfile
+        do {
+            profile = try decoder.decode(UserProfile.self, from: responseData)
+        } catch {
+            let snippet = String(data: responseData, encoding: .utf8) ?? ""
+            throw NSError(
+                domain: "OnboardingAPI",
+                code: -1,
+                userInfo: [NSLocalizedDescriptionKey: "GET /profile/\(userId): cannot decode response: \(snippet)"]
+            )
+        }
+
+        UserStore.save(rawResponse: responseData)
+        UserDefaults.standard.set(profile.id, forKey: userIdDefaultsKey)
+        return profile
+    }
+
     static func patchProfile(_ data: OnboardingData) async throws {
         guard let userId = data.userId
             ?? (UserDefaults.standard.object(forKey: userIdDefaultsKey) as? Int)

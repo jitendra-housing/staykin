@@ -65,4 +65,5 @@ final class OnboardingData {
     var listingMoveIn: Int? = nil          // move_in
     var listingAmenities: Set<Int> = []    // amenities
     var flatPhotoUrls: [String] = []       // photos (URLs from /uploads/image)
+    var listingIds: [Int] = []             // ids returned by POST /listings (newest last)
 }

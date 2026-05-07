@@ -11,8 +11,6 @@ struct TrustStrip: View {
             metaItem(detail.bhk.label, accent: false)
             dot
             metaItem(detail.furnishing.label, accent: false)
-            dot
-            metaItem("\(detail.areaSqft) sqft", accent: false)
             if detail.availableNow {
                 dot
                 metaItem("⚡ Avail now", accent: true)

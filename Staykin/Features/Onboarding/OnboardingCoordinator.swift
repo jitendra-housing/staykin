@@ -81,8 +81,12 @@ struct OnboardingCoordinator: View {
             FlatDetailsScreen(onContinue: { push(.postPhotos) }, onBack: pop)
         case .postPhotos:
             PhotosScreen(onContinue: {
-                do { try await ListingsAPI.createListing(data) }
-                catch { print("createListing failed: \(error)") }
+                do {
+                    let id = try await ListingsAPI.createListing(data)
+                    data.listingIds.append(id)
+                } catch {
+                    print("createListing failed: \(error)")
+                }
                 push(.postVibe)
             }, onBack: pop)
         case .postVibe:
@@ -99,10 +103,11 @@ struct OnboardingCoordinator: View {
                 push(.postSuccess)
             }, onBack: pop)
         case .postSuccess:
-            // Until POST /listings returns the created Flat, stub "view my listing"
-            // with the first mock flat. Swap to the real returned listing once wired.
             SuccessScreen(
-                onViewListing:    { handleFinish(.flatDetail(MockFlats.list[0])) },
+                onViewListing: {
+                    let detail = await fetchOwnListingAsDetail()
+                    handleFinish(.flatDetail(detail))
+                },
                 onBrowseFlatmates: { handleFinish(.flatmates) }
             )
         }
@@ -124,5 +129,87 @@ struct OnboardingCoordinator: View {
         UserStore.clearSnapshot()
         UserStore.onboardingComplete = true
         onFinish(landing)
+    }
+
+    private func fetchOwnListingAsDetail() async -> FlatDetail {
+        guard let id = data.listingIds.last else { return MockFlats.detail }
+        do {
+            let listing = try await ListingsAPI.getListing(id: id)
+            return makeDetail(from: listing)
+        } catch {
+            print("getListing failed: \(error)")
+            return MockFlats.detail
+        }
+    }
+
+    private func makeDetail(from listing: Listing) -> FlatDetail {
+        let photos: [FlatPhoto] = (listing.photos ?? []).enumerated().map { idx, url in
+            FlatPhoto(
+                id: idx,
+                url: url,
+                placeholderHue: 280,
+                placeholderHue2: 320,
+                placeholderEmoji: "🏠"
+            )
+        }
+        let total = listing.flatmatesNeeded + 1     // poster (you) + needed slots
+        let slots = FlatSlots(total: total, filled: 1)
+        let poster = makePosterFlatmate(listing: listing)
+        return FlatDetail(
+            id: listing.id,
+            typeId: FlatType.privateRoom.id,
+            locality: Area.find(by: listing.localityId)?.name ?? "—",
+            addressLine: "",
+            rent: listing.monthlyRent,
+            bhkId: listing.bhk,
+            furnishingId: listing.furnishing,
+            areaSqft: 0,
+            verified: false,
+            availableNow: listing.moveIn == 1,
+            score: 100,
+            photos: photos,
+            amenityIds: listing.amenities ?? [],
+            flatmates: [poster],
+            combinedMatch: CombinedMatch(
+                score: 100,
+                summary: "Your listing",
+                participants: [poster.name]
+            ),
+            slots: slots,
+            privateRoom: nil,
+            about: "",
+            isOwnListing: true
+        )
+    }
+
+    private func makePosterFlatmate(listing: Listing) -> Flatmate {
+        let trimmedName = data.name.trimmingCharacters(in: .whitespaces)
+        let name = trimmedName.isEmpty ? "You" : trimmedName
+        let job = data.occupation.flatMap { Occupation.find(by: $0)?.name } ?? "—"
+        let lookingFor: [LookingForItem] = [
+            LookingForItem(label: "Move-in", value: MoveInTimeline.find(by: listing.moveIn)?.label ?? "—"),
+            LookingForItem(label: "BHK",     value: BHK.find(by: listing.bhk)?.label ?? "—"),
+            LookingForItem(label: "Vibe",    value: vibeSummary(from: data.vibePrefs))
+        ]
+        return Flatmate(
+            id: data.userId ?? listing.ownerUserId,
+            name: name,
+            age: data.age ?? 0,
+            role: .poster,
+            job: job,
+            emoji: "🦊",
+            avatarURL: data.photoUrl,
+            avatarHue: 280,
+            avatarHue2: 320,
+            matchPct: 100,
+            vibePrefIds: Array(data.vibePrefs).sorted(),
+            bio: "",
+            lookingFor: lookingFor
+        )
+    }
+
+    private func vibeSummary(from prefs: Set<Int>) -> String {
+        let labels = prefs.sorted().compactMap(VibePref.find(by:)).map(\.label).prefix(3)
+        return labels.isEmpty ? "—" : labels.joined(separator: " · ")
     }
 }

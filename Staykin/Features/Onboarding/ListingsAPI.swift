@@ -1,7 +1,27 @@
 import Foundation
 
+struct Listing: Codable, Hashable {
+    let id: Int
+    let ownerUserId: Int
+    let localityId: Int
+    let monthlyRent: Int
+    let bhk: Int
+    let furnishing: Int
+    let flatmatesNeeded: Int
+    let genderPref: Int
+    let amenities: [Int]?
+    let moveIn: Int
+    let photos: [String]?
+}
+
 enum ListingsAPI {
     static var baseURL: URL { OnboardingAPI.baseURL }
+
+    private static var decoder: JSONDecoder {
+        let d = JSONDecoder()
+        d.keyDecodingStrategy = .convertFromSnakeCase
+        return d
+    }
 
     @discardableResult
     static func createListing(_ data: OnboardingData) async throws -> Int {
@@ -47,7 +67,27 @@ enum ListingsAPI {
             )
         }
 
-        struct ListingOut: Decodable { let id: Int }
-        return try JSONDecoder().decode(ListingOut.self, from: responseData).id
+        return try decoder.decode(Listing.self, from: responseData).id
+    }
+
+    static func getListing(id: Int) async throws -> Listing {
+        let url = baseURL.appendingPathComponent("listings/\(id)")
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "accept")
+
+        let (responseData, response) = try await URLSession.shared.data(for: request)
+
+        if let http = response as? HTTPURLResponse,
+            !(200..<300).contains(http.statusCode) {
+            let snippet = String(data: responseData, encoding: .utf8) ?? ""
+            throw NSError(
+                domain: "ListingsAPI",
+                code: http.statusCode,
+                userInfo: [NSLocalizedDescriptionKey: "GET /listings/\(id) failed (\(http.statusCode)): \(snippet)"]
+            )
+        }
+
+        return try decoder.decode(Listing.self, from: responseData)
     }
 }

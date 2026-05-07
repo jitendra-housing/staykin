@@ -1,16 +1,16 @@
 import SwiftUI
 
 enum HomeLanding {
-    case flatsList                  // default tab landing
-    case flatDetail(Flat)           // deep-link to a flat detail (e.g. user's just-posted listing)
-    case flatmates                  // open the flatmates tab
+    case flatsList                       // default tab landing
+    case flatDetail(FlatDetail)          // deep-link to a flat detail (e.g. user's just-posted listing)
+    case flatmates                       // open the flatmates tab
 }
 
 struct HomeView: View {
     let onSignOut: () -> Void
 
     @State private var selectedTab: HomeTab
-    @State private var flatsPath: [Flat]
+    @State private var flatsPath: [FlatDetail]
 
     init(landing: HomeLanding = .flatsList, onSignOut: @escaping () -> Void) {
         self.onSignOut = onSignOut
@@ -18,9 +18,9 @@ struct HomeView: View {
         case .flatsList:
             _selectedTab = State(initialValue: .flats)
             _flatsPath   = State(initialValue: [])
-        case .flatDetail(let flat):
+        case .flatDetail(let detail):
             _selectedTab = State(initialValue: .flats)
-            _flatsPath   = State(initialValue: [flat])
+            _flatsPath   = State(initialValue: [detail])
         case .flatmates:
             _selectedTab = State(initialValue: .flatmates)
             _flatsPath   = State(initialValue: [])

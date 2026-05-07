@@ -2,6 +2,7 @@ import SwiftUI
 
 struct FlatmateListRow: View {
     let flatmate: Flatmate
+    var hideMatch: Bool = false
     let onTap: () -> Void
 
     var body: some View {
@@ -20,14 +21,16 @@ struct FlatmateListRow: View {
                             .foregroundStyle(Color.textPrimary)
                             .lineLimit(1)
 
-                        Text("⚡ \(flatmate.matchPct)%")
-                            .font(.system(size: 9, weight: .heavy))
-                            .foregroundStyle(Color.accentAmber)
-                            .padding(.horizontal, 7)
-                            .padding(.vertical, 2)
-                            .background(Color.accentAmber.opacity(0.18))
-                            .clipShape(Capsule())
-                            .overlay(Capsule().strokeBorder(Color.accentAmber.opacity(0.4), lineWidth: 1))
+                        if !hideMatch {
+                            Text("⚡ \(flatmate.matchPct)%")
+                                .font(.system(size: 9, weight: .heavy))
+                                .foregroundStyle(Color.accentAmber)
+                                .padding(.horizontal, 7)
+                                .padding(.vertical, 2)
+                                .background(Color.accentAmber.opacity(0.18))
+                                .clipShape(Capsule())
+                                .overlay(Capsule().strokeBorder(Color.accentAmber.opacity(0.4), lineWidth: 1))
+                        }
                     }
 
                     Text(flatmate.job)

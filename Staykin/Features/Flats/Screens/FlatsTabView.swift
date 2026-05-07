@@ -18,7 +18,7 @@ struct FlatsFilter: Equatable {
 }
 
 struct FlatsTabView: View {
-    @Binding var path: [Flat]
+    @Binding var path: [FlatDetail]
     @State private var filter = FlatsFilter()
     @State private var showPostSpace = false
 
@@ -34,9 +34,8 @@ struct FlatsTabView: View {
                 list
             }
             .background(Color.bgBase)
-            .navigationDestination(for: Flat.self) { _ in
-                // Phase C ships a single mock detail; later we fetch by flat.id.
-                FlatDetailView(detail: MockFlats.detail, onBack: pop)
+            .navigationDestination(for: FlatDetail.self) { detail in
+                FlatDetailView(detail: detail, onBack: pop)
             }
         }
         .tint(.primaryPurple)
@@ -158,7 +157,8 @@ struct FlatsTabView: View {
         ScrollView {
             LazyVStack(spacing: 0) {
                 ForEach(visibleFlats) { flat in
-                    NavigationLink(value: flat) {
+                    // Phase C ships a single mock detail; later we fetch by flat.id.
+                    NavigationLink(value: MockFlats.detail) {
                         FlatListRow(flat: flat)
                     }
                     .buttonStyle(.plain)

@@ -1,8 +1,10 @@
 import SwiftUI
 
 struct SuccessScreen: View {
-    let onViewListing: () -> Void
+    let onViewListing: () async -> Void
     let onBrowseFlatmates: () -> Void
+
+    @State private var isLoadingListing = false
 
     var body: some View {
         ZStack {
@@ -61,7 +63,11 @@ struct SuccessScreen: View {
                 Spacer()
 
                 VStack(spacing: 10) {
-                    PrimaryButton(title: "View my listing →", action: onViewListing)
+                    PrimaryButton(
+                        title: "View my listing →",
+                        action: handleViewListing,
+                        isLoading: isLoadingListing
+                    )
                     SecondaryButton(title: "Browse flatmates", action: onBrowseFlatmates)
                 }
                 .padding(.horizontal, Spacing.xxl)
@@ -70,5 +76,14 @@ struct SuccessScreen: View {
             .padding(.horizontal, Spacing.xxl)
         }
         .navigationBarBackButtonHidden(true)
+    }
+
+    private func handleViewListing() {
+        guard !isLoadingListing else { return }
+        isLoadingListing = true
+        Task { @MainActor in
+            await onViewListing()
+            isLoadingListing = false
+        }
     }
 }

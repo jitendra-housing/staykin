@@ -32,6 +32,7 @@ struct OnboardingSnapshot: Codable {
     var listingMoveIn: Int?
     var listingAmenities: Set<Int>
     var flatPhotoUrls: [String]
+    var listingIds: [Int]
 
     var path: [OnboardingRoute]
 }
@@ -65,6 +66,7 @@ extension OnboardingSnapshot {
         self.listingMoveIn = data.listingMoveIn
         self.listingAmenities = data.listingAmenities
         self.flatPhotoUrls = data.flatPhotoUrls
+        self.listingIds = data.listingIds
         self.path = path
     }
 
@@ -96,5 +98,6 @@ extension OnboardingSnapshot {
         data.listingMoveIn = listingMoveIn
         data.listingAmenities = listingAmenities
         data.flatPhotoUrls = flatPhotoUrls
+        data.listingIds = listingIds
     }
 }

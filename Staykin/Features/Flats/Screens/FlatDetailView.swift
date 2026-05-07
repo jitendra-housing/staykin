@@ -18,7 +18,6 @@ struct FlatDetailView: View {
                         TrustStrip(detail: detail).padding(.top, 10)
                         amenitiesSection.padding(.top, 16)
                         flatmatesSection.padding(.top, 18)
-                        aboutSection.padding(.top, 16)
                     }
                     .padding(.horizontal, 18)
                     .padding(.top, 14)
@@ -133,12 +132,9 @@ struct FlatDetailView: View {
                     .foregroundStyle(Color.textSecondary)
             }
 
-            MatchMeterCard(combinedMatch: detail.combinedMatch, flatmates: detail.flatmates)
-                .padding(.bottom, 10)
-
             VStack(spacing: 8) {
                 ForEach(detail.flatmates) { mate in
-                    FlatmateListRow(flatmate: mate, onTap: {
+                    FlatmateListRow(flatmate: mate, hideMatch: detail.isOwnListing, onTap: {
                         selectedFlatmate = mate
                     })
                 }
@@ -147,18 +143,6 @@ struct FlatDetailView: View {
                     EmptySlotRow(rentShare: priv.rentShare, availableNow: priv.availableNow)
                 }
             }
-        }
-    }
-
-    // MARK: - About
-
-    private var aboutSection: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            SectionLabel(text: "About")
-            Text(detail.about)
-                .font(.system(size: 12))
-                .foregroundStyle(Color.textSecondary)
-                .lineSpacing(4)
         }
     }
 }

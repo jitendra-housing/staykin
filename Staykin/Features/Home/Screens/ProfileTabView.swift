@@ -5,14 +5,15 @@ struct ProfileTabView: View {
 
     @State private var notificationsEnabled: Bool = true
     @State private var showSignOutConfirm: Bool = false
+    @State private var loadedProfile: UserProfile? = UserStore.saved
 
-    private var profile: UserProfile? { UserStore.saved }
+    private var profile: UserProfile? { loadedProfile }
 
-    // TODO: replace mocks with real squad / listing endpoints when available.
+    // TODO: replace mocks with real squad endpoint when available.
     private var squadMembers: [Flatmate] {
         [1, 2].compactMap(MockFlatmates.find(by:))
     }
-    private var hasListing: Bool { false }
+    private var hasListing: Bool { !(profile?.listingIds?.isEmpty ?? true) }
 
     var body: some View {
         ScrollView {
@@ -35,6 +36,18 @@ struct ProfileTabView: View {
             Button("Sign out", role: .destructive, action: onSignOut)
         } message: {
             Text("You'll go through onboarding again next time you open the app.")
+        }
+        .task { await loadProfileIfNeeded() }
+    }
+
+    private func loadProfileIfNeeded() async {
+        guard UserStore.saved == nil else { return }
+        let storedId = UserDefaults.standard.object(forKey: OnboardingAPI.userIdDefaultsKey) as? Int
+        guard let userId = storedId else { return }
+        do {
+            loadedProfile = try await OnboardingAPI.fetchProfile(userId: userId)
+        } catch {
+            print("fetchProfile failed: \(error)")
         }
     }
 

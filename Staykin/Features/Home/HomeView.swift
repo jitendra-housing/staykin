@@ -39,7 +39,7 @@ struct HomeView: View {
             ZStack {
                 switch selectedTab {
                 case .flats:     FlatsTabView(path: $flatsPath)
-                case .flatmates: FlatmatesTabPlaceholder()
+                case .flatmates: FlatmatesTabView()
                 case .chats:     FlatmatesCoordinator()
                 case .profile:   ProfileTabView(onSignOut: onSignOut)
                 }

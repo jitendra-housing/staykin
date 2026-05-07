@@ -21,7 +21,7 @@ struct UserProfile: Codable, Equatable {
     let listingIds: [Int]?
 
     // Optional. Backend doesn't yet return this on UserOut; once it does
-    // (match_score: int 0-100), both the Flatmates swipe card and the chat
+    // (vibe_score: int 0-100), both the Flatmates swipe card and the chat
     // header light up automatically via Flatmate(profile:).
-    let matchScore: Int?
+    let vibeScore: Int?
 }

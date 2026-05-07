@@ -10,11 +10,7 @@ struct RootView: View {
         case .onboarding:
             OnboardingCoordinator(onFinish: { phase = .home })
         case .home:
-            // Home tab bar — implemented later
-            Text("Home coming soon")
-                .foregroundStyle(Color.textSecondary)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.bgBase)
+            HomeView()
         }
     }
 }

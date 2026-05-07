@@ -49,7 +49,13 @@ struct OnboardingCoordinator: View {
         case .flatPrefs:
             FlatPrefsScreen(onContinue: { push(.vibeForm) }, onBack: pop)
         case .vibeForm:
-            VibeFormScreen(onContinue: { push(.vibeCard) }, onBack: pop)
+            VibeFormScreen(onContinue: {
+                Task {
+                    do { try await OnboardingAPI.patchProfile(data) }
+                    catch { print("patchProfile failed: \(error)") }
+                }
+                push(.vibeCard)
+            }, onBack: pop)
         case .vibeCard:
             VibeCardScreen(onFinish: onFinish, onBack: pop)
         case .postFlatDetails:

@@ -3,8 +3,18 @@ import SwiftUI
 struct OnboardingCoordinator: View {
     let onFinish: () -> Void
 
-    @State private var data = OnboardingData()
-    @State private var path: [OnboardingRoute] = []
+    @State private var data: OnboardingData
+    @State private var path: [OnboardingRoute]
+    @Environment(\.scenePhase) private var scenePhase
+
+    init(onFinish: @escaping () -> Void) {
+        self.onFinish = onFinish
+        let restored = UserStore.snapshot
+        let data = OnboardingData()
+        restored?.apply(to: data)
+        _data = State(initialValue: data)
+        _path = State(initialValue: restored?.path ?? [])
+    }
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -15,6 +25,12 @@ struct OnboardingCoordinator: View {
         }
         .environment(data)
         .tint(.primaryPurple)
+        .onChange(of: path) { _, _ in saveSnapshot() }
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .background || newPhase == .inactive {
+                saveSnapshot()
+            }
+        }
     }
 
     @ViewBuilder
@@ -60,17 +76,15 @@ struct OnboardingCoordinator: View {
                 push(.vibeCard)
             }, onBack: pop)
         case .vibeCard:
-            VibeCardScreen(onFinish: onFinish, onBack: pop)
+            VibeCardScreen(onFinish: handleFinish, onBack: pop)
         case .postFlatDetails:
-            FlatDetailsScreen(onContinue: {
-                Task {
-                    do { try await ListingsAPI.createListing(data) }
-                    catch { print("createListing failed: \(error)") }
-                }
-                push(.postPhotos)
-            }, onBack: pop)
+            FlatDetailsScreen(onContinue: { push(.postPhotos) }, onBack: pop)
         case .postPhotos:
-            PhotosScreen(onContinue: { push(.postVibe) }, onBack: pop)
+            PhotosScreen(onContinue: {
+                do { try await ListingsAPI.createListing(data) }
+                catch { print("createListing failed: \(error)") }
+                push(.postVibe)
+            }, onBack: pop)
         case .postVibe:
             VibeScreen(onPublish: {
                 Task {
@@ -80,7 +94,7 @@ struct OnboardingCoordinator: View {
                 push(.postSuccess)
             }, onBack: pop)
         case .postSuccess:
-            SuccessScreen(onViewListing: onFinish, onBrowseFlatmates: onFinish)
+            SuccessScreen(onViewListing: handleFinish, onBrowseFlatmates: handleFinish)
         }
     }
 
@@ -90,5 +104,15 @@ struct OnboardingCoordinator: View {
 
     private func pop() {
         if !path.isEmpty { path.removeLast() }
+    }
+
+    private func saveSnapshot() {
+        UserStore.save(snapshot: OnboardingSnapshot(data: data, path: path))
+    }
+
+    private func handleFinish() {
+        UserStore.clearSnapshot()
+        UserStore.onboardingComplete = true
+        onFinish()
     }
 }

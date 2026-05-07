@@ -4,6 +4,7 @@ struct StickyBottomCTA: View {
     let title: String
     let action: () -> Void
     var isDisabled: Bool = false
+    var isLoading: Bool = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -14,7 +15,7 @@ struct StickyBottomCTA: View {
             )
             .frame(height: 24)
 
-            PrimaryButton(title: title, action: action, isDisabled: isDisabled)
+            PrimaryButton(title: title, action: action, isDisabled: isDisabled, isLoading: isLoading)
                 .padding(.horizontal, Spacing.screenHPad)
                 .padding(.bottom, Spacing.xl)
                 .background(Color.bgBase)

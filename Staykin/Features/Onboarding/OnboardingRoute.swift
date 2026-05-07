@@ -1,6 +1,6 @@
 import Foundation
 
-enum OnboardingRoute: Hashable {
+enum OnboardingRoute: String, Hashable, Codable {
     case phone        // 1. What's your number?
     case otp          // 2. Enter the code
     case profile      // 3. Let's set up your profile

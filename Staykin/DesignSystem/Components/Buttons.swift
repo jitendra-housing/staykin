@@ -6,19 +6,28 @@ struct PrimaryButton: View {
     let title: String
     let action: () -> Void
     var isDisabled: Bool = false
+    var isLoading: Bool = false
 
     @State private var isPressed = false
 
     var body: some View {
-        Button(action: action) {
-            Text(title)
-                .font(.buttonLg)
-                .foregroundStyle(isDisabled ? Color.textDisabled : .white)
+        Button(action: { if !isLoading { action() } }) {
+            Group {
+                if isLoading {
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                        .tint(.white)
+                } else {
+                    Text(title)
+                        .font(.buttonLg)
+                        .foregroundStyle(isDisabled ? Color.textDisabled : .white)
+                }
+            }
                 .frame(maxWidth: .infinity)
                 .frame(height: ComponentSize.buttonHeight)
                 .background(
                     Group {
-                        if isDisabled {
+                        if isDisabled && !isLoading {
                             Color.bgCard
                         } else {
                             LinearGradient.brand
@@ -26,11 +35,11 @@ struct PrimaryButton: View {
                     }
                 )
                 .clipShape(RoundedRectangle(cornerRadius: Radius.full))
-                .shadow(color: .primaryPurple.opacity(isDisabled ? 0 : 0.38), radius: 12, x: 0, y: 4)
+                .shadow(color: .primaryPurple.opacity(isDisabled && !isLoading ? 0 : 0.38), radius: 12, x: 0, y: 4)
                 .scaleEffect(isPressed ? 0.98 : 1.0)
                 .opacity(isPressed ? 0.9 : 1.0)
         }
-        .disabled(isDisabled)
+        .disabled(isDisabled || isLoading)
         .buttonStyle(ScaleButtonStyle(isPressed: $isPressed))
     }
 }

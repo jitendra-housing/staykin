@@ -4,7 +4,19 @@ struct RootView: View {
     @State private var phase: AppPhase
 
     init() {
-        _phase = State(initialValue: UserStore.saved != nil ? .home : .splash)
+        let initial: AppPhase
+        if UserStore.onboardingComplete {
+            initial = .home
+        } else if UserStore.snapshot != nil {
+            initial = .onboarding
+        } else if UserStore.saved != nil {
+            // Pre-snapshot user with a saved profile — treat as already onboarded.
+            UserStore.onboardingComplete = true
+            initial = .home
+        } else {
+            initial = .splash
+        }
+        _phase = State(initialValue: initial)
     }
 
     var body: some View {
@@ -16,6 +28,8 @@ struct RootView: View {
         case .home:
             HomeView(onSignOut: {
                 UserStore.clear()
+                UserStore.clearSnapshot()
+                UserStore.onboardingComplete = false
                 phase = .onboarding
             })
         }

@@ -8,6 +8,7 @@ struct PhotoTile: View {
     }
 
     let content: Content
+    var isUploading: Bool = false
     var onAdd: (() -> Void)? = nil
     var onRemove: (() -> Void)? = nil
 
@@ -58,6 +59,15 @@ struct PhotoTile: View {
                     .clipped()
             )
             .clipShape(RoundedRectangle(cornerRadius: Radius.md))
+            .overlay {
+                if isUploading {
+                    ZStack {
+                        Color.black.opacity(0.45)
+                        ProgressView().tint(.white)
+                    }
+                    .clipShape(RoundedRectangle(cornerRadius: Radius.md))
+                }
+            }
             .overlay(alignment: .topLeading) {
                 if isCover { coverBadge.padding(6) }
             }

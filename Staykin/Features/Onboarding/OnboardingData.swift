@@ -1,13 +1,13 @@
 import Foundation
 import Observation
 
-enum UserIntent: String, CaseIterable, Hashable {
+enum UserIntent: String, CaseIterable, Hashable, Codable {
     case moveIntoFlat       // Find an existing flat with rooms available
     case fillRoomsInMyFlat  // I have a place, find flatmates to fill it
     case teamUpToRent       // Find your squad, then hunt together
 }
 
-enum Gender: String, CaseIterable, Hashable {
+enum Gender: String, CaseIterable, Hashable, Codable {
     case male = "Male"
     case female = "Female"
     case other = "Other"

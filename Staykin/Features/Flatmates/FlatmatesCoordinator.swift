@@ -6,10 +6,11 @@ struct FlatmatesCoordinator: View {
     var body: some View {
         NavigationStack(path: $path) {
             RequestsInboxScreen(
-                onOpenProfile:    { flatmateId in path.append(.requestProfile(flatmateId: flatmateId)) },
-                onOpenChat:       { threadId in path.append(.directChat(threadId: threadId)) },
-                onAcceptRequest:  { _ in /* TODO wire to API */ },
-                onDeclineRequest: { _ in /* TODO wire to API */ }
+                onOpenProfile:     { flatmateId in path.append(.requestProfile(flatmateId: flatmateId, showActions: true)) },
+                onOpenSentProfile: { flatmateId in path.append(.requestProfile(flatmateId: flatmateId, showActions: false)) },
+                onOpenChat:        { threadId in path.append(.directChat(threadId: threadId)) },
+                onAcceptRequest:   { _ in /* TODO wire to API */ },
+                onDeclineRequest:  { _ in /* TODO wire to API */ }
             )
             .navigationDestination(for: FlatmatesRoute.self) { route in
                 screen(for: route)
@@ -21,9 +22,10 @@ struct FlatmatesCoordinator: View {
     @ViewBuilder
     private func screen(for route: FlatmatesRoute) -> some View {
         switch route {
-        case .requestProfile(let flatmateId):
+        case let .requestProfile(flatmateId, showActions):
             RequestProfileLoader(
                 flatmateId: flatmateId,
+                showActions: showActions,
                 onAccept:  { acceptFlatmate(flatmateId: flatmateId) },
                 onDecline: { path.removeLast() },
                 onBack:    { path.removeLast() }
@@ -38,7 +40,7 @@ struct FlatmatesCoordinator: View {
                 FlatmateChatScreen(
                     thread: thread,
                     onBack:        { path.removeLast() },
-                    onOpenProfile: { path.append(.requestProfile(flatmateId: thread.otherFlatmateId)) },
+                    onOpenProfile: { path.append(.requestProfile(flatmateId: thread.otherFlatmateId, showActions: false)) },
                     onOpenGroup:   { path.append(.groupChat(threadId: MockFlatmates.groupThread.id)) }
                 )
             } else {
@@ -48,7 +50,7 @@ struct FlatmatesCoordinator: View {
             GroupChatScreen(
                 thread: MockFlatmates.groupThread,
                 onBack:        { path.removeLast() },
-                onOpenProfile: { flatmateId in path.append(.requestProfile(flatmateId: flatmateId)) }
+                onOpenProfile: { flatmateId in path.append(.requestProfile(flatmateId: flatmateId, showActions: false)) }
             )
         }
     }
@@ -80,6 +82,7 @@ struct FlatmatesCoordinator: View {
 // Shows a spinner while in-flight and a back-only error state on failure.
 private struct RequestProfileLoader: View {
     let flatmateId: Int
+    var showActions: Bool = true
     let onAccept: () -> Void
     let onDecline: () -> Void
     let onBack: () -> Void
@@ -92,6 +95,7 @@ private struct RequestProfileLoader: View {
             if let flatmate {
                 RequestProfileScreen(
                     flatmate: flatmate,
+                    showActions: showActions,
                     onAccept: onAccept,
                     onDecline: onDecline,
                     onBack: onBack

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RequestProfileScreen: View {
     let flatmate: Flatmate
+    var showActions: Bool = true
     let onAccept: () -> Void
     let onDecline: () -> Void
     let onBack: () -> Void
@@ -18,8 +19,6 @@ struct RequestProfileScreen: View {
                 VStack(spacing: 0) {
                     FlatmateVibeCard(flatmate: flatmate)
                         .padding(.top, 8)
-
-                    aboutSection
                         .padding(.bottom, 32)
                 }
             }
@@ -28,7 +27,9 @@ struct RequestProfileScreen: View {
         .background(Color.bgBase)
         .navigationBarBackButtonHidden(true)
         .safeAreaInset(edge: .bottom, spacing: 0) {
-            bottomActionBar
+            if showActions {
+                bottomActionBar
+            }
         }
     }
 
@@ -68,21 +69,6 @@ struct RequestProfileScreen: View {
             .background(Color.accentAmber.opacity(0.18))
             .clipShape(Capsule())
             .overlay(Capsule().strokeBorder(Color.accentAmber.opacity(0.4), lineWidth: 1))
-    }
-
-    private var aboutSection: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text("About")
-                .font(.custom("Outfit", size: 15).weight(.semibold))
-                .foregroundStyle(Color.textPrimary)
-            Text(flatmate.bio)
-                .font(.system(size: 12))
-                .foregroundStyle(Color.textSecondary)
-                .lineSpacing(2)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal, 22)
-        .padding(.top, 18)
     }
 
     private var bottomActionBar: some View {

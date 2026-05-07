@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct RequestsInboxScreen: View {
-    let onOpenProfile: (Int) -> Void           // userId — avatar taps + received/sent row body taps
+    let onOpenProfile: (Int) -> Void           // userId — received row taps (shows accept/decline)
+    let onOpenSentProfile: (Int) -> Void       // userId — sent row taps (no accept/decline)
     let onOpenChat: (Int) -> Void              // threadId — chat row body tap
     let onAcceptRequest: (Int) -> Void         // requestId — received ✓
     let onDeclineRequest: (Int) -> Void        // requestId — received ✕
@@ -329,7 +330,7 @@ struct RequestsInboxScreen: View {
                     flatmate: flatmateById[request.targetUserId ?? -1],
                     onTap: {
                         if let userId = request.targetUserId {
-                            onOpenProfile(userId)
+                            onOpenSentProfile(userId)
                         }
                     }
                 )

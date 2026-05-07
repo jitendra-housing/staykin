@@ -20,6 +20,7 @@ struct FlatsFilter: Equatable {
 struct FlatsTabView: View {
     @Binding var path: [Flat]
     @State private var filter = FlatsFilter()
+    @State private var showPostSpace = false
 
     private var allFlats: [Flat] { MockFlats.list }
     private var visibleFlats: [Flat] { allFlats.filter(filter.matches) }
@@ -39,6 +40,9 @@ struct FlatsTabView: View {
             }
         }
         .tint(.primaryPurple)
+        .fullScreenCover(isPresented: $showPostSpace) {
+            PostSpaceCoordinator(onDismiss: { showPostSpace = false })
+        }
     }
 
     private func pop() {
@@ -57,7 +61,7 @@ struct FlatsTabView: View {
             Spacer()
 
             Button {
-                // Section 08 owns the real Post-your-Space flow.
+                showPostSpace = true
             } label: {
                 HStack(spacing: 6) {
                     Image(systemName: "plus")

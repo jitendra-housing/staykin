@@ -465,9 +465,11 @@ private struct ReceivedRequestRow: View {
     let onAccept: () -> Void
     let onDecline: () -> Void
 
-    // The /requests/received response only carries `from_user_id`, so we render a
-    // placeholder identity until a `GET /profile/{id}` lookup is wired in.
-    private var displayName: String { "User #\(request.fromUserId)" }
+    @State private var fetchedName: String?
+
+    private var displayName: String {
+        fetchedName ?? "User #\(request.fromUserId)"
+    }
     private var avatarHue: Double { Double((request.fromUserId * 47) % 360) }
 
     var body: some View {
@@ -521,6 +523,18 @@ private struct ReceivedRequestRow: View {
                     .buttonStyle(.plain)
                 }
             }
+        }
+        .task { await loadName() }
+    }
+
+    private func loadName() async {
+        guard fetchedName == nil else { return }
+        do {
+            let (profile, _) = try await OnboardingAPI.getProfile(userId: request.fromUserId)
+            let trimmed = (profile.name ?? "").trimmingCharacters(in: .whitespaces)
+            if !trimmed.isEmpty { fetchedName = trimmed }
+        } catch {
+            print("getProfile(\(request.fromUserId)) failed: \(error)")
         }
     }
 }

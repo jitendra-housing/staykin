@@ -8,10 +8,10 @@ import Foundation
 struct ReceivedRequest: Decodable, Identifiable {
     let id: Int
     let fromUserId: Int
-    let targetKind: Int          // assumed: 0 = user, 1 = team
+    let targetKind: Int          // 1 = user, 2 = team
     let targetUserId: Int?       // present when target is a user
     let targetTeamId: Int?       // present when target is a team
-    let status: Int              // assumed: 0 = pending, 1 = accepted, 2 = declined
+    let status: Int              // 1 = pending, 2 = accepted, 3 = declined
     let decidedAt: String?
     let createdAt: String
     let updatedAt: String?
@@ -19,9 +19,9 @@ struct ReceivedRequest: Decodable, Identifiable {
 
 extension ReceivedRequest {
     enum StatusCode: Int {
-        case pending  = 0
-        case accepted = 1
-        case declined = 2
+        case pending  = 1
+        case accepted = 2
+        case declined = 3
     }
 
     var statusCode: StatusCode? { StatusCode(rawValue: status) }

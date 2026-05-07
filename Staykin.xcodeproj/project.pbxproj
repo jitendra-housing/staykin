@@ -76,6 +76,7 @@
 		D653B3F3EBE4A31AEB59F703 /* StickyBottomCTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A0EC7AF0066699A2FB68F6 /* StickyBottomCTA.swift */; };
 		D973EDFE050E3F0A24F13F2C /* VibeFormScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78787EF8FA148BC368018340 /* VibeFormScreen.swift */; };
 		E1586E240FF3523C39B3D199 /* StaykinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5064A80BB4EFBA2EC26ADFFA /* StaykinApp.swift */; };
+		E180112D9159B734724652DE /* SuccessToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CD99813F266CAA886633C9 /* SuccessToast.swift */; };
 		E426B941C136866616EC51F4 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D922F2CDF9E10B77F04D290 /* Buttons.swift */; };
 		E495954763F6E636E0DA5040 /* TrustStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A47E8DD2724C6DD86C101D2 /* TrustStrip.swift */; };
 		E8FAD92CCA1C54C6B724BEFE /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A51A80E59D112F04CA6F6 /* FlowLayout.swift */; };
@@ -139,6 +140,7 @@
 		A1B2C3D4E5F6789012345602 /* OnboardingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAPI.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F6789012345604 /* Occupation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Occupation.swift; sourceTree = "<group>"; };
 		A31050EF48BDA99F6628F1BD /* EmptySlotRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySlotRow.swift; sourceTree = "<group>"; };
+		A7CD99813F266CAA886633C9 /* SuccessToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessToast.swift; sourceTree = "<group>"; };
 		AE4A2E705F24D12E2CA8B5BE /* PostStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStepper.swift; sourceTree = "<group>"; };
 		B40BF0CB6FAF75AA2BED1578 /* RangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
 		B4BB260E86A73E7FEA4865A7 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				7FDA798E28589FD8A7854663 /* StaykinTextField.swift */,
 				F2DF11B07CE601F0F18A6AF3 /* StepPill.swift */,
 				D9A0EC7AF0066699A2FB68F6 /* StickyBottomCTA.swift */,
+				A7CD99813F266CAA886633C9 /* SuccessToast.swift */,
 				BF139DC4B71C0905F46E75C8 /* TabBar.swift */,
 				EB00BD8B65704A6A5D53B384 /* TipBanner.swift */,
 				F2149C1E7A477C7E0C251ED1 /* VibeTile.swift */,
@@ -537,6 +540,7 @@
 				7D5FEFB4257FAA8EB7AB57D2 /* StepPill.swift in Sources */,
 				D653B3F3EBE4A31AEB59F703 /* StickyBottomCTA.swift in Sources */,
 				B4E2EB51A26662AA9A131C7A /* SuccessScreen.swift in Sources */,
+				E180112D9159B734724652DE /* SuccessToast.swift in Sources */,
 				5F97BA4ED32D1505BBB15962 /* TabBar.swift in Sources */,
 				5F1422B005A39ED80922A5B9 /* TabPlaceholder.swift in Sources */,
 				3F6CB46B812C66EA75E2C440 /* TipBanner.swift in Sources */,

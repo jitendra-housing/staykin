@@ -5,38 +5,42 @@ struct FlatmateProfileSheet: View {
     let onClose: () -> Void
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                FlatmateVibeCard(flatmate: flatmate)
-                    .padding(.horizontal, 18)
-                    .padding(.top, 4)
+        ZStack(alignment: .topTrailing) {
+            ScrollView {
+                VStack(spacing: 0) {
+                    FlatmateVibeCard(flatmate: flatmate)
+                        .padding(.horizontal, 18)
+                        .padding(.top, 12)
 
-                aboutSection
-
-                closeButton
-                    .padding(.bottom, 22)
+                    closeButtonLarge
+                        .padding(.top, 24)
+                        .padding(.bottom, 22)
+                }
             }
+            .background(Color.bgSheet)
+
+            closeButtonSmall
+                .padding(.top, 12)
+                .padding(.trailing, 16)
         }
-        .background(Color.bgSheet)
     }
 
-    private var aboutSection: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            Text("About")
-                .font(.custom("Outfit", size: 14).weight(.semibold))
-                .foregroundStyle(Color.textPrimary)
-            Text(flatmate.bio)
-                .font(.system(size: 12))
+    // 28pt close in top-right of the sheet header
+    private var closeButtonSmall: some View {
+        Button(action: onClose) {
+            Image(systemName: "xmark")
+                .font(.system(size: 13, weight: .medium))
                 .foregroundStyle(Color.textSecondary)
-                .lineSpacing(4)
+                .frame(width: 28, height: 28)
+                .background(Color.bgCard)
+                .clipShape(Circle())
+                .overlay(Circle().strokeBorder(Color.cardBorder, lineWidth: 1))
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal, 22)
-        .padding(.top, 16)
-        .padding(.bottom, 18)
+        .buttonStyle(.plain)
     }
 
-    private var closeButton: some View {
+    // 56pt close beneath the card
+    private var closeButtonLarge: some View {
         Button(action: onClose) {
             Image(systemName: "xmark")
                 .font(.system(size: 20, weight: .medium))

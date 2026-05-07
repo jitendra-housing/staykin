@@ -39,14 +39,7 @@ struct FlatDetailView: View {
         }
         .overlay(alignment: .bottom) {
             if showEnquirySent {
-                SuccessToast(
-                    title: "Enquiry request sent",
-                    subtitle: "Check status in",
-                    actionLabel: "Sent Requests →",
-                    onAction: {
-                        // Phase later — navigate to Sent Requests
-                    }
-                )
+                SuccessToast(title: "Enquiry request sent")
                 .padding(.horizontal, 16)
                 .padding(.bottom, 96)   // sit above the sticky Enquire CTA
                 .transition(.move(edge: .bottom).combined(with: .opacity))

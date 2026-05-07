@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct OnboardingCoordinator: View {
-    let onFinish: () -> Void
+    let onFinish: (HomeLanding) -> Void
 
     @State private var data: OnboardingData
     @State private var path: [OnboardingRoute]
     @Environment(\.scenePhase) private var scenePhase
 
-    init(onFinish: @escaping () -> Void) {
+    init(onFinish: @escaping (HomeLanding) -> Void) {
         self.onFinish = onFinish
         let restored = UserStore.snapshot
         let data = OnboardingData()
@@ -76,7 +76,7 @@ struct OnboardingCoordinator: View {
                 push(.vibeCard)
             }, onBack: pop)
         case .vibeCard:
-            VibeCardScreen(onFinish: handleFinish, onBack: pop)
+            VibeCardScreen(onFinish: { handleFinish(.flatsList) }, onBack: pop)
         case .postFlatDetails:
             FlatDetailsScreen(onContinue: { push(.postPhotos) }, onBack: pop)
         case .postPhotos:
@@ -94,7 +94,12 @@ struct OnboardingCoordinator: View {
                 push(.postSuccess)
             }, onBack: pop)
         case .postSuccess:
-            SuccessScreen(onViewListing: handleFinish, onBrowseFlatmates: handleFinish)
+            // Until POST /listings returns the created Flat, stub "view my listing"
+            // with the first mock flat. Swap to the real returned listing once wired.
+            SuccessScreen(
+                onViewListing:    { handleFinish(.flatDetail(MockFlats.list[0])) },
+                onBrowseFlatmates: { handleFinish(.flatmates) }
+            )
         }
     }
 
@@ -110,9 +115,9 @@ struct OnboardingCoordinator: View {
         UserStore.save(snapshot: OnboardingSnapshot(data: data, path: path))
     }
 
-    private func handleFinish() {
+    private func handleFinish(_ landing: HomeLanding) {
         UserStore.clearSnapshot()
         UserStore.onboardingComplete = true
-        onFinish()
+        onFinish(landing)
     }
 }

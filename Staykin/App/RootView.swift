@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RootView: View {
     @State private var phase: AppPhase
+    @State private var landing: HomeLanding = .flatsList
 
     init() {
         let initial: AppPhase
@@ -24,14 +25,21 @@ struct RootView: View {
         case .splash:
             SplashView(onFinish: { phase = .onboarding })
         case .onboarding:
-            OnboardingCoordinator(onFinish: { phase = .home })
-        case .home:
-            HomeView(onSignOut: {
-                UserStore.clear()
-                UserStore.clearSnapshot()
-                UserStore.onboardingComplete = false
-                phase = .onboarding
+            OnboardingCoordinator(onFinish: { destination in
+                landing = destination
+                phase = .home
             })
+        case .home:
+            HomeView(
+                landing: landing,
+                onSignOut: {
+                    UserStore.clear()
+                    UserStore.clearSnapshot()
+                    UserStore.onboardingComplete = false
+                    landing = .flatsList
+                    phase = .onboarding
+                }
+            )
         }
     }
 }

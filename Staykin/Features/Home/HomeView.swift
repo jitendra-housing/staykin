@@ -1,10 +1,31 @@
 import SwiftUI
 
+enum HomeLanding {
+    case flatsList                  // default tab landing
+    case flatDetail(Flat)           // deep-link to a flat detail (e.g. user's just-posted listing)
+    case flatmates                  // open the flatmates tab
+}
+
 struct HomeView: View {
     let onSignOut: () -> Void
 
-    @State private var selectedTab: HomeTab = .flats
-    @State private var flatsPath: [Flat] = []
+    @State private var selectedTab: HomeTab
+    @State private var flatsPath: [Flat]
+
+    init(landing: HomeLanding = .flatsList, onSignOut: @escaping () -> Void) {
+        self.onSignOut = onSignOut
+        switch landing {
+        case .flatsList:
+            _selectedTab = State(initialValue: .flats)
+            _flatsPath   = State(initialValue: [])
+        case .flatDetail(let flat):
+            _selectedTab = State(initialValue: .flats)
+            _flatsPath   = State(initialValue: [flat])
+        case .flatmates:
+            _selectedTab = State(initialValue: .flatmates)
+            _flatsPath   = State(initialValue: [])
+        }
+    }
 
     private var isTabBarVisible: Bool {
         switch selectedTab {

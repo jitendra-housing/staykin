@@ -178,7 +178,8 @@ struct OnboardingCoordinator: View {
             slots: slots,
             privateRoom: nil,
             about: "",
-            isOwnListing: true
+            isOwnListing: true,
+            ownerUserId: listing.ownerUserId
         )
     }
 

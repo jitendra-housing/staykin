@@ -37,8 +37,8 @@ enum OnboardingAPI {
         return profile
     }
 
-    @discardableResult
-    static func fetchProfile(userId: Int) async throws -> UserProfile {
+    /// Fetches a profile by user id without persisting. Use for arbitrary users (e.g. listing owners).
+    static func getProfile(userId: Int) async throws -> (UserProfile, Data) {
         let url = baseURL.appendingPathComponent("profile/\(userId)")
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -58,9 +58,9 @@ enum OnboardingAPI {
 
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
-        let profile: UserProfile
         do {
-            profile = try decoder.decode(UserProfile.self, from: responseData)
+            let profile = try decoder.decode(UserProfile.self, from: responseData)
+            return (profile, responseData)
         } catch {
             let snippet = String(data: responseData, encoding: .utf8) ?? ""
             throw NSError(
@@ -69,8 +69,13 @@ enum OnboardingAPI {
                 userInfo: [NSLocalizedDescriptionKey: "GET /profile/\(userId): cannot decode response: \(snippet)"]
             )
         }
+    }
 
-        UserStore.save(rawResponse: responseData)
+    /// Fetches the current user's profile and persists the response. Use only for "me".
+    @discardableResult
+    static func fetchProfile(userId: Int) async throws -> UserProfile {
+        let (profile, raw) = try await getProfile(userId: userId)
+        UserStore.save(rawResponse: raw)
         UserDefaults.standard.set(profile.id, forKey: userIdDefaultsKey)
         return profile
     }

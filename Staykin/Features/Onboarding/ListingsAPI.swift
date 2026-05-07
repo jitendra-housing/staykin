@@ -62,7 +62,8 @@ extension Listing {
             slots: FlatSlots(total: total, filled: 1),
             privateRoom: nil,
             about: "",
-            isOwnListing: isOwnListing
+            isOwnListing: isOwnListing,
+            ownerUserId: ownerUserId
         )
     }
 }

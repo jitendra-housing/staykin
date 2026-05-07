@@ -6,6 +6,12 @@ struct FlatDetailView: View {
 
     @State private var selectedFlatmate: Flatmate? = nil
     @State private var showEnquirySent = false
+    @State private var fetchedOwner: Flatmate? = nil
+
+    private var renderedFlatmates: [Flatmate] {
+        if !detail.flatmates.isEmpty { return detail.flatmates }
+        return fetchedOwner.map { [$0] } ?? []
+    }
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -45,6 +51,7 @@ struct FlatDetailView: View {
             }
         }
         .animation(.easeOut(duration: 0.25), value: showEnquirySent)
+        .task { await loadOwnerIfNeeded() }
         .task(id: showEnquirySent) {
             guard showEnquirySent else { return }
             try? await Task.sleep(for: .seconds(3))
@@ -149,7 +156,7 @@ struct FlatDetailView: View {
             }
 
             VStack(spacing: 8) {
-                ForEach(detail.flatmates) { mate in
+                ForEach(renderedFlatmates) { mate in
                     FlatmateListRow(flatmate: mate, hideMatch: detail.isOwnListing, onTap: {
                         selectedFlatmate = mate
                     })
@@ -160,5 +167,42 @@ struct FlatDetailView: View {
                 }
             }
         }
+    }
+
+    // MARK: - Owner fetch
+
+    private func loadOwnerIfNeeded() async {
+        guard !detail.isOwnListing,
+              detail.flatmates.isEmpty,
+              fetchedOwner == nil,
+              let ownerId = detail.ownerUserId
+        else { return }
+        do {
+            let (profile, _) = try await OnboardingAPI.getProfile(userId: ownerId)
+            fetchedOwner = makeFlatmate(from: profile)
+        } catch {
+            print("getProfile(ownerUserId: \(ownerId)) failed: \(error)")
+        }
+    }
+
+    private func makeFlatmate(from profile: UserProfile) -> Flatmate {
+        let trimmedName = (profile.name ?? "").trimmingCharacters(in: .whitespaces)
+        let name = trimmedName.isEmpty ? "Owner" : trimmedName
+        let job = profile.occupation.flatMap { Occupation.find(by: $0)?.name } ?? "—"
+        return Flatmate(
+            id: profile.id,
+            name: name,
+            age: profile.age ?? 0,
+            role: .poster,
+            job: job,
+            emoji: "🦊",
+            avatarURL: profile.photoUrl,
+            avatarHue: 280,
+            avatarHue2: 320,
+            matchPct: 0,
+            vibePrefIds: profile.lifestyleTagIds ?? [],
+            bio: "",
+            lookingFor: []
+        )
     }
 }

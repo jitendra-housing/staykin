@@ -5,13 +5,21 @@ struct PhotosScreen: View {
     let onContinue: () -> Void
     let onBack: () -> Void
 
+    @Environment(OnboardingData.self) private var data
+
     private let columns = [
         GridItem(.flexible(), spacing: 10),
         GridItem(.flexible(), spacing: 10),
         GridItem(.flexible(), spacing: 10)
     ]
 
-    @State private var photos: [UIImage] = []
+    private struct PhotoSlot: Identifiable {
+        let id = UUID()
+        let image: UIImage
+        var url: String?
+    }
+
+    @State private var slots: [PhotoSlot] = []
     @State private var pickerItem: PhotosPickerItem?
     @State private var showPicker: Bool = false
 
@@ -55,21 +63,37 @@ struct PhotosScreen: View {
         .onChange(of: pickerItem) { _, item in
             guard let item else { return }
             Task { @MainActor in
-                if let data = try? await item.loadTransferable(type: Data.self),
-                   let uiImage = UIImage(data: data) {
-                    photos.append(uiImage)
+                if let imageData = try? await item.loadTransferable(type: Data.self),
+                   let uiImage = UIImage(data: imageData) {
+                    let slot = PhotoSlot(image: uiImage, url: nil)
+                    slots.append(slot)
+                    let slotId = slot.id
+                    do {
+                        let url = try await UploadsAPI.uploadImage(imageData, folder: "flats")
+                        if let idx = slots.firstIndex(where: { $0.id == slotId }) {
+                            slots[idx].url = url
+                            data.flatPhotoUrls = slots.compactMap(\.url)
+                        }
+                    } catch {
+                        print("flat photo upload failed: \(error)")
+                    }
                 }
                 pickerItem = nil
             }
         }
     }
 
+    private func removeSlot(at index: Int) {
+        slots.remove(at: index)
+        data.flatPhotoUrls = slots.compactMap(\.url)
+    }
+
     @ViewBuilder
     private func photoCell(at index: Int) -> some View {
-        if index < photos.count {
+        if index < slots.count {
             PhotoTile(
-                content: .image(photos[index], isCover: index == 0),
-                onRemove: { photos.remove(at: index) }
+                content: .image(slots[index].image, isCover: index == 0),
+                onRemove: { removeSlot(at: index) }
             )
         } else {
             PhotoTile(content: .empty, onAdd: { showPicker = true })

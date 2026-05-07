@@ -114,6 +114,7 @@ struct ProfileScreen: View {
             Task { @MainActor in
                 if let imageData = try? await item.loadTransferable(type: Data.self) {
                     data.photoData = imageData
+                    data.photoUrl = nil
                 }
             }
         }

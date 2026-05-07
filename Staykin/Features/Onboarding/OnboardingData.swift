@@ -33,6 +33,7 @@ final class OnboardingData {
 
     // Basic profile
     var photoData: Data? = nil
+    var photoUrl: String? = nil      // Server URL after /uploads/image
     var name: String = ""
     var age: Int? = nil
     var gender: Gender? = nil
@@ -53,4 +54,7 @@ final class OnboardingData {
 
     // Vibe prefs (Step 2 of 2) — VibePref.id values, min 5
     var vibePrefs: Set<Int> = []
+
+    // Post-listing flow — image URLs from /uploads/image, sent in the listing call
+    var flatPhotoUrls: [String] = []
 }

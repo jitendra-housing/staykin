@@ -28,6 +28,9 @@ struct OnboardingCoordinator: View {
             ProfileScreen(onContinue: {
                 Task { @MainActor in
                     do {
+                        if let photoData = data.photoData, data.photoUrl == nil {
+                            data.photoUrl = try await UploadsAPI.uploadImage(photoData, folder: "profile")
+                        }
                         let profile = try await OnboardingAPI.submitProfile(data)
                         data.userId = profile.id
                     } catch {

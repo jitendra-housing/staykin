@@ -79,7 +79,7 @@ enum OnboardingAPI {
             "age": data.age ?? NSNull(),
             "gender": data.gender?.id ?? NSNull(),
             "occupation": data.occupation ?? NSNull(),
-            "photo_url": "",
+            "photo_url": data.photoUrl ?? "",
             "lifestyle_tag_ids": Array(data.vibePrefs).sorted(),
             "preferred_locality_ids": Array(data.areas).sorted(),
             "budget_min": Int(data.budgetMin),

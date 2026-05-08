@@ -68,7 +68,6 @@
 		7766310B49CD2F51DE7B35FF /* PhotoTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FBE28D12663EB6F1E7A24 /* PhotoTile.swift */; };
 		7A874346FB92EF0340A8B274 /* PostSpaceTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B243E8EAC7DF18A5DFEF958 /* PostSpaceTypes.swift */; };
 		7BB5DABCE6EBF60FEC0814B5 /* ProfileTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD19E6E573C88C1B586578B /* ProfileTabView.swift */; };
-		A1B2C3D4E5F678901234560F /* MyListingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6789012345610 /* MyListingsScreen.swift */; };
 		7D5FEFB4257FAA8EB7AB57D2 /* StepPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DF11B07CE601F0F18A6AF3 /* StepPill.swift */; };
 		81B8E451EA24876BB155CF3F /* OnboardingRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68689740E2E70A302A20EB66 /* OnboardingRoute.swift */; };
 		85CC208A0959A838D7DF22CB /* PhotoPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA42773008AE9FF21E54E4 /* PhotoPlaceholder.swift */; };
@@ -80,6 +79,8 @@
 		98E059FE124680249EE8F115 /* VibePref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AF39FFE7C7C65CE7C0B740 /* VibePref.swift */; };
 		99A650302B3DD19D57593D08 /* Amenity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C318BE66D52429D27464B7A /* Amenity.swift */; };
 		9E9BA4B8F0363ECAF23B3BE1 /* FlatmateListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928EC659892FD8152CDD5D3E /* FlatmateListRow.swift */; };
+		A1B2C3D4E5F678901234560F /* MyListingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6789012345610 /* MyListingsScreen.swift */; };
+		A1B2C3D4E5F6789012345611 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6789012345612 /* LaunchScreen.storyboard */; };
 		A1CAE112553B2AF6DE168D4F /* PhotosScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4610B677D35BB59F7D97A9F3 /* PhotosScreen.swift */; };
 		A2FDCBD3365344B5502273AB /* IntentScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2C2A65FBDCF4FC78DDF976 /* IntentScreen.swift */; };
 		A507125254E1F247F8800F3A /* OTPScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABD7934EA461C62DCF7F7F9 /* OTPScreen.swift */; };
@@ -87,7 +88,6 @@
 		AA18D2A07B51071C520A7BE2 /* PhoneScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12D8A2593707E7D7BFF160C /* PhoneScreen.swift */; };
 		AB271E9B0EDC670A0E4AB35D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6FDBB2E3664852D7233588 /* Assets.xcassets */; };
 		AD59EF9D96790FBC8CF682F7 /* Outfit-Variable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CADB7EBD2D0E95F499354FA /* Outfit-Variable.ttf */; };
-		A1B2C3D4E5F6789012345611 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6789012345612 /* LaunchScreen.storyboard */; };
 		B07E40682C5EF55DE8F3F043 /* RoomsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61D7ED871FAB4ACA7807CA /* RoomsAPI.swift */; };
 		B17EA03FDF8A2C08F32A2439 /* RequestProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E1C01F7E0BD373ACC28C8 /* RequestProfileScreen.swift */; };
 		B4E2EB51A26662AA9A131C7A /* SuccessScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354C23FB8682AFBD22EB3918 /* SuccessScreen.swift */; };
@@ -120,6 +120,7 @@
 		F7309A811C6F00724CEEA1EF /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC392A87C9E61F5F245F04BF /* HomeTab.swift */; };
 		F8DAC5ECCE591976ADDDE475 /* DSSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27FBEEF2262453EFF581C84 /* DSSpacing.swift */; };
 		F9E1769AFADA310EE1AA1B63 /* SwipeableFlatmateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CD5EB8EC9422F654D29D6D /* SwipeableFlatmateCard.swift */; };
+		F9E9130D2FAD86D400473F79 /* EditVibeSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E9130C2FAD86D400473F79 /* EditVibeSheet.swift */; };
 		FA76EE8E6744263F0567C8A3 /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71EE70E7057BFF579A783EF /* SortOption.swift */; };
 		FCACDE9D2EA94DE98B2CB92A /* RequestsInboxScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746C975D23EB27963C7989BA /* RequestsInboxScreen.swift */; };
 		FF7C43F235F1FF273E415EB8 /* PostSpaceRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = B512BDD80833886F4D42533E /* PostSpaceRoute.swift */; };
@@ -134,7 +135,6 @@
 		0D922F2CDF9E10B77F04D290 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		0DF6B6A5E5789A922E34F9F5 /* ChatsTabPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTabPlaceholder.swift; sourceTree = "<group>"; };
 		0E6FDBB2E3664852D7233588 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A1B2C3D4E5F6789012345612 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F9023AF13C81ECFB43EEE8D /* AddFlatmateSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFlatmateSheet.swift; sourceTree = "<group>"; };
 		10AF39FFE7C7C65CE7C0B740 /* VibePref.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibePref.swift; sourceTree = "<group>"; };
 		111D4110A8CDB4910F017E48 /* AmberBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmberBanner.swift; sourceTree = "<group>"; };
@@ -202,8 +202,9 @@
 		9A47E8DD2724C6DD86C101D2 /* TrustStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustStrip.swift; sourceTree = "<group>"; };
 		9ABD7934EA461C62DCF7F7F9 /* OTPScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPScreen.swift; sourceTree = "<group>"; };
 		9AD19E6E573C88C1B586578B /* ProfileTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabView.swift; sourceTree = "<group>"; };
-		A1B2C3D4E5F6789012345610 /* MyListingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListingsScreen.swift; sourceTree = "<group>"; };
 		A12D8A2593707E7D7BFF160C /* PhoneScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneScreen.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6789012345610 /* MyListingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListingsScreen.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6789012345612 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A31050EF48BDA99F6628F1BD /* EmptySlotRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySlotRow.swift; sourceTree = "<group>"; };
 		A7A56998AB1D4DED18871553 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		A7CD99813F266CAA886633C9 /* SuccessToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessToast.swift; sourceTree = "<group>"; };
@@ -241,6 +242,7 @@
 		F251A4EF24C60DE65DF7BB4B /* FlatsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatsTabView.swift; sourceTree = "<group>"; };
 		F27FBEEF2262453EFF581C84 /* DSSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSSpacing.swift; sourceTree = "<group>"; };
 		F2DF11B07CE601F0F18A6AF3 /* StepPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepPill.swift; sourceTree = "<group>"; };
+		F9E9130C2FAD86D400473F79 /* EditVibeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVibeSheet.swift; sourceTree = "<group>"; };
 		FBCA0E6D93EDE032A706B2B9 /* FlatmateVibeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatmateVibeCard.swift; sourceTree = "<group>"; };
 		FF75E602BA059C01F1E3E694 /* ProgressDots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDots.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -529,6 +531,7 @@
 		F64E2F0E8EB4143D3B5E2DB7 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F9E9130C2FAD86D400473F79 /* EditVibeSheet.swift */,
 				12F067C41A0A26820505C39C /* FlatDetailsScreen.swift */,
 				4610B677D35BB59F7D97A9F3 /* PhotosScreen.swift */,
 				354C23FB8682AFBD22EB3918 /* SuccessScreen.swift */,
@@ -704,6 +707,7 @@
 				071B34DDF7C2C88F961F4309 /* ProgressDots.swift in Sources */,
 				1099725D3B0A9DCBCFC53342 /* RangeSlider.swift in Sources */,
 				1DB7C44E6968895AEF56471A /* ReceivedRequest.swift in Sources */,
+				F9E9130D2FAD86D400473F79 /* EditVibeSheet.swift in Sources */,
 				B17EA03FDF8A2C08F32A2439 /* RequestProfileScreen.swift in Sources */,
 				04994A24717F5D420FD8AD8E /* RequestsAPI.swift in Sources */,
 				FCACDE9D2EA94DE98B2CB92A /* RequestsInboxScreen.swift in Sources */,

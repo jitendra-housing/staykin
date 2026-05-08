@@ -6,14 +6,29 @@ struct FlatHeroGallery: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            // Photo (Phase C ships first photo only — horizontal paging deferred)
-            if let current = photos[safe: index] {
-                PhotoPlaceholder(
-                    hue: current.placeholderHue,
-                    hue2: current.placeholderHue2,
-                    emoji: current.placeholderEmoji
-                )
+            TabView(selection: $index) {
+                ForEach(photos.indices, id: \.self) { i in
+                    let photo = photos[i]
+                    ZStack {
+                        PhotoPlaceholder(
+                            hue: photo.placeholderHue,
+                            hue2: photo.placeholderHue2,
+                            emoji: photo.placeholderEmoji
+                        )
+                        if let urlString = photo.url, let url = URL(string: urlString) {
+                            AsyncImage(url: url) { phase in
+                                if let image = phase.image {
+                                    image.resizable().scaledToFill()
+                                }
+                            }
+                        }
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .clipped()
+                    .tag(i)
+                }
             }
+            .tabViewStyle(.page(indexDisplayMode: .never))
 
             // Top scrim for nav button readability
             VStack(spacing: 0) {
@@ -33,6 +48,7 @@ struct FlatHeroGallery: View {
                         Capsule()
                             .fill(i == index ? Color.white : Color.white.opacity(0.5))
                             .frame(width: i == index ? 18 : 6, height: 6)
+                            .animation(.easeInOut(duration: 0.2), value: index)
                     }
                 }
                 .padding(.bottom, 10)
@@ -41,11 +57,5 @@ struct FlatHeroGallery: View {
         .frame(maxWidth: .infinity)
         .frame(height: 220)
         .clipped()
-    }
-}
-
-private extension Array {
-    subscript(safe index: Int) -> Element? {
-        indices.contains(index) ? self[index] : nil
     }
 }

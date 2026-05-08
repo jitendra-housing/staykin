@@ -15,7 +15,7 @@ struct MyListingsScreen: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.bgBase)
         .navigationBarBackButtonHidden(true)
-        .task { await loadListings() }
+        .task(id: listingIds) { await loadListings() }
     }
 
     // MARK: - Header

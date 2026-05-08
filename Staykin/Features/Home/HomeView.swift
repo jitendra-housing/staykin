@@ -11,6 +11,7 @@ struct HomeView: View {
 
     @State private var selectedTab: HomeTab
     @State private var flatsPath: [FlatDetail]
+    @State private var profilePath: NavigationPath = NavigationPath()
 
     init(landing: HomeLanding = .flatsList, onSignOut: @escaping () -> Void) {
         self.onSignOut = onSignOut
@@ -38,10 +39,10 @@ struct HomeView: View {
         VStack(spacing: 0) {
             ZStack {
                 switch selectedTab {
-                case .flats:     FlatsTabView(path: $flatsPath)
+                case .flats:     FlatsTabView(path: $flatsPath, onViewMyListings: viewMyListings)
                 case .flatmates: FlatmatesTabView()
                 case .chats:     FlatmatesCoordinator()
-                case .profile:   ProfileTabView(onSignOut: onSignOut)
+                case .profile:   ProfileTabView(onSignOut: onSignOut, path: $profilePath)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -54,5 +55,10 @@ struct HomeView: View {
         .background(Color.bgBase)
         .ignoresSafeArea(edges: .bottom)
         .animation(.easeInOut(duration: 0.2), value: isTabBarVisible)
+    }
+
+    private func viewMyListings() {
+        selectedTab = .profile
+        profilePath.append(ProfileRoute.myListings)
     }
 }

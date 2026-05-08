@@ -19,6 +19,7 @@ struct FlatsFilter: Equatable {
 
 struct FlatsTabView: View {
     @Binding var path: [FlatDetail]
+    let onViewMyListings: () -> Void
     @State private var filter = FlatsFilter()
     @State private var showPostSpace = false
     @State private var listings: [Listing] = []
@@ -48,7 +49,13 @@ struct FlatsTabView: View {
         }
         .tint(.primaryPurple)
         .fullScreenCover(isPresented: $showPostSpace) {
-            PostSpaceCoordinator(onDismiss: { showPostSpace = false })
+            PostSpaceCoordinator(
+                onDismiss: { showPostSpace = false },
+                onViewMyListings: {
+                    showPostSpace = false
+                    onViewMyListings()
+                }
+            )
         }
         .task { await loadListings() }
     }

@@ -5,12 +5,22 @@ struct FlatListRow: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            PhotoPlaceholder(
-                hue: flat.photoHue,
-                hue2: flat.photoHue2,
-                emoji: flat.photoEmoji
-            )
+            ZStack {
+                PhotoPlaceholder(
+                    hue: flat.photoHue,
+                    hue2: flat.photoHue2,
+                    emoji: flat.photoEmoji
+                )
+                if let urlString = flat.photoURL, let url = URL(string: urlString) {
+                    AsyncImage(url: url) { phase in
+                        if let image = phase.image {
+                            image.resizable().scaledToFill()
+                        }
+                    }
+                }
+            }
             .frame(width: 84, height: 84)
+            .clipped()
             .clipShape(RoundedRectangle(cornerRadius: 12))
 
             VStack(alignment: .leading, spacing: 0) {

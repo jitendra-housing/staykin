@@ -6,11 +6,11 @@ enum ProfileRoute: Hashable {
 
 struct ProfileTabView: View {
     let onSignOut: () -> Void
+    @Binding var path: NavigationPath
 
     @State private var notificationsEnabled: Bool = true
     @State private var showSignOutConfirm: Bool = false
     @State private var loadedProfile: UserProfile? = UserStore.saved
-    @State private var path = NavigationPath()
 
     private var profile: UserProfile? { loadedProfile }
 
@@ -77,7 +77,13 @@ struct ProfileTabView: View {
             ?? (UserDefaults.standard.object(forKey: OnboardingAPI.userIdDefaultsKey) as? Int)
         guard let userId = myId else { return }
         do {
-            loadedProfile = try await OnboardingAPI.fetchProfile(userId: userId)
+            let fetched = try await OnboardingAPI.fetchProfile(userId: userId)
+            let raw = fetched.lifestyleTagIds ?? []
+            let resolved = raw.map { id -> String in
+                VibePref.find(by: id).map { "\($0.id):\($0.label)" } ?? "\(id):<no-match>"
+            }
+            print("[ProfileTabView] lifestyleTagIds raw=\(raw) resolved=\(resolved)")
+            loadedProfile = fetched
         } catch {
             print("fetchProfile failed: \(error)")
         }

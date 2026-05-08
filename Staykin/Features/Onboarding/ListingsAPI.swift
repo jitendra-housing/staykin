@@ -101,7 +101,7 @@ enum ListingsAPI {
             "flatmates_needed": data.listingFlatmatesNeeded,
             "gender_pref": data.listingGenderPref ?? NSNull(),
             "move_in": data.listingMoveIn ?? NSNull(),
-            "room_type_pref": data.listingRoomType ?? NSNull(),
+            "room_type": data.listingRoomType ?? NSNull(),
             "amenities": Array(data.listingAmenities).sorted(),
             "photos": data.flatPhotoUrls
         ]

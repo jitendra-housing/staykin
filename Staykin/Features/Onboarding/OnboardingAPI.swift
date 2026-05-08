@@ -136,7 +136,7 @@ enum OnboardingAPI {
         request.httpMethod = method
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "accept")
-        request.httpBody = try JSONSerialization.data(withJSONObject: makeBody(data), options: [])
+        request.httpBody = try JSONSerialization.data(withJSONObject: makeBody(data, isPatch: method == "PATCH"), options: [])
 
         let (responseData, response) = try await URLSession.shared.data(for: request)
 
@@ -152,10 +152,8 @@ enum OnboardingAPI {
         return responseData
     }
 
-    private static func makeBody(_ data: OnboardingData) -> [String: Any] {
+    private static func makeBody(_ data: OnboardingData, isPatch: Bool = false) -> [String: Any] {
         var body: [String: Any] = [
-            "phone": data.phoneNumber,
-            "name": data.name.trimmingCharacters(in: .whitespaces),
             "age": data.age ?? NSNull(),
             "gender": data.gender?.id ?? NSNull(),
             "occupation": data.occupation ?? NSNull(),
@@ -166,9 +164,14 @@ enum OnboardingAPI {
             "budget_max": data.budgetMax.map { Int($0) } ?? NSNull(),
             "bhk_prefs": Array(data.bhk).sorted(),
             "furnishing_prefs": Array(data.furnishing).sorted(),
-            "move_in_date": isoDate.string(from: Date()),
             "gender_pref": data.gender?.id ?? NSNull()
         ]
+        // Skip empty defaults on PATCH so a partial update (e.g. vibe-only) doesn't
+        // overwrite phone/name with "" or silently reset the user's move-in date.
+        let trimmedName = data.name.trimmingCharacters(in: .whitespaces)
+        if !isPatch || !data.phoneNumber.isEmpty { body["phone"] = data.phoneNumber }
+        if !isPatch || !trimmedName.isEmpty { body["name"] = trimmedName }
+        if !isPatch { body["move_in_date"] = isoDate.string(from: Date()) }
         if let roomType = data.roomType { body["room_type_pref"] = roomType }
         if let moveIn = data.moveIn { body["move_in_pref"] = moveIn }
         return body

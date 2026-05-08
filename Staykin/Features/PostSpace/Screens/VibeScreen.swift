@@ -1,10 +1,12 @@
 import SwiftUI
 
 struct VibeScreen: View {
-    let onPublish: () -> Void
+    let onPublish: () async -> Void
     let onBack: () -> Void
 
     @Environment(OnboardingData.self) private var data
+
+    @State private var isSubmitting: Bool = false
 
     private let columns = [
         GridItem(.flexible(), spacing: 12),
@@ -14,6 +16,12 @@ struct VibeScreen: View {
 
     private var selectionCount: Int { data.vibePrefs.count }
     private var canContinue: Bool { selectionCount >= VibePref.minSelections }
+    private var ctaTitle: String {
+        if isSubmitting { return "" }
+        return canContinue
+            ? "Publish listing 🚀"
+            : "Pick \(VibePref.minSelections - selectionCount) more"
+    }
 
     var body: some View {
         ScrollView {
@@ -56,12 +64,20 @@ struct VibeScreen: View {
         .navigationBarBackButtonHidden(true)
         .safeAreaInset(edge: .bottom, spacing: 0) {
             StickyBottomCTA(
-                title: canContinue
-                    ? "Publish listing 🚀"
-                    : "Pick \(VibePref.minSelections - selectionCount) more",
-                action: onPublish,
-                isDisabled: !canContinue
+                title: ctaTitle,
+                action: handlePublish,
+                isDisabled: !canContinue || isSubmitting,
+                isLoading: isSubmitting
             )
+        }
+    }
+
+    private func handlePublish() {
+        guard !isSubmitting else { return }
+        isSubmitting = true
+        Task { @MainActor in
+            await onPublish()
+            isSubmitting = false
         }
     }
 

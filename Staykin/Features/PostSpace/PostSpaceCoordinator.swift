@@ -5,12 +5,15 @@ import SwiftUI
 // as a fullScreenCover from anywhere (e.g. FlatsTabView header).
 struct PostSpaceCoordinator: View {
     let onDismiss: () -> Void
+    let onViewMyListings: () -> Void
 
     @State private var data: OnboardingData
     @State private var path: [PostSpaceRoute] = []
+    @State private var alertMessage: String?
 
-    init(onDismiss: @escaping () -> Void) {
+    init(onDismiss: @escaping () -> Void, onViewMyListings: @escaping () -> Void) {
         self.onDismiss = onDismiss
+        self.onViewMyListings = onViewMyListings
         // The post-flow screens use @Environment(OnboardingData.self) for the
         // listing fields. Seed a fresh OnboardingData with the registered user's
         // id so ListingsAPI.createListing has owner_user_id wired up.
@@ -33,6 +36,15 @@ struct PostSpaceCoordinator: View {
         }
         .environment(data)
         .tint(.primaryPurple)
+        .alert(
+            "Couldn't publish",
+            isPresented: Binding(
+                get: { alertMessage != nil },
+                set: { if !$0 { alertMessage = nil } }
+            ),
+            actions: { Button("OK", role: .cancel) {} },
+            message: { Text(alertMessage ?? "") }
+        )
     }
 
     @ViewBuilder
@@ -40,22 +52,24 @@ struct PostSpaceCoordinator: View {
         switch route {
         case .photos:
             PhotosScreen(onContinue: {
-                Task {
-                    do { try await ListingsAPI.createListing(data) }
-                    catch { print("createListing failed: \(error)") }
+                do {
+                    _ = try await ListingsAPI.createListing(data)
+                    path.append(.vibe)
+                } catch {
+                    alertMessage = "Couldn't create your listing — \(error.localizedDescription)"
                 }
-                path.append(.vibe)
             }, onBack: pop)
         case .vibe:
             VibeScreen(onPublish: {
-                Task {
-                    do { try await OnboardingAPI.patchProfile(data) }
-                    catch { print("patchProfile failed: \(error)") }
+                do {
+                    try await OnboardingAPI.patchProfile(data)
+                    path.append(.success)
+                } catch {
+                    alertMessage = "Couldn't save your vibe — \(error.localizedDescription)"
                 }
-                path.append(.success)
             }, onBack: pop)
         case .success:
-            SuccessScreen(onViewListing: onDismiss, onBrowseFlatmates: onDismiss)
+            SuccessScreen(onViewListing: onViewMyListings, onBrowseFlatmates: onDismiss)
         }
     }
 

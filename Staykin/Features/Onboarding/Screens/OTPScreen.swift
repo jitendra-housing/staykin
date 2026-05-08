@@ -144,8 +144,8 @@ struct OTPScreen: View {
     }
 
     private func handleVerify() {
-        // "000000" triggers the error state for design QA — replace with real auth later.
-        if data.otpCode == "000000" {
+        // Only "111111" is accepted; any other code triggers the error state for QA.
+        guard data.otpCode == "111111" else {
             withAnimation { showError = true }
             return
         }

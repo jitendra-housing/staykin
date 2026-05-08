@@ -153,27 +153,34 @@ enum OnboardingAPI {
     }
 
     private static func makeBody(_ data: OnboardingData, isPatch: Bool = false) -> [String: Any] {
-        var body: [String: Any] = [
-            "age": data.age ?? NSNull(),
-            "gender": data.gender?.id ?? NSNull(),
-            "occupation": data.occupation ?? NSNull(),
-            "photo_url": data.photoUrl ?? "",
-            "lifestyle_tag_ids": Array(data.vibePrefs).sorted(),
-            "preferred_locality_ids": Array(data.areas).sorted(),
-            "budget_min": data.budgetMin.map { Int($0) } ?? NSNull(),
-            "budget_max": data.budgetMax.map { Int($0) } ?? NSNull(),
-            "bhk_prefs": Array(data.bhk).sorted(),
-            "furnishing_prefs": Array(data.furnishing).sorted(),
-            "gender_pref": data.gender?.id ?? NSNull()
-        ]
-        // Skip empty defaults on PATCH so a partial update (e.g. vibe-only) doesn't
-        // overwrite phone/name with "" or silently reset the user's move-in date.
+        var body: [String: Any] = [:]
+
+        // On PATCH skip every field the user hasn't touched in this flow — otherwise
+        // a partial update (e.g. vibe-only via EditVibeSheet) overwrites unrelated
+        // profile fields with empty defaults from a freshly seeded OnboardingData.
         let trimmedName = data.name.trimmingCharacters(in: .whitespaces)
+        let lifestyle = Array(data.vibePrefs).sorted()
+        let localities = Array(data.areas).sorted()
+        let bhkPrefs = Array(data.bhk).sorted()
+        let furnishingPrefs = Array(data.furnishing).sorted()
+
         if !isPatch || !data.phoneNumber.isEmpty { body["phone"] = data.phoneNumber }
         if !isPatch || !trimmedName.isEmpty { body["name"] = trimmedName }
+        if !isPatch || data.age != nil { body["age"] = data.age ?? NSNull() }
+        if !isPatch || data.gender != nil { body["gender"] = data.gender?.id ?? NSNull() }
+        if !isPatch || data.occupation != nil { body["occupation"] = data.occupation ?? NSNull() }
+        if !isPatch || (data.photoUrl?.isEmpty == false) { body["photo_url"] = data.photoUrl ?? "" }
+        if !isPatch || !lifestyle.isEmpty { body["lifestyle_tag_ids"] = lifestyle }
+        if !isPatch || !localities.isEmpty { body["preferred_locality_ids"] = localities }
+        if !isPatch || data.budgetMin != nil { body["budget_min"] = data.budgetMin.map { Int($0) } ?? NSNull() }
+        if !isPatch || data.budgetMax != nil { body["budget_max"] = data.budgetMax.map { Int($0) } ?? NSNull() }
+        if !isPatch || !bhkPrefs.isEmpty { body["bhk_prefs"] = bhkPrefs }
+        if !isPatch || !furnishingPrefs.isEmpty { body["furnishing_prefs"] = furnishingPrefs }
+        if !isPatch || data.gender != nil { body["gender_pref"] = data.gender?.id ?? NSNull() }
         if !isPatch { body["move_in_date"] = isoDate.string(from: Date()) }
         if let roomType = data.roomType { body["room_type_pref"] = roomType }
         if let moveIn = data.moveIn { body["move_in_pref"] = moveIn }
+
         return body
     }
 }
